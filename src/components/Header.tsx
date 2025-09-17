@@ -62,6 +62,12 @@ const Header = () => {
             >
               Boss Fights
             </Link>
+              <Link 
+                to="/wall-of-fame"
+                className="nav-link text-blue-600 hover:underline"
+              >
+                Wall of Fame
+              </Link>
             <Link 
               to="/start-quest"
             >

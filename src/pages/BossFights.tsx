@@ -55,10 +55,13 @@ const BossFights = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
+        <div className="flex justify-center mt-4">
+          <a href="/wall-of-fame" className="text-blue-600 font-inter hover:underline text-lg">See All Wins (Wall of Fame)</a>
+        </div>
         <section className="py-20 bg-background">
           <div className="container mx-auto px-6 max-w-6xl">
             <div className="text-center mb-16">

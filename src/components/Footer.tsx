@@ -40,6 +40,12 @@ const Footer = () => {
             >
               Squad
             </button>
+            <a 
+              href="/wall-of-fame" 
+              className="hover:text-blue-600 transition-colors duration-200 font-inter underline"
+            >
+              See All Wins
+            </a>
           </nav>
         </div>
 
