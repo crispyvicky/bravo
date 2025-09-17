@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,13 +16,8 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-  };
-
-  const openConsultationModal = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -32,47 +29,46 @@ const Header = () => {
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-foreground">
-              Bravoo
+              Bravoo.in
             </div>
-            <div className="text-sm text-muted-foreground">
-              bravoo.in
-            </div>
-          </div>
+            <div className="text-lg">⚔️</div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection("solution")}
-              className="nav-link"
+            <Link 
+              to="/missions"
+              className={`nav-link ${location.pathname === '/missions' ? 'text-primary' : ''}`}
             >
-              Why Bravoo
-            </button>
-            <button 
-              onClick={() => scrollToSection("process")}
-              className="nav-link"
+              Missions
+            </Link>
+            <Link 
+              to="/player-1"
+              className={`nav-link ${location.pathname === '/player-1' ? 'text-primary' : ''}`}
             >
-              Process
-            </button>
-            <button 
-              onClick={() => scrollToSection("services")}
-              className="nav-link"
+              Player 1
+            </Link>
+            <Link 
+              to="/guild"
+              className={`nav-link ${location.pathname === '/guild' ? 'text-primary' : ''}`}
             >
-              Quests
-            </button>
-            <button 
-              onClick={() => scrollToSection("team")}
-              className="nav-link"
+              Guild
+            </Link>
+            <Link 
+              to="/boss-fights"
+              className={`nav-link ${location.pathname === '/boss-fights' ? 'text-primary' : ''}`}
             >
-              Squad
-            </button>
-            <Button 
-              onClick={openConsultationModal}
-              className="btn-primary h-8 px-4 text-sm"
+              Boss Fights
+            </Link>
+            <Link 
+              to="/start-quest"
             >
-              Start Project
-            </Button>
+              <Button className="btn-primary h-8 px-4 text-sm">
+                Start Quest
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -105,36 +101,42 @@ const Header = () => {
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="absolute top-20 left-0 right-0 bg-background border-b border-border p-6 animate-slide-in-up">
             <nav className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection("solution")}
+              <Link 
+                to="/missions"
+                onClick={closeMobileMenu}
                 className="text-left py-2 text-foreground hover:text-primary transition-colors"
               >
-                Why Bravoo
-              </button>
-              <button 
-                onClick={() => scrollToSection("process")}
+                Missions
+              </Link>
+              <Link 
+                to="/player-1"
+                onClick={closeMobileMenu}
                 className="text-left py-2 text-foreground hover:text-primary transition-colors"
               >
-                Process
-              </button>
-              <button 
-                onClick={() => scrollToSection("services")}
+                Player 1
+              </Link>
+              <Link 
+                to="/guild"
+                onClick={closeMobileMenu}
                 className="text-left py-2 text-foreground hover:text-primary transition-colors"
               >
-                Quests
-              </button>
-              <button 
-                onClick={() => scrollToSection("team")}
+                Guild
+              </Link>
+              <Link 
+                to="/boss-fights"
+                onClick={closeMobileMenu}
                 className="text-left py-2 text-foreground hover:text-primary transition-colors"
               >
-                Squad
-              </button>
-              <Button 
-                onClick={openConsultationModal}
-                className="btn-primary w-full mt-4"
+                Boss Fights
+              </Link>
+              <Link 
+                to="/start-quest"
+                onClick={closeMobileMenu}
               >
-                Start Project
-              </Button>
+                <Button className="btn-primary w-full mt-4">
+                  Start Quest
+                </Button>
+              </Link>
             </nav>
           </div>
         </div>
