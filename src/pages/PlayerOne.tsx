@@ -65,7 +65,7 @@ const PlayerOne = () => {
               <div className="lg:col-span-2 flex justify-center">
                 <div className="card-surface max-w-80 text-center">
                   <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/20 to-success/20 flex items-center justify-center text-6xl">
-                    🧑‍💻
+                    <img src="founder/founder.png" alt="Founder" className="w-44 h-44 rounded-full object-cover" />
                   </div>
                   
                   <h3 className="text-subsection text-foreground mb-2">
