@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ShinyText from "@/components/ShinyText";
 
 const PlayerOne = () => {
   const stats = [
@@ -68,9 +69,9 @@ const PlayerOne = () => {
                     <img src="founder/founder.png" alt="Founder" className="w-44 h-44 rounded-full object-cover" />
                   </div>
                   
-                  <h3 className="text-subsection text-foreground mb-2">
-                    vignesh yadav
-                  </h3>
+                  <h3 className="text-2xl font-bold  mb-2 uppercase ">
+              <ShinyText text="vignesh yadav" speed={3} />
+            </h3>
                   
                   <p className="text-body text-primary font-medium mb-4">
                     Level 21 Founder & Developer

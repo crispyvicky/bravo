@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
@@ -6,6 +6,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,13 +69,27 @@ const Header = () => {
               >
                 Wall of Fame
               </Link>
-            <Link 
-              to="/start-quest"
+            <div
+              className="flex items-center space-x-2"
+              onMouseEnter={() => audioRef.current?.play()}
+              onMouseLeave={() => {
+                audioRef.current?.pause();
+                if (audioRef.current) audioRef.current.currentTime = 0;
+              }}
             >
-              <Button className="btn-primary h-8 px-4 text-sm">
-                Start Quest
-              </Button>
-            </Link>
+              <img
+                src="/GIF/RATT-unscreen.gif"
+                alt="RATT GIF"
+                className="h-16 w-16 cursor-pointer"
+              />
+              <Link 
+                to="/start-quest"
+              >
+                <Button className="btn-primary h-8 px-4 text-sm">
+                  Start Quest
+                </Button>
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -135,18 +150,33 @@ const Header = () => {
               >
                 Boss Fights
               </Link>
-              <Link 
-                to="/start-quest"
+              <div 
+                className="flex items-center space-x-2 mt-4"
                 onClick={closeMobileMenu}
               >
-                <Button className="btn-primary w-full mt-4">
-                  Start Quest
-                </Button>
-              </Link>
+                <img
+                  src="/GIF/RATT-unscreen.gif"
+                  alt="RATT GIF"
+                  className="h-16 w-16 cursor-pointer"
+                  onMouseEnter={() => audioRef.current?.play()}
+                  onMouseLeave={() => {
+                    audioRef.current?.pause();
+                    if (audioRef.current) audioRef.current.currentTime = 0;
+                  }}
+                />
+                <Link 
+                  to="/start-quest"
+                >
+                  <Button className="btn-primary w-full">
+                    Start Quest
+                  </Button>
+                </Link>
+              </div>
             </nav>
           </div>
         </div>
       )}
+      <audio ref={audioRef} src="/voices/rattalk.mp3" preload="auto" />
     </>
   );
 };

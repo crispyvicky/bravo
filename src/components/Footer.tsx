@@ -11,6 +11,8 @@ if (typeof window !== "undefined") {
   console.log("Hey fellow developer! Wanna join the guild? Email: dev@bravoo.in");
 }
 
+import FlowerPath from './FlowerPath';
+
 const Footer = () => {
   return (
   <footer className="footer w-full" style={{ background: '#fff', color: '#1f2937', padding: '64px 0 32px', marginTop: 64, opacity: 0, animation: 'fadeInUp 0.8s ease forwards' }}>
@@ -96,6 +98,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        {/* Animated Flower Path */}
+        <FlowerPath />
 
         {/* Bottom Copyright Bar */}
   <div className="footer-bottom border-t border-gray-200 pt-8 mt-12">
