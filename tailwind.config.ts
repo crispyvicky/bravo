@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -118,7 +119,11 @@ export default {
           "50%": {
             opacity: "0.8"
           }
-        }
+        },
+        shine: {
+          '0%': { 'background-position': '100%' },
+          '100%': { 'background-position': '-100%' },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.6s ease-out forwards",
@@ -127,8 +132,9 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "progress-fill": "progress-fill 0.8s ease-out forwards",
         "pulse-soft": "pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        shine: 'shine 5s linear infinite',
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

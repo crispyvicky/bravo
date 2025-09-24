@@ -64,7 +64,7 @@ const Header = () => {
             </Link>
               <Link 
                 to="/wall-of-fame"
-                className="nav-link text-blue-600 hover:underline"
+                className="nav-link text-blue-600 "
               >
                 Wall of Fame
               </Link>

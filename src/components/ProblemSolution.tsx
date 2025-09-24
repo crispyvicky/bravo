@@ -1,4 +1,8 @@
+import { useState } from 'react';
+import landingMi from '/landing-mi.png';
+
 const ProblemSolution = () => {
+  const [showImage, setShowImage] = useState(false);
   return (
     <section id="solution" className="py-20 bg-muted">
       <div className="container mx-auto px-6">
@@ -6,7 +10,24 @@ const ProblemSolution = () => {
           {/* Content */}
           <div className="lg:col-span-2 space-y-8">
             <h2 className="text-section text-foreground">
-              Tired of{" "}
+              <span
+                className="relative cursor-pointer"
+                onMouseEnter={() => setShowImage(true)}
+                onMouseLeave={() => setShowImage(false)}
+                onClick={() => setShowImage(!showImage)}
+              >
+                <span className="relative">
+                  T
+                  {showImage && (
+                    <img
+                      src={landingMi}
+                      alt="Landing MI"
+                      className="absolute top-0 left-0 w-8 h-8 z-10"
+                    />
+                  )}
+                </span>
+                ired of{" "}
+              </span>
               <span className="text-warning">bloated agencies</span>?
             </h2>
             

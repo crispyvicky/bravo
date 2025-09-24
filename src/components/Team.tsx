@@ -1,3 +1,4 @@
+import ShinyText from './ShinyText';
 const Team = () => {
   return (
     <section id="team" className="py-20 bg-muted">
@@ -9,8 +10,8 @@ const Team = () => {
                <img src="/founder/founder1.png" alt="Founder" className="w-24 h-24 rounded-full object-cover" />
             </div>
             
-            <h3 className="text-2xl font-bold text-foreground mb-2">
-              vignesh yadav
+            <h3 className="text-2xl font-bold  mb-2 uppercase ">
+              <ShinyText text="vignesh yadav" speed={3} />
             </h3>
             
             <p className="text-primary font-medium mb-4">
