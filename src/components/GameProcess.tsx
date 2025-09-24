@@ -6,35 +6,35 @@ const GameProcess = () => {
 
   const stages = [
     {
-      icon: "🎯",
+      icon: <img src="/monalisa/_1.png" alt="Discovery" style={{ width: '100px', height: '100px' }} />,
       title: "Discovery",
       description: "Map out requirements & scope",
       xp: 100,
       progress: 18
     },
     {
-      icon: "📋",
+      icon: <img src="/monalisa/_2.png" alt="Sprint Planning" style={{ width: '100px', height: '100px' }} />,
       title: "Sprint Planning", 
       description: "Break down milestones",
       xp: 200,
       progress: 36
     },
     {
-      icon: "⚡",
+      icon: <img src="/monalisa/_3.png" alt="Development" style={{ width: '100px', height: '100px' }} />,
       title: "Development",
       description: "Code, test, iterate weekly",
       xp: 500,
       progress: 68
     },
     {
-      icon: "🚀",
+      icon: <img src="/monalisa/_4.png" alt="Deployment" style={{ width: '100px', height: '100px' }} />,
       title: "Deployment",
       description: "Launch & monitor",
       xp: 1000,
       progress: 90
     },
     {
-      icon: "👑",
+      icon: <img src="/monalisa/_6.png" alt="Boss Battle Won" style={{ width: '100px', height: '100px' }} className="w-[100px] h-[100px] rounded-xl" />,
       title: "Boss Battle Won",
       description: "Project delivered successfully",
       isAchievement: true,
@@ -87,8 +87,9 @@ const GameProcess = () => {
               className={`card-surface text-center transition-all duration-500 ${
                 visibleStages[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               } ${stage.isAchievement ? "border-warning bg-warning/5" : ""}`}
+              style={{ minHeight: '300px', padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
             >
-              <div className="text-4xl mb-4">{stage.icon}</div>
+              <div className="text-4xl mb-4 flex justify-center">{stage.icon}</div>
               
               <h3 className="font-semibold text-lg mb-2 text-foreground">
                 {stage.title}

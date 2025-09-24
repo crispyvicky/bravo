@@ -40,7 +40,7 @@ export default function FlowerPath() {
              Q 300,20 400,150 
              Q 500,20 590,150"
           stroke="lightgray"
-          strokeWidth="2"
+          strokeWidth="0"
           fill="transparent"
         />
       </svg>

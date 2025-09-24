@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,10 +32,7 @@ const Header = () => {
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-foreground">
-              Bravoo
-            </div>
-            <div className="text-lg">⚔️</div>
+            <img src="/logo/brlogo.png" alt="Bravoo Logo" style={{ width: '120px', height: '120px' }} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -80,7 +78,7 @@ const Header = () => {
               <img
                 src="/GIF/RATT-unscreen.gif"
                 alt="RATT GIF"
-                className="h-16 w-16 cursor-pointer"
+                className="h-20 w-20 cursor-pointer"
               />
               <Link 
                 to="/start-quest"
