@@ -10,6 +10,7 @@ import Guild from "./pages/Guild";
 import BossFights from "./pages/BossFights";
 import StartQuest from "./pages/StartQuest";
 import WallOfFame from "./pages/WallOfFame";
+import Blogs from "./pages/Blogs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/boss-fights" element={<BossFights />} />
           <Route path="/start-quest" element={<StartQuest />} />
           <Route path="/wall-of-fame" element={<WallOfFame />} />
+          <Route path="/blog" element={<Blogs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
