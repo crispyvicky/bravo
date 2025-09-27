@@ -397,3 +397,13 @@
     font-size: clamp(1.5rem, 6vw, 1.8rem);
   }
 }
+
+/* Carousel Scrollbar Hiding */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

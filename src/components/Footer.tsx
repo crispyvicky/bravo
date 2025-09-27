@@ -67,7 +67,7 @@ const Footer = () => (
             <li><a href="/missions" style={navLinkStyle}>Missions</a></li>
             <li><a href="/guild" style={navLinkStyle}>Guild</a></li>
             <li><a href="/wall-of-fame" style={navLinkStyle}>Wall of Fame</a></li>
-            <li><a href="/blog" style={navLinkStyle}>Stories</a></li>
+            <li><a href="/blog" style={navLinkStyle}>Blogs</a></li>
             <li><a href="/faq" style={navLinkStyle}>Help</a></li>
           </ul>
         </nav>

@@ -97,12 +97,8 @@ export default {
           }
         },
         "float": {
-          "0%, 100%": {
-            transform: "translateY(0px)"
-          },
-          "50%": {
-            transform: "translateY(-10px)"
-          }
+          "0%": { transform: "translateY(-10%)" },
+          "100%": { transform: "translateY(10%)" },
         },
         "progress-fill": {
           "0%": {
@@ -129,7 +125,7 @@ export default {
         "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-up": "slide-in-up 0.6s ease-out forwards",
         "scale-in": "scale-in 0.3s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
+        "float": "float 1s ease-in-out infinite alternate",
         "progress-fill": "progress-fill 0.8s ease-out forwards",
         "pulse-soft": "pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         shine: 'shine 5s linear infinite',
