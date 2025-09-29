@@ -6,35 +6,35 @@ const GameProcess = () => {
 
   const stages = [
     {
-      icon: <img src="/monalisa/_1.png" alt="Discovery" style={{ width: '100px', height: '100px' }} />,
+      icon: <img src="/monalisa/_1.png" alt="Discovery" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Discovery",
       description: "Map out requirements & scope",
       xp: 100,
       progress: 18
     },
     {
-      icon: <img src="/monalisa/_2.png" alt="Sprint Planning" style={{ width: '100px', height: '100px' }} />,
+      icon: <img src="/monalisa/_2.png" alt="Sprint Planning" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Sprint Planning", 
       description: "Break down milestones",
       xp: 200,
       progress: 36
     },
     {
-      icon: <img src="/monalisa/_3.png" alt="Development" style={{ width: '100px', height: '100px' }} />,
+      icon: <img src="/monalisa/_3.png" alt="Development" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Development",
       description: "Code, test, iterate weekly",
       xp: 500,
       progress: 68
     },
     {
-      icon: <img src="/monalisa/_4.png" alt="Deployment" style={{ width: '100px', height: '100px' }} />,
+      icon: <img src="/monalisa/_4.png" alt="Deployment" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Deployment",
       description: "Launch & monitor",
       xp: 1000,
       progress: 90
     },
     {
-      icon: <img src="/monalisa/_6.png" alt="Boss Battle Won" style={{ width: '100px', height: '100px' }} className="w-[100px] h-[100px] rounded-xl" />,
+      icon: <img src="/monalisa/_6.png" alt="Boss Battle Won" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl" />,
       title: "Boss Battle Won",
       description: "Project delivered successfully",
       isAchievement: true,

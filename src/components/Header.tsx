@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
@@ -6,7 +6,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Handle scroll
   useEffect(() => {
@@ -14,18 +13,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Play / stop audio
-  const playAudio = () => {
-    audioRef.current?.play().catch(() => {});
-  };
-
-  const stopAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-  };
 
   // Close mobile menu
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
@@ -72,23 +59,12 @@ const Header = () => {
               Wall of Fame
             </Link>
 
-            {/* RATT + Button */}
-            <div
-              className="flex items-center space-x-2"
-              onMouseEnter={playAudio}
-              onMouseLeave={stopAudio}
-            >
-              <img
-                src="/GIF/RATT-unscreen.gif"
-                alt="RATT GIF"
-                className="h-20 w-20 cursor-pointer"
-              />
-              <Link to="/start-quest">
-                <Button className="btn-primary h-8 px-4 text-sm">
-                  Start Quest
-                </Button>
-              </Link>
-            </div>
+            {/* Start Quest Button */}
+            <Link to="/start-quest" className="ml-4">
+              <Button className="btn-primary h-8 px-4 text-sm">
+                Start Quest
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -140,15 +116,8 @@ const Header = () => {
                 Boss Fights
               </Link>
 
-              {/* RATT + Button in Mobile */}
-              <div className="flex items-center space-x-2 mt-4">
-                <img
-                  src="/GIF/RATT-unscreen.gif"
-                  alt="RATT GIF"
-                  className="h-16 w-16 cursor-pointer"
-                  onMouseEnter={playAudio}
-                  onMouseLeave={stopAudio}
-                />
+              {/* Start Quest Button in Mobile */}
+              <div className="mt-4">
                 <Link to="/start-quest" onClick={closeMobileMenu}>
                   <Button className="btn-primary w-full">Start Quest</Button>
                 </Link>
@@ -157,9 +126,6 @@ const Header = () => {
           </div>
         </div>
       )}
-
-      {/* Audio */}
-      <audio ref={audioRef} src="/voices/rattalk.mp3" preload="auto" />
     </>
   );
 };

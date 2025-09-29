@@ -2,26 +2,37 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import InfiniteMenu from "@/components/Infinitemenu";
+
+interface MenuItem {
+  image: string;
+  link: string;
+  title: string;
+  description: string;
+  linkedin?: string;
+}
 
 const Guild = () => {
   const guildMembers = [
     {
       name: "Sarah Chen",
-      role: "Frontend Architect",
+      role: "Frontend Architect/fdstgsredfgfdgdfgsdfgdfsghsdihfvsdhbvuiasdbvhbhsaduoivhuiodfhvoiuehfriugfahrif",
       company: "Google",
       avatar: "👩‍💻",
       status: "Available",
       specialties: ["React", "TypeScript", "Performance"],
-      level: "Senior"
+      level: "Senior",
+      linkedin: "https://linkedin.com/in/sarahchen"
     },
     {
       name: "Marcus Rodriguez",
-      role: "Backend Engineer",
+      role: "Backend Engineer hreoithgreoijgoierjg;ojdsifjg;kdsjgk;d",
       company: "Microsoft",
       avatar: "👨‍💻",
       status: "In Battle",
       specialties: ["Node.js", "AWS", "Microservices"],
-      level: "Staff"
+      level: "Staff",
+      linkedin: "https://linkedin.com/in/marcusrodriguez"
     },
     {
       name: "Priya Patel",
@@ -30,7 +41,8 @@ const Guild = () => {
       avatar: "🧠",
       status: "Available",
       specialties: ["PyTorch", "NLP", "Computer Vision"],
-      level: "Principal"
+      level: "Principal",
+      linkedin: "https://linkedin.com/in/priyapatel"
     },
     {
       name: "Alex Thompson",
@@ -39,7 +51,8 @@ const Guild = () => {
       avatar: "⚙️",
       status: "Available",
       specialties: ["Kubernetes", "CI/CD", "Monitoring"],
-      level: "Senior"
+      level: "Senior",
+      linkedin: "https://linkedin.com/in/alexthompson"
     },
     {
       name: "Lisa Wang",
@@ -48,7 +61,8 @@ const Guild = () => {
       avatar: "📱",
       status: "Available",
       specialties: ["React Native", "iOS", "Android"],
-      level: "Staff"
+      level: "Staff",
+      linkedin: "https://linkedin.com/in/lisawang"
     },
     {
       name: "David Kim",
@@ -57,9 +71,18 @@ const Guild = () => {
       avatar: "🎨",
       status: "In Battle",
       specialties: ["UI/UX", "Design Systems", "User Research"],
-      level: "Senior"
+      level: "Senior",
+      linkedin: "https://linkedin.com/in/davidkim"
     }
   ];
+
+  const guildItems: MenuItem[] = guildMembers.map(member => ({
+    image: `https://picsum.photos/seed/${encodeURIComponent(member.name)}/900/900`,
+    link: `/profile/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
+    title: member.name,
+    description: `${member.role} at ${member.company}`,
+    linkedin: member.linkedin,
+  }));
 
   const specialties = [
     {
@@ -105,7 +128,7 @@ const Guild = () => {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-background border">
           <div className="container mx-auto px-6 max-w-6xl">
             <div className="text-center mb-16">
               <h1 className="text-hero text-foreground mb-4 animate-fade-in">
@@ -144,8 +167,8 @@ const Guild = () => {
         </section>
 
         {/* Guild Members */}
-        <section className="py-20 bg-muted">
-          <div className="container mx-auto px-6 max-w-6xl">
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-6 max-w-8xl">
             <div className="text-center mb-12">
               <h2 className="text-section text-foreground mb-4">
                 Guild Members
@@ -155,49 +178,8 @@ const Guild = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {guildMembers.map((member, index) => (
-                <div
-                  key={index}
-                  className="card-surface text-center hover:scale-105 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="text-6xl mb-4">{member.avatar}</div>
-                  
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {member.name}
-                  </h3>
-                  
-                  <p className="text-body text-muted-foreground mb-2">
-                    {member.role}
-                  </p>
-                  
-                  <p className="text-sm text-primary font-medium mb-3">
-                    {member.company}
-                  </p>
-
-                  <div className="flex justify-center mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      member.status === 'Available' 
-                        ? 'bg-success/10 text-success' 
-                        : 'bg-warning/10 text-warning'
-                    }`}>
-                      {member.status}
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-xs text-muted-foreground">Specialties:</p>
-                    <div className="flex flex-wrap gap-1 justify-center">
-                      {member.specialties.map((specialty, i) => (
-                        <span key={i} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="w-full relative rounded-lg overflow-hidden h-[60vh] min-h-[320px] md:h-[500px] lg:h-[600px]">
+              <InfiniteMenu items={guildItems} />
             </div>
           </div>
         </section>
