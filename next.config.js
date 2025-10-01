@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Remove static export for Vercel deployment
+  // output: 'export',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
-  distDir: 'dist',
+  // distDir: 'dist', // Remove custom distDir for Vercel
   
   // Performance optimizations
   images: {
