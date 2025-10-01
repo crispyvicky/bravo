@@ -194,7 +194,7 @@ export default function Guild() {
                 </p>
               </div>
 
-              <div className="w-full relative rounded-lg overflow-hidden h-[60vh] min-h-[320px] md:h-[500px] lg:h-[600px]">
+              <div className="w-full  relative rounded-lg h-[60vh] min-h-[320px] md:h-[500px] lg:h-[600px]">
                 <InfiniteMenu items={guildItems} />
               </div>
             </div>

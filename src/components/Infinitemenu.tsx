@@ -974,7 +974,7 @@ class InfiniteGridMenu {
     if (!this.gl) return;
     const canvasEl = this.gl.canvas as HTMLCanvasElement;
     this.camera.aspect = canvasEl.clientWidth / canvasEl.clientHeight;
-    const height = this.SPHERE_RADIUS * 0.35;
+    const height = this.SPHERE_RADIUS * 0.5;
     const distance = this.camera.position[2];
     if (this.camera.aspect > 1) {
       this.camera.fov = 2 * Math.atan(height / distance);
@@ -1111,7 +1111,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
   <canvas
     id="infinite-grid-menu-canvas"
     ref={canvasRef}
-    className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing"
+    className="cursor-grab w-full h-full relative outline-none active:cursor-grabbing"
   />
 
   {/* Active item overlay */}
@@ -1119,7 +1119,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
     <div
       className={`
         absolute inset-0
-        grid grid-rows-[auto_1fr_auto] md:grid-rows-[1fr_auto]
+        grid grid-rows-[auto_1fr_auto_auto] md:grid-rows-[1fr_auto]
         md:grid-cols-3
         px-4 sm:px-6 md:px-8 py-6 sm:py-10 md:py-12
         pointer-events-none
@@ -1141,37 +1141,51 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
       {/* Center: Image zone (spacer to align with canvas center) */}
       <div className="hidden md:block md:col-start-2 md:row-start-1" />
 
-      {/* Right: Description (top row, right on desktop) */}
-      <div className="flex items-center justify-end md:col-start-3 md:row-start-1 mt-4 md:mt-0">
+      {/* Right: Description (row 3 on mobile, right on desktop) */}
+      <div className="flex items-center justify-center md:justify-end row-start-3 md:col-start-3 md:row-start-1 mt-4 md:mt-0">
         <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-3 shadow-lg border border-gray-200 max-w-xs md:max-w-sm">
-          <p className="select-none text-sm sm:text-base md:text-lg text-black pointer-events-auto font-medium text-right md:text-right">
+          <p className="select-none text-sm sm:text-base md:text-lg text-black pointer-events-auto font-medium text-center md:text-right">
             {activeItem.description}
           </p>
         </div>
       </div>
 
       {/* Bottom: CTA centered under image (bottom full-width row) */}
-      <div className="flex items-center justify-center row-start-3 md:col-span-3 md:row-start-2 mt-6 md:mt-10">
-        <button
-          onClick={handleButtonClick}
-          className={`
-            pointer-events-auto
-            z-10
-            px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5
-            h-12 sm:h-14 md:h-16
-            grid place-items-center
-            bg-blue-600 border-2 md:border-4 border-white rounded-full
-            cursor-pointer
-            transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-            shadow-lg hover:shadow-xl hover:bg-blue-700
-            ${isMoving
-              ? 'opacity-0 scale-95 duration-[100ms]'
-              : 'opacity-100 scale-100 duration-[500ms]'
-            }
-          `}
-        >
-          <p className="select-none relative text-white text-sm sm:text-base md:text-lg font-medium">&#x2197; Know more about me</p>
-        </button>
+      <div className="flex items-center justify-center row-start-4 md:col-span-3 md:row-start-2 mt-4 md:mt-10">
+      <button
+  onClick={handleButtonClick}
+  className={`
+    relative group overflow-hidden
+    pointer-events-auto z-10
+    px-6 sm:px-8 md:px-10
+    py-3 sm:py-4 md:py-5
+    h-12 sm:h-14 md:h-16
+    flex items-center justify-center gap-2
+    rounded-full border-2 md:border-4 border-white
+    bg-gradient-to-r from-blue-600 to-indigo-600
+    text-white font-semibold text-sm sm:text-base md:text-lg
+    shadow-lg transition-all duration-300 ease-out
+    hover:from-blue-700 hover:to-indigo-700 hover:shadow-2xl
+    active:scale-95
+    ${isMoving 
+      ? 'opacity-0 scale-95 duration-150' 
+      : 'opacity-100 scale-100 duration-500'
+    }
+  `}
+>
+  <span className="relative z-10 select-none">
+    Know more about me
+  </span>
+
+  {/* Arrow Icon with hover motion */}
+  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+    ↗
+  </span>
+
+  {/* Glow / shine effect */}
+  <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+</button>
+
       </div>
     </div>
   )}
