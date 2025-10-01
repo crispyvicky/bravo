@@ -14,7 +14,7 @@ export default function Document() {
         <link rel="preload" href="/landing-mi.png" as="image" type="image/png" />
         
         {/* Preload critical fonts */}
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onLoad={(e) => { const link = e.currentTarget as HTMLLinkElement; link.onload = null; link.rel = 'stylesheet'; }} />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
         
         {/* DNS prefetch for performance */}

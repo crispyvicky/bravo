@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import StickerPeel from "@/components/stickerpeel";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,10 +36,15 @@ const Header = () => {
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img
-              src="/logo/brlogo.png"
-              alt="Bravoo Logo"
-              className="w-28 h-28"
+            <StickerPeel
+              imageSrc="/logo/brlogo.png"
+              width={120}
+              rotate={0}
+              peelBackHoverPct={15}
+              peelBackActivePct={35}
+              shadowIntensity={0.6}
+              lightingIntensity={0.08}
+              initialPosition={{ x: 0, y: 0 }}
             />
           </Link>
 

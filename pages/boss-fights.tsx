@@ -119,7 +119,7 @@ export default function BossFights() {
                   >
                     {/* Battle Image/Icon */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <ElectricBorder color="#7df9ff" speed={1} chaos={0.5} thickness={2} style={{ borderRadius: 16 }}>
+                      <ElectricBorder color="#000000" speed={1} chaos={0.5} thickness={4} style={{ borderRadius: 6 }}>
                         <div className="card-surface text-center py-16 bg-gradient-to-br from-primary/10 to-success/5">
                           <div className="text-8xl mb-4">{battle.image}</div>
                           <div className="text-lg font-semibold text-foreground mb-2">

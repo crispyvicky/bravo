@@ -2,6 +2,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
   import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import SplashCurser from "@/components/splashcurser";
 
 // Lazy load below-the-fold components for better LCP
 const ProblemSolution = dynamic(() => import("@/components/ProblemSolution"), {
@@ -40,7 +41,8 @@ export default function Index() {
         <meta name="twitter:description" content="Professional full-stack development services including web apps, mobile apps, AI/ML solutions, and cloud infrastructure." />
       </Head>
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background relative">
+        <SplashCurser />
         <Header />
         <main>
           <Hero />
