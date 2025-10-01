@@ -37,7 +37,7 @@ export default function Guild() {
     },
     {
       name: "Priya Patel",
-      role: "AI/ML Specialist",
+      role: "AI/ML Specialist and the one who cretedyewdhhfkhfk;hfsfs",
       company: "Meta",
       avatar: "🧠",
       status: "Available",
