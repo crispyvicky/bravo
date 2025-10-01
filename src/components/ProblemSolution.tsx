@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import landingMi from '/landing-mi.png';
 
 const ProblemSolution = () => {
   const [showImage, setShowImage] = useState(false);
@@ -20,7 +19,7 @@ const ProblemSolution = () => {
                   T
                   {showImage && (
                     <img
-                      src={landingMi}
+                      src="/landing-mi.png"
                       alt="Landing MI"
                       className="absolute top-0 left-0 w-8 h-8 z-10"
                     />

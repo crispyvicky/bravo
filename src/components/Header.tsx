@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const router = useRouter();
 
   // Handle scroll
   useEffect(() => {
@@ -20,7 +21,7 @@ const Header = () => {
   // Helper for active nav link
   const navLinkClass = (path: string) =>
     `nav-link transition-colors ${
-      location.pathname === path ? "text-primary" : "text-foreground hover:text-primary"
+      router.pathname === path ? "text-primary" : "text-foreground hover:text-primary"
     }`;
 
   return (
@@ -33,7 +34,7 @@ const Header = () => {
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <img
               src="/logo/brlogo.png"
               alt="Bravoo Logo"
@@ -43,24 +44,24 @@ const Header = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/missions" className={navLinkClass("/missions")}>
+            <Link href="/missions" className={navLinkClass("/missions")}>
               Missions
             </Link>
-            <Link to="/player-1" className={navLinkClass("/player-1")}>
+            <Link href="/player-1" className={navLinkClass("/player-1")}>
               Player 1
             </Link>
-            <Link to="/guild" className={navLinkClass("/guild")}>
+            <Link href="/guild" className={navLinkClass("/guild")}>
               Guild
             </Link>
-            <Link to="/boss-fights" className={navLinkClass("/boss-fights")}>
+            <Link href="/boss-fights" className={navLinkClass("/boss-fights")}>
               Boss Fights
             </Link>
-            <Link to="/wall-of-fame" className="nav-link ">
+            <Link href="/wall-of-fame" className="nav-link ">
               Wall of Fame
             </Link>
 
             {/* Start Quest Button */}
-            <Link to="/start-quest" className="ml-4">
+            <Link href="/start-quest" className="ml-4">
               <Button className="btn-primary h-8 px-4 text-sm">
                 Start Quest
               </Button>
@@ -103,22 +104,22 @@ const Header = () => {
           {/* Menu */}
           <div className="absolute top-20 left-0 right-0 bg-background border-b border-border p-6 animate-slide-in-up">
             <nav className="flex flex-col space-y-4">
-              <Link to="/missions" onClick={closeMobileMenu} className="nav-link">
+              <Link href="/missions" onClick={closeMobileMenu} className="nav-link">
                 Missions
               </Link>
-              <Link to="/player-1" onClick={closeMobileMenu} className="nav-link">
+              <Link href="/player-1" onClick={closeMobileMenu} className="nav-link">
                 Player 1
               </Link>
-              <Link to="/guild" onClick={closeMobileMenu} className="nav-link">
+              <Link href="/guild" onClick={closeMobileMenu} className="nav-link">
                 Guild
               </Link>
-              <Link to="/boss-fights" onClick={closeMobileMenu} className="nav-link">
+              <Link href="/boss-fights" onClick={closeMobileMenu} className="nav-link">
                 Boss Fights
               </Link>
 
               {/* Start Quest Button in Mobile */}
               <div className="mt-4">
-                <Link to="/start-quest" onClick={closeMobileMenu}>
+                <Link href="/start-quest" onClick={closeMobileMenu}>
                   <Button className="btn-primary w-full">Start Quest</Button>
                 </Link>
               </div>

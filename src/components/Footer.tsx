@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import FlowerPath from "./FlowerPath";
 
 // Random status for personality but condensed
@@ -9,8 +10,14 @@ const statusMessages = [
 ];
 
 const Footer = () => {
-  const randomStatus = statusMessages[Math.floor(Math.random() * statusMessages.length)];
+  const [randomStatus, setRandomStatus] = useState("🟢 Available for Quests");
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Set random status after hydration to avoid SSR mismatch
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * statusMessages.length);
+    setRandomStatus(statusMessages[randomIndex]);
+  }, []);
 
   // Style shortcut for links
   const linkStyle = {
@@ -103,11 +110,11 @@ const Footer = () => {
           {/* Navigation */}
           <nav aria-label="Footer" style={{ flex: 1, minWidth: 180 }}>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 2 }}>
-              <li><a href="/missions" style={navLinkStyle}>Missions</a></li>
-              <li><a href="/guild" style={navLinkStyle}>Guild</a></li>
-              <li><a href="/wall-of-fame" style={navLinkStyle}>Wall of Fame</a></li>
-              <li><a href="/blog" style={navLinkStyle}>Blogs</a></li>
-              <li><a href="/faq" style={navLinkStyle}>Help</a></li>
+              <li><Link href="/missions" style={navLinkStyle}>Missions</Link></li>
+              <li><Link href="/guild" style={navLinkStyle}>Guild</Link></li>
+              <li><Link href="/wall-of-fame" style={navLinkStyle}>Wall of Fame</Link></li>
+              <li><Link href="/blog" style={navLinkStyle}>Blogs</Link></li>
+              <li><Link href="/faq" style={navLinkStyle}>Help</Link></li>
             </ul>
           </nav>
           {/* Contact & Social */}
@@ -167,9 +174,9 @@ const Footer = () => {
             
           </div>
           <div>
-            <a href="/privacy" style={linkStyle}>Privacy</a>
+            <Link href="/privacy" style={linkStyle}>Privacy</Link>
             <span> / </span>
-            <a href="/terms" style={linkStyle}>Terms</a>
+            <Link href="/terms" style={linkStyle}>Terms</Link>
           </div>
         </div>
       </div>

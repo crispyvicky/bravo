@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Fonts will be loaded via preload in _document.tsx for better performance */
 
 @keyframes shine {
   0% {

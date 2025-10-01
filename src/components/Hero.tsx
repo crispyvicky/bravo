@@ -33,18 +33,18 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center pt-20 px-6 relative">
       <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
         {/* Content */}
-        <div className="space-y-8 animate-fade-in">
+        <div className="space-y-8 animate-fade-in text-center">
           <h1 className="text-hero text-foreground">
             Ship Better Software, <span className="gradient-text">Faster</span>
           </h1>
 
-          <p className="text-xl text-muted-foreground max-w-2xl animate-fade-in animation-delay-200">
+          <p className="text-xl text-center text-muted-foreground max-w-2xl animate-fade-in animation-delay-200">
             Direct access to a senior developer backed by a{" "}
             <span className="font-semibold text-foreground">big-tech network</span>.
             Real prices, real results—no agency fluff.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-400">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in animation-delay-400 justify-center">
             <Button
               onClick={handleStartProjectClick}
               onMouseEnter={handleStartProjectHover}
