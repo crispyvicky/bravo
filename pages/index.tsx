@@ -28,17 +28,17 @@ export default function Index() {
   return (
     <>
       <Head>
-        <title>Bravoo - Full-Stack Development Services | Web, Mobile & AI Solutions</title>
-        <meta name="description" content="Professional full-stack development services including web apps, mobile apps, AI/ML solutions, and cloud infrastructure. Get your project built by expert developers." />
+        <title>Best Software Development Company in India | Bravoo</title>
+        <meta name="description" content="Bravoo builds high-quality software solutions in web, mobile, and AI. Discover why startups and businesses choose us as the best software development company in India." />
         <meta name="keywords" content="full-stack development, web development, mobile apps, AI solutions, cloud services, React, Next.js, Node.js" />
         <link rel="canonical" href="https://bravoo.in/" />
-        <meta property="og:title" content="Bravoo - Full-Stack Development Services" />
-        <meta property="og:description" content="Professional full-stack development services including web apps, mobile apps, AI/ML solutions, and cloud infrastructure." />
+        <meta property="og:title" content="Best Software Development Company in India | Bravoo" />
+        <meta property="og:description" content="Bravoo builds high-quality software solutions in web, mobile, and AI. Discover why startups and businesses choose us as the best software development company in India." />
         <meta property="og:url" content="https://bravoo.in/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bravoo - Full-Stack Development Services" />
-        <meta name="twitter:description" content="Professional full-stack development services including web apps, mobile apps, AI/ML solutions, and cloud infrastructure." />
+        <meta name="twitter:title" content="Best Software Development Company in India | Bravoo" />
+        <meta name="twitter:description" content="Bravoo builds high-quality software solutions in web, mobile, and AI. Discover why startups and businesses choose us as the best software development company in India." />
       </Head>
       
       <div className="min-h-screen bg-background relative">

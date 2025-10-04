@@ -35,7 +35,7 @@ const Hero = () => {
         {/* Content */}
         <div className="space-y-8 animate-fade-in text-center">
           <h1 className="text-hero text-foreground">
-            Ship Better Software, <span className="gradient-text">Faster</span>
+            Bravoo – Your Trusted Partner for Software Development
           </h1>
 
           <p className="text-xl text-center text-muted-foreground max-w-2xl animate-fade-in animation-delay-200">
