@@ -18,7 +18,7 @@ export const guildMembers: GuildMember[] = [
     status: "Available",
     specialties: ["React", "TypeScript", "Performance"],
     level: "Senior",
-    linkedin: "https://linkedin.com/in/sarahchen",
+    linkedin: "https://www.linkedin.com/in/sai-teja-goud-7b82951a6/",
   },
   {
     name: "Marcus Rodriguez",

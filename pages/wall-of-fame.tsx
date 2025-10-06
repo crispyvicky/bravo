@@ -4,61 +4,16 @@ import Link from 'next/link';
  import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 // import Ribbons from '@/components/ribbons';
-
-// Sample client grid data
-const clients = [
-  // Row 1
-  { type: "logo", name: "FinTech Startup", image: "/clients/fintech.png", tooltip: "FinTech Startup - 2024", year: "2024" },
-  { type: "icon", name: "E-commerce", icon: "🛒", tooltip: "E-commerce Platform", year: "2025" },
-  { type: "industry", name: "HT", gradient: "from-blue-100 to-blue-300", tooltip: "HealthTech", year: "2023" },
-  { type: "logo", name: "Mobile App", image: "/clients/mobile.png", tooltip: "Mobile App - Series A", year: "2025" },
-  { type: "icon", name: "SaaS", icon: "⚡", tooltip: "SaaS Product", year: "2024" },
-  { type: "icon", name: "AI", icon: "🤖", tooltip: "AI Project", year: "2025" },
-  // Row 2
-  { type: "industry", name: "ED", gradient: "from-green-100 to-green-300", tooltip: "EdTech", year: "2023" },
-  { type: "industry", name: "Healthcare", gradient: "from-pink-100 to-pink-300", tooltip: "Healthcare SaaS", year: "2024" },
-  { type: "icon", name: "ML", icon: "🤖", tooltip: "ML Project", year: "2025" },
-  { type: "logo", name: "Startup", image: "/clients/startup.png", tooltip: "Startup Logo", year: "2024" },
-  { type: "industry", name: "RE", gradient: "from-yellow-100 to-yellow-300", tooltip: "Real Estate", year: "2023" },
-  { type: "industry", name: "Construction", gradient: "from-gray-100 to-gray-300", tooltip: "Construction", year: "2025" },
-  // Row 3
-  { type: "industry", name: "Agency", gradient: "from-purple-100 to-purple-300", tooltip: "Agency", year: "2024" },
-  { type: "icon", name: "Banking", icon: "🏦", tooltip: "Banking", year: "2023" },
-  { type: "industry", name: "Travel", gradient: "from-blue-100 to-blue-300", tooltip: "Travel", year: "2025" },
-  { type: "icon", name: "B2B", icon: "💼", tooltip: "B2B Project", year: "2024" },
-  { type: "industry", name: "Food", gradient: "from-red-100 to-red-300", tooltip: "Food Delivery", year: "2023" },
-  { type: "industry", name: "Entertainment", gradient: "from-yellow-100 to-yellow-300", tooltip: "Entertainment", year: "2025" },
-  // Row 4
-  { type: "industry", name: "Nonprofit", gradient: "from-green-100 to-green-300", tooltip: "Nonprofit", year: "2024" },
-  { type: "industry", name: "Government", gradient: "from-gray-100 to-gray-300", tooltip: "Government", year: "2023" },
-  { type: "industry", name: "Sports", gradient: "from-blue-100 to-blue-300", tooltip: "Sports", year: "2025" },
-  { type: "industry", name: "Fashion", gradient: "from-pink-100 to-pink-300", tooltip: "Fashion", year: "2024" },
-  { type: "industry", name: "Green", gradient: "from-green-100 to-green-300", tooltip: "Green Tech", year: "2023" },
-  { type: "industry", name: "Logistics", gradient: "from-yellow-100 to-yellow-300", tooltip: "Logistics", year: "2025" },
-];
-
-const stats = [
-  { label: "Projects Delivered", value: "24+" },
-  { label: "Industries Served", value: "12" },
-  { label: "Repeat Client Rate", value: "89%" },
-];
-
-const modalContent = {
-  title: "E-commerce Platform",
-  meta: "FinTech • Q2 2024 • 16 weeks",
-  challenge: "Startup needed MVP for payment processing platform.",
-  solution: "Built React frontend + Node.js backend with Stripe integration.",
-  impact: "Launched to 1,000+ beta users, secured Series A funding.",
-};
+import { clients, stats, type WallClientTile } from "@/data/wallOfFame";
 
 export default function WallOfFame() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedClient, setSelectedClient] = useState<any>(null);
+  const [selectedClient, setSelectedClient] = useState<WallClientTile | null>(null);
 
   // Staggered animation delay
   const getDelay = (idx: number) => `${0.1 + idx * 0.05}s`;
 
-  const handleClientClick = (client: any) => {
+  const handleClientClick = (client: WallClientTile) => {
     setSelectedClient(client);
     setModalOpen(true);
   };
@@ -197,31 +152,41 @@ export default function WallOfFame() {
                 onClick={e => e.stopPropagation()}
               >
                 <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{selectedClient?.name || modalContent.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">{modalContent.meta}</p>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{selectedClient?.name}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{selectedClient?.meta}</p>
                 </div>
                 <div className="space-y-4 mb-6">
                   <div>
                     <strong className="text-foreground">Challenge:</strong> 
-                    <p className="text-muted-foreground mt-1">{modalContent.challenge}</p>
+                    <p className="text-muted-foreground mt-1">{selectedClient?.challenge}</p>
                   </div>
                   <div>
                     <strong className="text-foreground">Solution:</strong> 
-                    <p className="text-muted-foreground mt-1">{modalContent.solution}</p>
+                    <p className="text-muted-foreground mt-1">{selectedClient?.solution}</p>
                   </div>
                   <div>
                     <strong className="text-foreground">Impact:</strong> 
-                    <p className="text-muted-foreground mt-1">{modalContent.impact}</p>
+                    <p className="text-muted-foreground mt-1">{selectedClient?.impact}</p>
                   </div>
                 </div>
                 <div className="flex flex-col items-center space-y-3">
                   <p className="text-xs text-muted-foreground text-center">*Some details changed to protect client confidentiality</p>
-                  <button
-                    className="btn-primary px-6 py-3 text-sm md:text-base"
-                    onClick={() => setModalOpen(false)}
-                  >
-                    Close
-                  </button>
+                  <div className="flex items-center gap-3">
+                    {selectedClient?.visitUrl && (
+                      <button
+                        className="btn-secondary px-6 py-3 text-sm md:text-base"
+                        onClick={() => window.open(selectedClient.visitUrl!, '_blank', 'noopener,noreferrer')}
+                      >
+                        Visit
+                      </button>
+                    )}
+                    <button
+                      className="btn-primary px-6 py-3 text-sm md:text-base"
+                      onClick={() => setModalOpen(false)}
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

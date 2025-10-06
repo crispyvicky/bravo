@@ -1092,11 +1092,16 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
   }, [items]);
 
   const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith('http')) {
-      window.open(activeItem.link, '_blank');
-    } else {
-      console.log('Internal route:', activeItem.link);
+    if (activeItem?.linkedin) {
+      window.open(activeItem.linkedin, '_blank');
+      return;
+    }
+    if (activeItem?.link) {
+      if (activeItem.link.startsWith('http')) {
+        window.open(activeItem.link, '_blank');
+      } else {
+        console.log('Internal route:', activeItem.link);
+      }
     }
   };
 
