@@ -1111,7 +1111,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
   <canvas
     id="infinite-grid-menu-canvas"
     ref={canvasRef}
-    className="cursor-grab w-full h-full relative outline-none active:cursor-grabbing"
+    className="cursor-grab w-full h-full relative outline-none active:cursor-grabbing z-10"
   />
 
   {/* Active item overlay */}
@@ -1122,7 +1122,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
         grid grid-rows-[auto_1fr_auto_auto] md:grid-rows-[1fr_auto]
         md:grid-cols-3
         px-4 sm:px-6 md:px-8 py-6 sm:py-10 md:py-12
-        pointer-events-none
+        pointer-events-none z-20
         transition-all
         ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
         ${isMoving
@@ -1143,10 +1143,27 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
 
       {/* Right: Description (row 3 on mobile, right on desktop) */}
       <div className="flex items-center justify-center md:justify-end row-start-3 md:col-start-3 md:row-start-1 mt-4 md:mt-0">
-        <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-3 shadow-lg border border-gray-200 max-w-xs md:max-w-sm">
-          <p className="select-none text-sm sm:text-base md:text-lg text-black pointer-events-auto font-medium text-center md:text-right">
-            {activeItem.description}
-          </p>
+        <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-3 shadow-lg border border-gray-200 max-w-xs md:max-w-sm pointer-events-auto">
+          {(() => {
+            const parts = (activeItem.description || '').split(' at ');
+            const role = parts[0] || '';
+            const company = parts[1] || '';
+            return (
+              <div className="text-center md:text-right">
+                <div className="select-none text-sm sm:text-base md:text-lg text-black font-semibold">
+                  {role}
+                </div>
+                {company && (
+                  <div className="mt-1 inline-flex items-center gap-2">
+                    <span className="hidden md:inline text-xs text-gray-500">at</span>
+                    <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-700">
+                      {company}
+                    </span>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </div>
 

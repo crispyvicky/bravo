@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+// import Ribbons from '@/components/ribbons';
 
 export default function Blogs() {
   const blogPosts = [
@@ -53,7 +54,8 @@ export default function Blogs() {
         <meta name="twitter:description" content="Read epic tales from the development battlefield and level up your skills." />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
+       {/* / <Ribbons /> */}
         <Header />
         <main className="blogs-page" style={{ background: '#fff', color: '#1f2937', padding: '64px 0' }}>
           <div className="blogs-container" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>

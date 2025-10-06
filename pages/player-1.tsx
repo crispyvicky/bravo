@@ -37,7 +37,7 @@ export default function PlayerOne() {
         <meta name="twitter:description" content="21-year-old founder offering direct access to expert development with no middlemen." />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
         <Header />
         <main className="pt-20">
           {/* Hero Section */}

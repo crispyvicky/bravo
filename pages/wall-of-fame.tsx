@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from "@/components/Header";
+ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+// import Ribbons from '@/components/ribbons';
 
 // Sample client grid data
 const clients = [
@@ -52,12 +53,12 @@ const modalContent = {
 
 export default function WallOfFame() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedClient, setSelectedClient] = useState(null);
+  const [selectedClient, setSelectedClient] = useState<any>(null);
 
   // Staggered animation delay
-  const getDelay = idx => `${0.1 + idx * 0.05}s`;
+  const getDelay = (idx: number) => `${0.1 + idx * 0.05}s`;
 
-  const handleClientClick = client => {
+  const handleClientClick = (client: any) => {
     setSelectedClient(client);
     setModalOpen(true);
   };
@@ -78,67 +79,38 @@ export default function WallOfFame() {
         <meta name="twitter:description" content="See our client success stories and completed projects across various industries." />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
+        {/* <Ribbons /> */}
         <Header />
-        <section id="wall-of-fame" className="py-16 px-4 flex flex-col items-center">
+        <section id="wall-of-fame" className="pt-16 pb-12 px-4 md:px-6 lg:px-8 flex flex-col items-center">
           {/* Header */}
-          <h2
-            className="font-inter font-semibold"
-            style={{
-              fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
-              color: "#1f2937",
-              marginBottom: 16,
-            }}
-          >
+          <h2 className="text-section font-semibold text-foreground mb-4 text-center">
             Clients Who Trusted the Quest
           </h2>
-          <p
-            className="font-inter text-gray-500 text-lg text-center"
-            style={{ maxWidth: 600, lineHeight: 1.6, marginBottom: 48 }}
-          >
+          <p className="text-body text-muted-foreground text-center max-w-2xl mb-8 md:mb-12">
             Every project teaches us something new. Here are the teams we've had the honor to work with.
           </p>
 
           {/* Stats Bar */}
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 w-full max-w-md">
             {stats.map(stat => (
-              <div key={stat.label} className="flex flex-col items-center">
-                <span className="font-inter font-medium text-blue-600 text-lg">{stat.value}</span>
-                <span className="font-inter text-gray-500 text-sm">{stat.label}</span>
+              <div key={stat.label} className="flex flex-col items-center text-center">
+                <span className="font-semibold text-primary text-lg md:text-xl">{stat.value}</span>
+                <span className="text-muted-foreground text-xs md:text-sm">{stat.label}</span>
               </div>
             ))}
           </div>
 
           {/* Client Grid */}
-          <div
-            className="fame-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))",
-              gap: 24,
-              maxWidth: 800,
-              margin: "0 auto 48px",
-            }}
-          >
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-6 xl:grid-cols-8 gap-3 md:gap-6 max-w-4xl mx-auto mb-8 md:mb-12">
             {clients.map((client, idx) => (
               <button
                 key={idx}
-                className="fame-client"
+                className="fame-client group transition-all duration-300 hover:scale-105"
                 style={{
                   opacity: 0,
                   animation: `fadeInUp 0.6s ease forwards`,
-                  animationDelay: getDelay(idx),
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  outline: "none",
-                  padding: 0,
-                  position: "relative",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  textDecoration: "none",
-                  transition: "transform 0.3s ease, filter 0.3s ease",
+                  animationDelay: getDelay(idx)
                 }}
                 onClick={() => handleClientClick(client)}
                 tabIndex={0}
@@ -146,41 +118,23 @@ export default function WallOfFame() {
               >
                 {/* Avatar */}
                 <span
-                  className="fame-avatar"
+                  className="fame-avatar w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-24 xl:h-24 rounded-full border-2 border-border bg-background flex items-center justify-center shadow-sm overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-md"
                   style={{
-                    width: 96,
-                    height: 96,
-                    borderRadius: "50%",
-                    border: "2px solid #f3f4f6",
-                    background: client.type === "industry" ? `linear-gradient(135deg, var(--tw-gradient-stops, #f3f4f6, #e5e7eb))` : "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                    overflow: "hidden",
-                    transition: "all 0.3s ease",
-                    fontSize: client.type === "icon" ? "2rem" : "1rem",
-                    position: "relative",
+                    fontSize: client.type === "icon" ? "clamp(1.25rem, 2.5vw, 2rem)" : "clamp(0.75rem, 1.5vw, 1rem)",
                   }}
                 >
                   {client.type === "logo" && (
                     <img
                       src={client.image}
                       alt={client.name}
-                      style={{ width: 60, height: 40, objectFit: "contain" }}
+                      className="w-8 h-6 md:w-10 md:h-8 lg:w-12 lg:h-10 object-contain"
                     />
                   )}
                   {client.type === "icon" && (
                     <span>{client.icon}</span>
                   )}
                   {client.type === "industry" && (
-                    <span
-                      style={{
-                        fontWeight: 600,
-                        fontSize: "1.25rem",
-                        color: "#2563eb",
-                      }}
-                    >
+                    <span className="font-semibold text-primary">
                       {client.name}
                     </span>
                   )}
@@ -235,34 +189,35 @@ export default function WallOfFame() {
               onClick={() => setModalOpen(false)}
             >
               <div
-                className="fame-modal-content"
+                className="bg-background rounded-2xl max-w-md md:max-w-lg lg:max-w-xl max-h-[85vh] overflow-y-auto p-6 md:p-8 m-4 md:m-8 relative"
                 style={{
-                  background: "#fff",
-                  borderRadius: 16,
-                  maxWidth: 500,
-                  maxHeight: "80vh",
-                  overflowY: "auto",
-                  padding: 32,
-                  margin: 20,
                   transform: "translateY(0)",
                   transition: "transform 0.3s ease",
-                  position: "relative",
                 }}
                 onClick={e => e.stopPropagation()}
               >
-                <div className="modal-header mb-4">
-                  <h3 className="font-inter font-semibold text-xl mb-1">{selectedClient?.name || modalContent.title}</h3>
-                  <p className="project-meta text-gray-500 text-sm mb-2">{modalContent.meta}</p>
+                <div className="mb-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{selectedClient?.name || modalContent.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{modalContent.meta}</p>
                 </div>
-                <div className="modal-body mb-4">
-                  <p><strong>Challenge:</strong> {modalContent.challenge}</p>
-                  <p><strong>Solution:</strong> {modalContent.solution}</p>
-                  <p><strong>Impact:</strong> {modalContent.impact}</p>
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <strong className="text-foreground">Challenge:</strong> 
+                    <p className="text-muted-foreground mt-1">{modalContent.challenge}</p>
+                  </div>
+                  <div>
+                    <strong className="text-foreground">Solution:</strong> 
+                    <p className="text-muted-foreground mt-1">{modalContent.solution}</p>
+                  </div>
+                  <div>
+                    <strong className="text-foreground">Impact:</strong> 
+                    <p className="text-muted-foreground mt-1">{modalContent.impact}</p>
+                  </div>
                 </div>
-                <div className="modal-footer flex flex-col items-center">
-                  <p className="confidential text-xs text-gray-400 mb-2">*Some details changed to protect client confidentiality</p>
+                <div className="flex flex-col items-center space-y-3">
+                  <p className="text-xs text-muted-foreground text-center">*Some details changed to protect client confidentiality</p>
                   <button
-                    className="btn-close bg-blue-600 text-white px-4 py-2 rounded font-inter"
+                    className="btn-primary px-6 py-3 text-sm md:text-base"
                     onClick={() => setModalOpen(false)}
                   >
                     Close
@@ -273,17 +228,17 @@ export default function WallOfFame() {
           )}
 
           {/* CTA Footer */}
-          <div className="mt-8 flex flex-col items-center">
-            <p className="font-inter text-lg mb-4">Ready to join the Wall of Fame?</p>
+          <div className="mt-8 md:mt-12 flex flex-col items-center text-center space-y-4">
+            <p className="text-lg md:text-xl text-foreground">Ready to join the Wall of Fame?</p>
             <Link
               href="/start-quest"
-              className="bg-blue-600 text-white font-inter px-6 py-3 rounded shadow hover:bg-blue-700 transition"
+              className="btn-hero px-8 py-4 text-base md:text-lg"
             >
               Start Your Quest
             </Link>
           </div>
 
-        {/* Keyframes for fadeInUp animation */}
+        {/* Responsive animations and hover effects */}
         <style>{`
               @keyframes fadeInUp {
                 from {
@@ -297,11 +252,22 @@ export default function WallOfFame() {
               }
               .fame-client:hover .fame-avatar {
                 transform: translateY(-4px) scale(1.05);
-                border-color: #2563eb;
-                box-shadow: 0 8px 24px rgba(37,99,235,0.15);
+                border-color: hsl(var(--primary));
+                box-shadow: 0 8px 24px hsl(var(--primary) / 0.15);
               }
               .fame-client:hover .fame-tooltip {
                 opacity: 1;
+              }
+              @media (hover: none) {
+                .fame-tooltip {
+                  display: none;
+                }
+              }
+              @media (max-width: 640px) {
+                .fame-tooltip {
+                  font-size: 0.75rem;
+                  padding: 6px 10px;
+                }
               }
               .fame-tooltip::before {
                 content: '';
@@ -310,7 +276,7 @@ export default function WallOfFame() {
                 left: 50%;
                 transform: translateX(-50%);
                 border: 4px solid transparent;
-                border-bottom-color: #1f2937;
+                border-bottom-color: hsl(var(--foreground));
               }
             `}</style>
         </section>

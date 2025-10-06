@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+// import Ribbons from '@/components/ribbons';
 
 export default function NotFound() {
   return (
@@ -10,7 +11,8 @@ export default function NotFound() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
+      <div className="relative flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
+        {/* <Ribbons /> */}
         <div className="text-center px-6 max-w-lg">
           {/* Big 404 */}
           <h1 className="text-7xl font-extrabold text-gray-800 drop-shadow-lg mb-6 animate-bounce">

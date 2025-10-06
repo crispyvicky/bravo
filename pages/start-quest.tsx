@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+// import Ribbons from '@/components/ribbons';
 
 export default function StartQuest() {
   const [formData, setFormData] = useState({
@@ -91,7 +92,8 @@ export default function StartQuest() {
         <meta name="twitter:description" content="Ready to start your development quest? Get a free consultation and project quote." />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
+        {/* <Ribbons /> */}
         <Header />
         <main className="pt-20">
           {/* Hero Section */}

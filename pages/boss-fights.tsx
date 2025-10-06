@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import ElectricBorder from "@/components/electricborder";
+// import Ribbons from '@/components/ribbons';
 
 export default function BossFights() {
   const battles = [
@@ -72,7 +73,8 @@ export default function BossFights() {
         <meta name="twitter:description" content="See real battles won with $2M+ in client savings and 100% success rate." />
       </Head>
 
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
+        {/* <Ribbons /> */}
         <Header />
         <main className="pt-20">
           {/* Hero Section */}
@@ -119,7 +121,7 @@ export default function BossFights() {
                   >
                     {/* Battle Image/Icon */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <ElectricBorder color="#000000" speed={1} chaos={0.5} thickness={4} style={{ borderRadius: 6 }}>
+                      <ElectricBorder color="#FF6F61" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 6 }}>
                         <div className="card-surface text-center py-16 bg-gradient-to-br from-primary/10 to-success/5">
                           <div className="text-8xl mb-4">{battle.image}</div>
                           <div className="text-lg font-semibold text-foreground mb-2">
@@ -185,7 +187,7 @@ export default function BossFights() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <ElectricBorder color="#7df9ff" speed={1} chaos={0.5} thickness={2} style={{ borderRadius: 16 }}>
+                <ElectricBorder color="#7df9ff" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 16 }}>
                 <div className="card-surface">
                   <div className="text-4xl mb-4">💬</div>
                   <p className="text-body text-muted-foreground mb-4 italics">
@@ -199,13 +201,13 @@ export default function BossFights() {
                 </div>
                 </ElectricBorder>
 
-                <ElectricBorder color="#7df9ff" speed={1} chaos={0.5} thickness={2} style={{ borderRadius: 16 }}>
+                <ElectricBorder color="#7df9ff" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 16 }}>
                 <div className="card-surface">
                   <div className="text-4xl mb-4">⭐</div>
                   <p className="text-body text-muted-foreground mb-4 italic">
                     "Finally, a developer who actually talks to you. No account managers, 
                     no endless meetings. Just results. Our app went from 1-star to 4.8 stars 
-                    in 4 months."
+                    in 4 months after his team took over the project and built it from scratch."
                   </p>
                   <div className="font-semibold text-foreground">
                     Marcus Rodriguez, Founder at QuickBite

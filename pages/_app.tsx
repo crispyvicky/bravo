@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import "@/index.css";
 
 // Lazy load analytics for better performance
@@ -11,21 +12,34 @@ const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => ({
   ssr: false,
 });
 
+// Render ribbons on all pages except the home page
+const Ribbons = dynamic(() => import("@/components/ribbons"), { ssr: false });
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      cacheTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes (was cacheTime in older versions)
     },
   },
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        {router.pathname !== '/' && router.pathname !== '/boss-fights' && (
+          <div className="fixed inset-0 pointer-events-none z-10">
+            <Ribbons
+              colors={["#3b82f6", "#10b981", "#f59e0b", "#ef4444"]}
+              speedMultiplier={0.5}
+              maxAge={600}
+            />
+          </div>
+        )}
         <Component {...pageProps} />
         <Analytics />
       </TooltipProvider>
