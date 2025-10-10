@@ -1,3 +1,37 @@
+## WhatsApp direct submissions (no app open)
+
+These forms send data to your WhatsApp using either Twilio WhatsApp API or Meta's WhatsApp Cloud API via `/api/whatsapp`:
+
+- `src/components/Contact.tsx`
+- `pages/start-quest.tsx`
+
+### Option A: Twilio WhatsApp (recommended)
+
+Set the following environment variables:
+
+```
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your_auth_token
+TWILIO_FROM_WHATSAPP=whatsapp:+14155238886   # sandbox or your approved sender
+WHATSAPP_RECIPIENT=919398012612             # your number with country code, digits only
+```
+
+Notes:
+- Join the Twilio Sandbox or use your approved WhatsApp Business sender.
+- Ensure your recipient is a sandbox participant or an approved contact.
+
+### Option B: Meta WhatsApp Cloud API (fallback)
+
+```
+WHATSAPP_TOKEN=EAAG...      # Permanent token from Meta for Developers
+WHATSAPP_PHONE_NUMBER_ID=12xxxxxxxxxxxx  # From WhatsApp Business Account > API Setup
+WHATSAPP_RECIPIENT=919398012612         # Your recipient number with country code
+```
+
+Notes:
+- Make sure the WhatsApp Business API is set up and the recipient number is reachable.
+- In development, you may need to use test numbers/templates until your message type is approved.
+
 # Welcome to your Lovable project
 
 ## Project info

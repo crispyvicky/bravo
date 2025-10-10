@@ -23,22 +23,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "🚀 Quest Initiated!",
-        description: "Thanks for reaching out! I'll get back to you within 24 hours to discuss your project details and next steps.",
+    try {
+      const response = await fetch("/api/whatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kind: "contact",
+          name: formData.name,
+          email: formData.email,
+          projectType: formData.projectType,
+          details: formData.details
+        })
       });
-      
-      // Reset form
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(`${data?.error || "Failed to send message"}${data?.status ? ` (status ${data.status})` : ""}`);
+      }
+
+      toast({
+        title: "Message sent ✅",
+        description: "I'll reply within 24 hours on WhatsApp/email.",
+      });
+
       setFormData({
         name: "",
         email: "",
         projectType: "",
         details: ""
       });
-    }, 2000);
+    } catch (err: any) {
+      toast({
+        title: "Couldn't send message",
+        description: err?.message || "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.name && formData.email && formData.projectType && formData.details;

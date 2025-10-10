@@ -54,15 +54,31 @@ export default function StartQuest() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "🚀 Quest Received!",
-        description: "Your mission details are secure. I'll respond within 24 hours with a battle plan and next steps.",
+    try {
+      const response = await fetch("/api/whatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kind: "startQuest",
+          name: formData.name,
+          email: formData.email,
+          questType: formData.questType,
+          missionDetails: formData.missionDetails,
+          budgetRange: formData.budgetRange || undefined,
+          timeline: formData.timeline || undefined
+        })
       });
-      
-      // Reset form
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(`${data?.error || "Failed to send message"}${data?.status ? ` (status ${data.status})` : ""}`);
+      }
+
+      toast({
+        title: "Quest sent ✅",
+        description: "I'll reply within 24 hours on WhatsApp/email.",
+      });
+
       setFormData({
         name: "",
         email: "",
@@ -71,7 +87,14 @@ export default function StartQuest() {
         budgetRange: "",
         timeline: ""
       });
-    }, 2000);
+    } catch (err: any) {
+      toast({
+        title: "Couldn't send message",
+        description: err?.message || "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.name && formData.email && formData.questType && formData.missionDetails;
