@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
+import { useIsMobile } from '../hooks/use-mobile';
 
 interface RibbonsProps {
   colors?: string[];
@@ -22,7 +23,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
   baseFriction = 0.85,    // a bit smoother decay
   baseThickness = 30,     // slightly thicker for visibility
   offsetFactor = 0.08,     // subtle trailing offset
-  maxAge = 800,          // shorter lifespan for faster trail refresh
+  maxAge = 600,          // shorter lifespan for faster trail refresh
    pointCount = 60,         // more points for smoother curve
    speedMultiplier = 0.4,   // faster movement with mouse
    enableFade = true,     // enables fade-out for nicer trailing
@@ -33,13 +34,22 @@ const Ribbons: React.FC<RibbonsProps> = ({
   
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Early return for mobile devices to prevent performance issues
+    if (isMobile) {
+      console.log('Ribbons component disabled on mobile for performance');
+      return;
+    }
+
     try {
-      const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true });
+      // Optimize DPR for better performance on desktop
+      const dpr = Math.min(window.devicePixelRatio || 2, 2);
+      const renderer = new Renderer({ dpr, alpha: true });
       const gl = renderer.gl;
       
       if (!gl) {
@@ -214,12 +224,16 @@ const Ribbons: React.FC<RibbonsProps> = ({
     const tmp = new Vec3();
     let frameId: number;
     let lastTime = performance.now();
+    let frameCount = 0;
     const update = () => {
       frameId = requestAnimationFrame(update);
       const currentTime = performance.now();
       const dt = currentTime - lastTime;
       lastTime = currentTime;
+      frameCount++;
 
+      // Limit frame rate to 60fps max for better performance
+      if (frameCount % 1 === 0) {
       lines.forEach(line => {
         tmp.copy(mouse).add(line.mouseOffset).sub(line.points[0]).multiply(line.spring);
         line.mouseVelocity.add(tmp).multiply(line.friction);
@@ -241,6 +255,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
       });
 
       renderer.render({ scene });
+      }
     };
       update();
 
@@ -260,6 +275,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
       console.error('Error initializing Ribbons component:', error);
     }
   }, [
+    isMobile,
     colors,
     baseSpring,
     baseFriction,
@@ -274,7 +290,18 @@ const Ribbons: React.FC<RibbonsProps> = ({
     backgroundColor
   ]);
 
-  return <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none z-10" />;
+  return (
+    <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none z-10">
+      {isMobile && (
+        <div className="absolute inset-0 opacity-20">
+          {/* Lightweight CSS-based visual effect for mobile */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-300 rounded-full animate-ping"></div>
+          <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Ribbons;
