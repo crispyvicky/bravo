@@ -37,6 +37,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const metaToken = process.env.WHATSAPP_TOKEN;
   const metaPhoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
 
+  // Debug logging for environment variables (remove in production)
+  console.log('Environment check:', {
+    hasTwilioSid: !!twilioSid,
+    hasTwilioToken: !!twilioToken,
+    hasTwilioFrom: !!twilioFrom,
+    hasMetaToken: !!metaToken,
+    hasMetaPhoneNumberId: !!metaPhoneNumberId,
+    recipient
+  });
+
   const payload = req.body as Payload;
 
   if (!payload || typeof payload !== "object" || !("kind" in payload)) {
@@ -115,7 +125,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(200).json({ success: true, provider: "meta", raw: metaText });
     }
 
-    return res.status(500).json({ error: "No WhatsApp provider configured. Set Twilio or Meta credentials." });
+    return res.status(500).json({ 
+      error: "No WhatsApp provider configured. Set Twilio or Meta credentials.",
+      debug: {
+        hasTwilioConfig: !!(twilioSid && twilioToken && twilioFrom),
+        hasMetaConfig: !!(metaToken && metaPhoneNumberId),
+        environment: process.env.NODE_ENV
+      }
+    });
   } catch (err: any) {
     return res.status(500).json({ error: "Unexpected server error.", details: err?.message || String(err) });
   }
