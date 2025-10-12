@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import ElectricBorder from "@/components/electricborder";
+// import ElectricBorder from "@/components/electricborder";
 // import Ribbons from '@/components/ribbons';
 
 export default function BossFights() {
@@ -121,17 +121,15 @@ export default function BossFights() {
                   >
                     {/* Battle Image/Icon */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <ElectricBorder color="#FF6F61" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 6 }}>
-                        <div className="card-surface text-center py-16 bg-gradient-to-br from-primary/10 to-success/5">
-                          <div className="text-8xl mb-4">{battle.image}</div>
-                          <div className="text-lg font-semibold text-foreground mb-2">
-                            {battle.client}
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            {battle.timeline} • {battle.techStack.join(", ")}
-                          </div>
+                      <div className="card-surface text-center py-16 bg-gradient-to-br from-primary/10 to-success/5">
+                        <div className="text-8xl mb-4">{battle.image}</div>
+                        <div className="text-lg font-semibold text-foreground mb-2">
+                          {battle.client}
                         </div>
-                      </ElectricBorder>
+                        <div className="text-sm text-muted-foreground">
+                          {battle.timeline} • {battle.techStack.join(", ")}
+                        </div>
+                      </div>
                     </div>
 
                     {/* Battle Details */}
@@ -187,7 +185,6 @@ export default function BossFights() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <ElectricBorder color="#7df9ff" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 16 }}>
                 <div className="card-surface">
                   <div className="text-4xl mb-4">💬</div>
                   <p className="text-body text-muted-foreground mb-4 italics">
@@ -199,9 +196,7 @@ export default function BossFights() {
                     Sarah Mitchell, CTO at FinSecure
                   </div>
                 </div>
-                </ElectricBorder>
 
-                <ElectricBorder color="#7df9ff" speed={0.7} chaos={0.2} thickness={2} style={{ borderRadius: 16 }}>
                 <div className="card-surface">
                   <div className="text-4xl mb-4">⭐</div>
                   <p className="text-body text-muted-foreground mb-4 italic">
@@ -213,7 +208,6 @@ export default function BossFights() {
                     Marcus Rodriguez, Founder at QuickBite
                   </div>
                 </div>
-                </ElectricBorder>
               </div>
             </div>
           </section>
