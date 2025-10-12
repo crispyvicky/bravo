@@ -24,6 +24,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      console.log("Form submission started:", formData);
+      
       const response = await fetch("/api/whatsapp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,10 +38,17 @@ const Contact = () => {
         })
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
+        console.error("API Error:", data);
         throw new Error(`${data?.error || "Failed to send message"}${data?.status ? ` (status ${data.status})` : ""}`);
       }
+
+      const responseData = await response.json();
+      console.log("Success response:", responseData);
 
       toast({
         title: "Message sent ✅",
@@ -53,6 +62,7 @@ const Contact = () => {
         details: ""
       });
     } catch (err: any) {
+      console.error("Form submission error:", err);
       toast({
         title: "Couldn't send message",
         description: err?.message || "Please try again later.",
