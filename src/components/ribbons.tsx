@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
-import { useIsMobile } from '../hooks/use-mobile';
+import { useIsMobile, useHasMouse } from '../hooks/use-mobile';
 
 interface RibbonsProps {
   colors?: string[];
@@ -35,14 +35,15 @@ const Ribbons: React.FC<RibbonsProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  const hasMouse = useHasMouse();
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Early return for mobile devices to prevent performance issues
-    if (isMobile) {
-      console.log('Ribbons component disabled on mobile for performance');
+    // Early return for devices without mouse support to prevent performance issues
+    if (isMobile || !hasMouse) {
+      console.log('Ribbons component disabled on mobile/touch devices for performance');
       return;
     }
 
@@ -276,6 +277,7 @@ const Ribbons: React.FC<RibbonsProps> = ({
     }
   }, [
     isMobile,
+    hasMouse,
     colors,
     baseSpring,
     baseFriction,
@@ -292,9 +294,9 @@ const Ribbons: React.FC<RibbonsProps> = ({
 
   return (
     <div ref={containerRef} className="absolute inset-0 w-full h-full pointer-events-none z-10">
-      {isMobile && (
+      {(isMobile || !hasMouse) && (
         <div className="absolute inset-0 opacity-20">
-          {/* Lightweight CSS-based visual effect for mobile */}
+          {/* Lightweight CSS-based visual effect for mobile/touch devices */}
           <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
           <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-300 rounded-full animate-ping"></div>
           <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>

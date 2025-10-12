@@ -17,3 +17,29 @@ export function useIsMobile() {
 
   return !!isMobile;
 }
+
+// Enhanced hook to detect if device supports mouse interactions
+export function useHasMouse() {
+  const [hasMouse, setHasMouse] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    // Check if device has mouse pointer
+    const checkMouseSupport = () => {
+      const hasMousePointer = window.matchMedia('(pointer: fine)').matches;
+      const isDesktop = window.innerWidth >= 1024; // Larger breakpoint for desktop
+      const isTouchDevice = 'ontouchstart' in window;
+      
+      // Consider it has mouse if it's a desktop device with fine pointer and not primarily touch
+      setHasMouse(hasMousePointer && isDesktop && !isTouchDevice);
+    };
+
+    checkMouseSupport();
+    
+    const resizeHandler = () => checkMouseSupport();
+    window.addEventListener('resize', resizeHandler);
+    
+    return () => window.removeEventListener('resize', resizeHandler);
+  }, []);
+
+  return hasMouse;
+}

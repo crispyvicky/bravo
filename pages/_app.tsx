@@ -12,7 +12,7 @@ const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => ({
   ssr: false,
 });
 
-// Render ribbons on all pages except the home page
+// Render ribbons on all pages except the home page - only on desktop with mouse
 const Ribbons = dynamic(() => import("@/components/ribbons"), { ssr: false });
 
 const queryClient = new QueryClient({
