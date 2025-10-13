@@ -1119,14 +1119,12 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
     className="cursor-grab w-full h-full relative outline-none active:cursor-grabbing z-10"
   />
 
-  {/* Active item overlay */}
+  {/* Active item overlay - Only show profile image, no text or buttons */}
   {activeItem && (
     <div
       className={`
         absolute inset-0
-        grid grid-rows-[auto_1fr_auto_auto] md:grid-rows-[1fr_auto]
-        md:grid-cols-3
-        px-4 sm:px-6 md:px-8 py-6 sm:py-10 md:py-12
+        flex items-center justify-center
         pointer-events-none z-20
         transition-all
         ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
@@ -1136,78 +1134,18 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
         }
       `}
     >
-      {/* Left: Title (top full-width on mobile) */}
-      <div className="flex items-center justify-start md:justify-start md:col-start-1 md:row-start-1">
-        <h2 className="select-none text-2xl md:text-3xl lg:text-4xl text-black pointer-events-auto font-bold text-left w-full md:w-auto">
-          {activeItem.title}
-        </h2>
-      </div>
-
-      {/* Center: Image zone (spacer to align with canvas center) */}
-      <div className="hidden md:block md:col-start-2 md:row-start-1" />
-
-      {/* Right: Description (row 3 on mobile, right on desktop) */}
-      <div className="flex items-center justify-center md:justify-end row-start-3 md:col-start-3 md:row-start-1 mt-4 md:mt-0">
-        <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-3 shadow-lg border border-gray-200 max-w-xs md:max-w-sm pointer-events-auto">
-          {(() => {
-            const parts = (activeItem.description || '').split(' at ');
-            const role = parts[0] || '';
-            const company = parts[1] || '';
-            return (
-              <div className="text-center md:text-right">
-                <div className="select-none text-sm sm:text-base md:text-lg text-black font-semibold">
-                  {role}
-                </div>
-                {company && (
-                  <div className="mt-1 inline-flex items-center gap-2">
-                    <span className="hidden md:inline text-xs text-gray-500">at</span>
-                    <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-700">
-                      {company}
-                    </span>
-                  </div>
-                )}
-              </div>
-            );
-          })()}
+      {/* Only show the profile image in center */}
+      <div className="flex items-center justify-center">
+        <div 
+          id="guild-image-container"
+          className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white/20 pointer-events-none"
+        >
+          <img
+            src={activeItem.image}
+            alt={activeItem.title}
+            className="w-full h-full object-cover"
+          />
         </div>
-      </div>
-
-      {/* Bottom: CTA centered under image (bottom full-width row) */}
-      <div className="flex items-center justify-center row-start-4 md:col-span-3 md:row-start-2 mt-4 md:mt-10">
-      <button
-  onClick={handleButtonClick}
-  className={`
-    relative group overflow-hidden
-    pointer-events-auto z-10
-    px-6 sm:px-8 md:px-10
-    py-3 sm:py-4 md:py-5
-    h-12 sm:h-14 md:h-16
-    flex items-center justify-center gap-2
-    rounded-full border-2 md:border-4 border-white
-    bg-gradient-to-r from-blue-600 to-indigo-600
-    text-white font-semibold text-sm sm:text-base md:text-lg
-    shadow-lg transition-all duration-300 ease-out
-    hover:from-blue-700 hover:to-indigo-700 hover:shadow-2xl
-    active:scale-95
-    ${isMoving 
-      ? 'opacity-0 scale-95 duration-150' 
-      : 'opacity-100 scale-100 duration-500'
-    }
-  `}
->
-  <span className="relative z-10 select-none">
-    Know more about me
-  </span>
-
-  {/* Arrow Icon with hover motion */}
-  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-    ↗
-  </span>
-
-  {/* Glow / shine effect */}
-  <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-</button>
-
       </div>
     </div>
   )}
