@@ -44,7 +44,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     hasTwilioFrom: !!twilioFrom,
     hasMetaToken: !!metaToken,
     hasMetaPhoneNumberId: !!metaPhoneNumberId,
-    recipient
+    recipient,
+    sandboxInfo: 'To receive messages, join Twilio sandbox by messaging +14155238886 with "join <sandbox-code>"'
   });
 
   const payload = req.body as Payload;
