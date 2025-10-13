@@ -1,0 +1,82 @@
+.flair-wrapper {
+  position: relative;
+}
+
+.cannon {
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.flair-container {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flair {
+  width: 50px;
+  height: 50px;
+  background-image: url("https://assets.codepen.io/16327/flair.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.flair-bullet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  will-change: transform;
+  z-index: 30;
+  opacity: 1;
+  background-color: #ffffff; /* TEMP: ensure visibility if images blocked */
+}
+
+.flair--2 { background-image: url("https://assets.codepen.io/16327/flair-2.png"); }
+.flair--3 { background-image: url("https://assets.codepen.io/16327/flair-3.png"); }
+.flair--4 { background-image: url("https://assets.codepen.io/16327/flair-4.png"); }
+.flair--5 { background-image: url("https://assets.codepen.io/16327/flair-5.png"); }
+.flair--6 { background-image: url("https://assets.codepen.io/16327/flair-6.png"); }
+.flair--7 { background-image: url("https://assets.codepen.io/16327/flair-7.png"); }
+.flair--8 { background-image: url("https://assets.codepen.io/16327/flair-8.png"); }
+.flair--9 { background-image: url("https://assets.codepen.io/16327/flair-9.png"); }
+.flair--10 { background-image: url("https://assets.codepen.io/16327/flair-10.png"); }
+.flair--11 { background-image: url("https://assets.codepen.io/16327/flair-11.png"); }
+.flair--12 { background-image: url("https://assets.codepen.io/16327/flair-12.png"); }
+.flair--13 { background-image: url("https://assets.codepen.io/16327/flair-13.png"); }
+.flair--14 { background-image: url("https://assets.codepen.io/16327/flair-14.png"); }
+.flair--15 { background-image: url("https://assets.codepen.io/16327/flair-15.png"); }
+.flair--16 { background-image: url("https://assets.codepen.io/16327/flair-16.png"); }
+.flair--17 { background-image: url("https://assets.codepen.io/16327/flair-17.png"); }
+.flair--18 { background-image: url("https://assets.codepen.io/16327/flair-18.png"); }
+.flair--19 { background-image: url("https://assets.codepen.io/16327/flair-19.png"); }
+.flair--20 { background-image: url("https://assets.codepen.io/16327/flair-20.png"); }
+.flair--21 { background-image: url("https://assets.codepen.io/16327/flair-21.png"); }
+.flair--22 { background-image: url("https://assets.codepen.io/16327/flair-22.png"); }
+.flair--23 { background-image: url("https://assets.codepen.io/16327/flair-23.png"); }
+.flair--24 { background-image: url("https://assets.codepen.io/16327/flair-24.png"); }
+.flair--25 { background-image: url("https://assets.codepen.io/16327/flair-25.png"); }
+.flair--26 { background-image: url("https://assets.codepen.io/16327/flair-26.png"); }
+.flair--27 { background-image: url("https://assets.codepen.io/16327/flair-27.png"); }
+.flair--28 { background-image: url("https://assets.codepen.io/16327/flair-28.png"); }
+.flair--29 { background-image: url("https://assets.codepen.io/16327/flair-29.png"); }
+.flair--30 { background-image: url("https://assets.codepen.io/16327/flair-30.png"); }
+.flair--31 { background-image: url("https://assets.codepen.io/16327/flair-31.png"); }
+.flair--32 { background-image: url("https://assets.codepen.io/16327/flair-32.png"); }
+.flair--33 { background-image: url("https://assets.codepen.io/16327/flair-33.png"); }
+.flair--34 { background-image: url("https://assets.codepen.io/16327/flair-34.png"); }
+.flair--35 { background-image: url("https://assets.codepen.io/16327/flair-35.png"); }
+
+@media (min-width: 768px) {
+  .flair,
+  .flair-container {
+    width: 100px;
+    height: 100px;
+  }
+}
+

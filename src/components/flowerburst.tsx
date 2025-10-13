@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef, useImperativeHandle, useEffect, useRef } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import { gsap } from "gsap";
 import { Physics2DPlugin } from "gsap/Physics2DPlugin";
 
@@ -11,26 +11,12 @@ export interface FlowerButtonHandle {
 }
 
 const FlowerButton = forwardRef<FlowerButtonHandle>((_, ref) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    // Only run on the client
-    const container = document.createElement("div");
-    container.className = "flower-container";
-    document.body.appendChild(container);
-    containerRef.current = container;
-
-    return () => {
-      container.remove();
-      containerRef.current = null;
-    };
-  }, []);
+  const container = document.createElement("div");
+  container.className = "flower-container";
+  document.body.appendChild(container);
 
   useImperativeHandle(ref, () => ({
     triggerFlowerAnimation(x: number, y: number) {
-      const container = containerRef.current;
-      if (!container) return;
-
       const particles: HTMLDivElement[] = [];
 
       // Create 20 particles
@@ -52,8 +38,6 @@ const FlowerButton = forwardRef<FlowerButtonHandle>((_, ref) => {
           scale: gsap.utils.random(0.6, 1),
           opacity: 1,
           position: "fixed",
-          left: 0,
-          top: 0,
           fontSize: "20px",
           pointerEvents: "none",
           zIndex: 9999,

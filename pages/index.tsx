@@ -2,7 +2,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
   import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import SplashCurser from "@/components/splashcurser";
+// import SplashCurser from "@/components/splashcurser";
 
 // Lazy load below-the-fold components for better LCP
 const ProblemSolution = dynamic(() => import("@/components/ProblemSolution"), {
@@ -42,7 +42,7 @@ export default function Index() {
       </Head>
       
       <div className="min-h-screen bg-background relative">
-        <SplashCurser />
+        {/* <SplashCurser /> */}
         <Header />
         <main>
           <Hero />

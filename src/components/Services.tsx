@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import React, { useEffect, useRef } from "react";
+import CannonFlair, { type CannonFlairHandle } from "./CannonFlair";
 
 const Services = () => {
   const services = [
@@ -36,6 +38,27 @@ const Services = () => {
     // In a real app, this would open a modal with pre-filled service type
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const cannonRef = useRef<CannonFlairHandle | null>(null);
+  const anchorRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const updateBounds = () => {
+      const anchor = anchorRef.current;
+      const cannon = cannonRef.current;
+      if (!anchor || !cannon) return;
+      const rect = anchor.getBoundingClientRect();
+      cannon.setBoundsAndCenter(rect);
+    };
+
+    updateBounds();
+    window.addEventListener("resize", updateBounds);
+    window.addEventListener("scroll", updateBounds, { passive: true });
+    return () => {
+      window.removeEventListener("resize", updateBounds);
+      window.removeEventListener("scroll", updateBounds as any);
+    };
+  }, []);
 
   return (
     <section id="services" className="py-20 bg-background">
@@ -84,6 +107,17 @@ const Services = () => {
               </Button>
             </div>
           ))}
+        </div>
+
+        {/* Bottom-centered cannon trigger; overlay handles bullets without page overflow */}
+        <div className="flex justify-center mt-10">
+          <div
+            ref={anchorRef}
+            className="relative"
+            style={{ width: 96, height: 120 }}
+            onMouseEnter={() => cannonRef.current?.fire()}
+          />
+          <CannonFlair ref={cannonRef} />
         </div>
       </div>
     </section>
