@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
 
 export default function Missions() {

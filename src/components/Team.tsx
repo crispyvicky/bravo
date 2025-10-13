@@ -1,7 +1,10 @@
 import ShinyText from './ShinyText';
+import dynamic from 'next/dynamic';
+const DragExplodeHero = dynamic(() => import("@/components/DragExplodeHero"), { ssr: false });
 const Team = () => {
   return (
-    <section id="team" className="py-20 bg-muted">
+    <section id="team" className="py-20 bg-muted relative">
+      <DragExplodeHero />
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Founder Card */}
