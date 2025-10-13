@@ -34,7 +34,7 @@ export default function WallOfFame() {
         <meta name="twitter:description" content="See our client success stories and completed projects across various industries." />
       </Head>
 
-      <div className="relative min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background mt-8">
         {/* <Ribbons /> */}
         <Header />
         <section id="wall-of-fame" className="pt-16 pb-12 px-4 md:px-6 lg:px-8 flex flex-col items-center">

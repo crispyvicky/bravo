@@ -1,3 +1,4 @@
+"use client"
 export type ClientTileType = "logo" | "icon" | "industry";
 
 export interface WallClientTile {
@@ -30,14 +31,14 @@ export const stats: WallStat[] = [
 export const clients: WallClientTile[] = [
     {
       type: "logo",
-      name: "FinTech Startup",
-      image: "/clients/fintech.png",
-      tooltip: "FinTech Startup - 2024",
-      year: "2024",
-      visitUrl: "https://example-fintech.com",
-      meta: "FinTech • Q2 2024 • 16 weeks",
-      challenge: "Needed MVP for payment processing platform.",
-      solution: "React + Node.js with Stripe integration.",
+      name: "Sri Durga Interiors",
+      image: "/c/sridurga.png",
+      tooltip: "Sri Durga Interiors",
+      year: "2025",
+      visitUrl: "https://sridurgainteriors.vercel.app/",
+      meta: "Interior Design • Q2 2025 •",
+      challenge: "Needed A stunning website for their business.",
+      solution: "React + Node.js with whatsapp integration",
       impact: "Launched to 1,000+ beta users; secured Series A."
     },
     {

@@ -35,7 +35,7 @@ const Hero = () => {
         {/* Content */}
         <div className="space-y-8 text-center px-6 md:px-0 text-section text-foreground">
   {/* Hero Title */}
-  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight animate-fade-in">
+  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight animate-fade-in">
     Bravoo – Your Trusted Partner for Software Development
   </h1>
 
