@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import InfiniteMenu from "@/components/Infinitemenu";
-import GuildDisintegration from "@/components/GuildDisintegration";
 import { guildMembers } from "@/data/guildMembers";
 
 interface MenuItem {
@@ -136,7 +135,6 @@ export default function Guild() {
 
               <div className="w-full  relative rounded-lg h-[60vh] min-h-[320px] md:h-[500px] lg:h-[600px]">
                 <InfiniteMenu items={guildItems} />
-                <GuildDisintegration />
               </div>
             </div>
           </section>
