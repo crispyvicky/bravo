@@ -1147,7 +1147,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
       <div className="h-36 md:h-44 lg:h-52 mb-10 md:mb-14 lg:mb-16" />
 
       {/* Role and Company */}
-      <div className="text-center ">
+      <div className="text-center -mb-6">
         <div className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-3 shadow-lg border border-gray-200 max-w-xs md:max-w-sm pointer-events-auto mx-auto">
           {(() => {
             const parts = (activeItem.description || '').split(' at ');
