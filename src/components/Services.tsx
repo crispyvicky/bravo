@@ -5,34 +5,70 @@ import CannonFlair, { type CannonFlairHandle } from "./CannonFlair";
 const Services = () => {
   const services = [
     {
-      title: "MVP Development",
-      description: "Get your idea to market fast",
-      price: "$5K – $25K",
-      timeline: "4–12 weeks",
+      title: "Static Website",
+      description: "A sleek, responsive website to showcase your business online.",
+      price: "₹10K – ₹25K",
+      timeline: "1–2 weeks",
+      cta: "Start Static Site"
+    },
+    {
+      title: "MVP / Landing Page",
+      description: "Test your idea quickly with a functional MVP or landing page.",
+      price: "₹50K – ₹1.5L",
+      timeline: "2–6 weeks",
       cta: "Start MVP Quest"
     },
     {
       title: "Custom Web Apps",
-      description: "Tailored solutions for your business", 
-      price: "$10K – $50K",
-      timeline: "8–24 weeks",
-      cta: "Start Business Quest"
+      description: "Full-featured web applications tailored to your business needs.",
+      price: "₹1.5L – ₹5L",
+      timeline: "6–16 weeks",
+      cta: "Start Web App Quest"
     },
     {
-      title: "API Integration",
-      description: "Connect your tools seamlessly",
-      price: "$2K – $15K", 
+      title: "Mobile App Development",
+      description: "iOS/Android apps with modern UI/UX and performance optimization.",
+      price: "₹3L – ₹10L",
+      timeline: "8–20 weeks",
+      cta: "Start App Quest"
+    },
+    {
+      title: "UI/UX Design",
+      description: "User-centered designs for web and mobile apps that wow your audience.",
+      price: "₹50K – ₹3L",
       timeline: "2–8 weeks",
-      cta: "Start Integration Quest"
+      cta: "Start Design Quest"
     },
     {
-      title: "Legacy Modernization",
-      description: "Update old systems, no rewrite",
-      price: "$15K – $75K",
-      timeline: "12–36 weeks", 
+      title: "AI / ML Integration",
+      description: "Add intelligence and automation to your applications with AI/ML.",
+      price: "₹2L – ₹8L",
+      timeline: "4–12 weeks",
+      cta: "Start AI Quest"
+    },
+    {
+      title: "Analytics & BI Solutions",
+      description: "Turn your data into actionable insights for smarter business decisions.",
+      price: "₹1L – ₹5L",
+      timeline: "3–10 weeks",
+      cta: "Start Analytics Quest"
+    },
+    {
+      title: "Legacy System Modernization",
+      description: "Upgrade old systems to modern tech stacks without full rewrites.",
+      price: "₹5L – ₹15L",
+      timeline: "10–24 weeks",
       cta: "Start Epic Quest"
+    },
+    {
+      title: "AI Chatbots & Automation",
+      description: "Intelligent chatbots and workflow automation to save time & boost engagement.",
+      price: "₹1.5L – ₹6L",
+      timeline: "4–10 weeks",
+      cta: "Start Bot Quest"
     }
   ];
+  
 
   const openConsultationModal = (serviceType: string) => {
     // In a real app, this would open a modal with pre-filled service type
@@ -73,41 +109,39 @@ const Services = () => {
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="card-surface group cursor-pointer hover:scale-105 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="text-subsection text-foreground mb-3">
-                {service.title}
-              </h3>
-              
-              <p className="text-body text-muted-foreground mb-6">
-                {service.description}
-              </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+  {services.map((service, index) => (
+    <div
+      key={index}
+      className="flex flex-col justify-between p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 min-h-[420px] group"
+    >
+      <div>
+        <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+        <p className="text-gray-600 mb-6">{service.description}</p>
 
-              <div className="space-y-2 mb-6">
-                <div className="flex justify-between items-center">
-                  <span className="text-small text-muted-foreground">Price Range:</span>
-                  <span className="font-semibold text-primary">{service.price}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-small text-muted-foreground">Timeline:</span>
-                  <span className="font-semibold text-foreground">{service.timeline}</span>
-                </div>
-              </div>
-
-              <Button 
-                onClick={() => openConsultationModal(service.title)}
-                className="btn-primary w-full group-hover:scale-105 transition-transform duration-200"
-              >
-                {service.cta}
-              </Button>
-            </div>
-          ))}
+        <div className="space-y-2 mb-6">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-500">Price Range:</span>
+            <span className="font-semibold text-primary">{service.price}</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-500">Timeline:</span>
+            <span className="font-semibold text-gray-900">{service.timeline}</span>
+          </div>
         </div>
+      </div>
+
+      <button
+        onClick={() => openConsultationModal(service.title)}
+        className="mt-auto py-3 px-5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors duration-200 w-full"
+      >
+        {service.cta}
+      </button>
+    </div>
+  ))}
+</div>
+
+
 
         {/* Bottom-centered cannon trigger; overlay handles bullets without page overflow */}
         <div className="flex justify-center mt-10">

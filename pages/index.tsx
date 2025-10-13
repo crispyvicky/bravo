@@ -23,6 +23,8 @@ const Contact = dynamic(() => import("@/components/Contact"), {
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div className="h-32 bg-muted animate-pulse" />
 });
+// Client-only ribbons (uses WebGL/window)
+const Ribbons = dynamic(() => import("@/components/ribbons"), { ssr: false });
 
 export default function Index() {
   return (
@@ -44,6 +46,8 @@ export default function Index() {
       <div className="min-h-screen bg-background relative">
         {/* <SplashCurser /> */}
         <Header />
+        {/* Full-page decorative ribbons */}
+        <Ribbons />
         <main>
           <Hero />
           <ProblemSolution />

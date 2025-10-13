@@ -13,12 +13,14 @@ export default function PlayerOne() {
   ];
 
   const skills = [
-    "React/Node.js",
-    "Python/AI", 
-    "AWS/DevOps",
-    "Mobile (React Native)",
-    "Design Systems",
-    "Automation"
+    "Frontend Development",
+    "Backend Development",
+    "Database Management",
+    "Cloud & Hosting (AWS)",
+    "Mobile App Development",
+    "UI/UX Design",
+    "Automation & AI",
+    "Marketing"
   ];
 
   return (
@@ -115,32 +117,32 @@ export default function PlayerOne() {
           </section>
 
           {/* Skills Section */}
-          <section className="py-20 bg-muted">
-            <div className="container mx-auto px-6 max-w-6xl">
-              <div className="text-center mb-12">
-                <h2 className="text-section text-foreground mb-4">
-                  Arsenal Unlocked
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  Core skills + specialist network when needed.
-                </p>
-              </div>
+          <section className="py-24 bg-gray-100">
+  <div className="container mx-auto px-6 max-w-6xl">
+    {/* Section Header */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-extrabold text-gray-900 mb-4 font-heading text-section text-foreground">
+        Arsenal Unlocked
+      </h2>
+      <p className="text-xl text-gray-600 font-body">
+        Core skills + specialist network when needed.
+      </p>
+    </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                {skills.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="card-surface text-center py-6 hover:scale-105 transition-transform duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="font-medium text-foreground">
-                      {skill}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+    {/* Skills Grid */}
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+      {skills.map((skill, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center h-32 text-center font-medium text-gray-900 hover:scale-105 transition-transform duration-300"
+          style={{ animationDelay: `${index * 0.1}s` }}
+        >
+          {skill}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
           {/* Story Section */}
           <section className="py-20 bg-background">
