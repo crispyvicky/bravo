@@ -14,7 +14,7 @@ export const guildMembers: GuildMember[] = [
     name: "Sai Teja",
     role: "Developer",
     company: "TCS",
-    avatar: "👩‍💻",
+    avatar: "/guild/saiteja.png",
     status: "Available",
     specialties: ["React", "TypeScript", "Performance"],
     level: "Senior",

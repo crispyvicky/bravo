@@ -17,7 +17,9 @@ interface MenuItem {
 export default function Guild() {
 
   const guildItems: MenuItem[] = guildMembers.map(member => ({
-    image: `https://picsum.photos/seed/${encodeURIComponent(member.name)}/900/900`,
+    image: member.avatar && member.avatar.startsWith('/')
+      ? member.avatar
+      : `https://picsum.photos/seed/${encodeURIComponent(member.name)}/900/900`,
     link: `/profile/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
     title: member.name,
     description: `${member.role} at ${member.company}`,
