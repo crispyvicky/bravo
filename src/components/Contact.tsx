@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+// import dynamic from 'next/dynamic';
+// const DragExplodeHero = dynamic(() => import("@/components/DragExplodeHero"), { ssr: false });
 
 const Contact = () => {
   const [formData, setFormData] = useState({

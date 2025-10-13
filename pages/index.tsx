@@ -47,7 +47,14 @@ export default function Index() {
         {/* <SplashCurser /> */}
         <Header />
         {/* Full-page decorative ribbons */}
-        <Ribbons />
+        <div className="fixed inset-0 pointer-events-none z-10">
+            <Ribbons
+              colors={["#3b82f6", "#10b981", "#f59e0b", "#ef4444"]}
+              speedMultiplier={0.5}
+              maxAge={400}
+            />
+          </div>
+          
         <main>
           <Hero />
           <ProblemSolution />
