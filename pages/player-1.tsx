@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRef } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import ShinyText from "@/components/ShinyText";
+import CannonFlair, { type CannonFlairHandle } from "@/components/CannonFlair";
 
 export default function PlayerOne() {
   const stats = [
@@ -22,6 +24,9 @@ export default function PlayerOne() {
     "Automation & AI",
     "Marketing"
   ];
+
+  const cannonRef = useRef<CannonFlairHandle | null>(null);
+  const anchorRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
@@ -145,13 +150,12 @@ export default function PlayerOne() {
 </section>
 
           {/* Story Section */}
-          <section className="py-20 bg-background">
+          <section className="py-20 bg-background" style={{ position: 'relative', overflow: 'hidden' }}>
             <div className="container mx-auto px-6 max-w-4xl">
               <div className="text-center">
                 <h2 className="text-section text-foreground mb-8">
                   The Bravoo Origin Story
                 </h2>
-                
                 <div className="text-lg text-muted-foreground space-y-6 max-w-3xl mx-auto leading-relaxed">
                   <p>
                     Started coding at 15. Built my first profitable app at 17. 
@@ -171,7 +175,6 @@ export default function PlayerOne() {
                     without the enterprise price tag.
                   </p>
                 </div>
-
                 <div className="mt-12">
                   <Link href="/guild">
                     <Button className="btn-primary mr-4">
@@ -183,6 +186,22 @@ export default function PlayerOne() {
                       See Battle History
                     </Button>
                   </Link>
+                </div>
+                {/* CannonFlair at bottom center, no overflow */}
+                <div className="flex justify-center mt-10">
+                  <div
+                    style={{ width: 160, height: 140, position: 'relative', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
+                  >
+                    <div
+                      ref={anchorRef}
+                      className="relative"
+                      style={{ width: 96, height: 120 }}
+                      onMouseEnter={() => cannonRef.current?.fire()}
+                    />
+                    <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', zIndex: 50 }}>
+                      <CannonFlair ref={cannonRef} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

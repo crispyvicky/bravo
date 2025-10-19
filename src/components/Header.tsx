@@ -29,7 +29,7 @@ const Header = () => {
     <>
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[9999] h-20 transition-all duration-300 ${
           isScrolled ? "header-scrolled" : "bg-background/80 backdrop-blur-sm"
         }`}
       >
@@ -101,7 +101,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="fixed inset-0 z-[9998] md:hidden">
           {/* Overlay */}
           <div
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"

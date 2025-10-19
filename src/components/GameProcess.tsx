@@ -71,7 +71,7 @@ const GameProcess = () => {
   }, []);
 
   return (
-    <section id="process" ref={sectionRef} className="py-20 bg-background">
+    <section id="process" ref={sectionRef} className="py-20 bg-background ">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-section text-foreground mb-4">
@@ -80,7 +80,7 @@ const GameProcess = () => {
         </div>
 
         {/* Process Stages */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto relative z-50">
           {stages.map((stage, index) => (
             <div
               key={index}

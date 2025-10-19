@@ -1,161 +1,123 @@
-import { Button } from "@/components/ui/button";
-import React, { useEffect, useRef } from "react";
-import CannonFlair, { type CannonFlairHandle } from "./CannonFlair";
+import React, { useState, useEffect } from "react";
+import styles from "./Services.module.css";
 
-const Services = () => {
-  const services = [
-    {
-      title: "Static Website",
-      description: "A sleek, responsive website to showcase your business online.",
-      price: "₹10K – ₹25K",
-      timeline: "1–2 weeks",
-      cta: "Start Static Site"
-    },
-    {
-      title: "MVP / Landing Page",
-      description: "Test your idea quickly with a functional MVP or landing page.",
-      price: "₹50K – ₹1.5L",
-      timeline: "2–6 weeks",
-      cta: "Start MVP Quest"
-    },
-    {
-      title: "Custom Web Apps",
-      description: "Full-featured web applications tailored to your business needs.",
-      price: "₹1.5L – ₹5L",
-      timeline: "6–16 weeks",
-      cta: "Start Web App Quest"
-    },
-    {
-      title: "Mobile App Development",
-      description: "iOS/Android apps with modern UI/UX and performance optimization.",
-      price: "₹3L – ₹10L",
-      timeline: "8–20 weeks",
-      cta: "Start App Quest"
-    },
-    {
-      title: "UI/UX Design",
-      description: "User-centered designs for web and mobile apps that wow your audience.",
-      price: "₹50K – ₹3L",
-      timeline: "2–8 weeks",
-      cta: "Start Design Quest"
-    },
-    {
-      title: "AI / ML Integration",
-      description: "Add intelligence and automation to your applications with AI/ML.",
-      price: "₹2L – ₹8L",
-      timeline: "4–12 weeks",
-      cta: "Start AI Quest"
-    },
-    {
-      title: "Analytics & BI Solutions",
-      description: "Turn your data into actionable insights for smarter business decisions.",
-      price: "₹1L – ₹5L",
-      timeline: "3–10 weeks",
-      cta: "Start Analytics Quest"
-    },
-    {
-      title: "Legacy System Modernization",
-      description: "Upgrade old systems to modern tech stacks without full rewrites.",
-      price: "₹5L – ₹15L",
-      timeline: "10–24 weeks",
-      cta: "Start Epic Quest"
-    },
-    {
-      title: "AI Chatbots & Automation",
-      description: "Intelligent chatbots and workflow automation to save time & boost engagement.",
-      price: "₹1.5L – ₹6L",
-      timeline: "4–10 weeks",
-      cta: "Start Bot Quest"
-    }
-  ];
-  
+const services = [
+  { title: "Static Website",     icon: "🌐", description: "Sleek, responsive site.",      price: "₹10K – ₹25K",  timeline: "1–2 weeks",  cta: "Start Static Site" },
+  { title: "MVP / Landing",       icon: "🚀", description: "Fast launch MVP.",             price: "₹50K – ₹1.5L", timeline: "2–6 weeks",  cta: "Start MVP Quest" },
+  { title: "Web Apps",            icon: "💻", description: "Powerful custom web app.",     price: "₹1.5L – ₹5L",  timeline: "6–16 weeks", cta: "Start Web App Quest" },
+  { title: "Mobile Dev",          icon: "📱", description: "iOS/Android perfection.",      price: "₹3L – ₹10L",  timeline: "8–20 weeks", cta: "Start App Quest" },
+  { title: "UI/UX",               icon: "🎨", description: "Design that delights.",        price: "₹50K – ₹3L",   timeline: "2–8 weeks",  cta: "Start Design Quest" },
+  { title: "AI/ML",               icon: "🤖", description: "Smart AI/ML solutions.",       price: "₹2L – ₹8L",    timeline: "4–12 weeks", cta: "Start AI Quest" },
+  { title: "Analytics",           icon: "📊", description: "Manage your insights.",        price: "₹1L – ₹5L",    timeline: "3–10 weeks", cta: "Start Analytics Quest" },
+  { title: "Legacy Modernize",    icon: "⚡", description: "Modernize legacy tech.",       price: "₹5L – ₹15L",   timeline: "10–24 weeks",cta: "Start Epic Quest" },
+  { title: "Chatbots",            icon: "🤝", description: "Automate & engage.",           price: "₹1.5L – ₹6L",  timeline: "4–10 weeks", cta: "Start Bot Quest" }
+];
 
-  const openConsultationModal = (serviceType: string) => {
-    // In a real app, this would open a modal with pre-filled service type
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+export default function Services() {
+  const [active, setActive] = useState<number | null>(0);
+  const [angle, setAngle]     = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [radius, setRadius]   = useState(220);
+  const [center, setCenter]   = useState(300);
+  const [size, setSize]       = useState(60);
 
-  const cannonRef = useRef<CannonFlairHandle | null>(null);
-  const anchorRef = useRef<HTMLDivElement | null>(null);
-
+  // Detect mobile viewport
   useEffect(() => {
-    const updateBounds = () => {
-      const anchor = anchorRef.current;
-      const cannon = cannonRef.current;
-      if (!anchor || !cannon) return;
-      const rect = anchor.getBoundingClientRect();
-      cannon.setBoundsAndCenter(rect);
-    };
+    const updateMobile = () => setIsMobile(window.innerWidth <= 768);
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+    return () => window.removeEventListener("resize", updateMobile);
+  }, []);
 
-    updateBounds();
-    window.addEventListener("resize", updateBounds);
-    window.addEventListener("scroll", updateBounds, { passive: true });
-    return () => {
-      window.removeEventListener("resize", updateBounds);
-      window.removeEventListener("scroll", updateBounds as any);
+  // Continuous rotation
+  useEffect(() => {
+    const id = setInterval(() => setAngle(prev => prev + 1), 50);
+    return () => clearInterval(id);
+  }, []);
+
+  // Responsive sizing values
+  useEffect(() => {
+    const onResize = () => {
+      const w = window.innerWidth;
+      if (w < 480) {
+        setRadius(220); setCenter(200); setSize(90);
+      } else if (w < 600) {
+        setRadius(250); setCenter(190); setSize(90);
+      } else if (w < 768) {
+        setRadius(250); setCenter(190); setSize(90);
+      } else if (w < 900) {
+        setRadius(200); setCenter(260); setSize(60);
+      } else {
+        setRadius(220); setCenter(300); setSize(60);
+      }
     };
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   return (
-    <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-section text-foreground mb-4">
-            Choose Your Quest
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Pick the mission that matches your goals and budget.
-          </p>
-        </div>
-
-        {/* Service Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
-  {services.map((service, index) => (
-    <div
-      key={index}
-      className="flex flex-col justify-between p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 min-h-[420px] group"
-    >
-      <div>
-        <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-        <p className="text-gray-600 mb-6">{service.description}</p>
-
-        <div className="space-y-2 mb-6">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500">Price Range:</span>
-            <span className="font-semibold text-primary">{service.price}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-500">Timeline:</span>
-            <span className="font-semibold text-gray-900">{service.timeline}</span>
-          </div>
-        </div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Choose Your Quest</h2>
+        <p className={styles.subtitle}>Pick the mission that matches your goals and budget.</p>
       </div>
 
-      <button
-        onClick={() => openConsultationModal(service.title)}
-        className="mt-auto py-3 px-5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors duration-200 w-full"
+      <div
+        className={styles.circleWrapper}
+        style={{
+          "--center": `${center}px`,
+          width:  `${center * 2}px`,
+          height: `${center * 2}px`
+        } as React.CSSProperties}
       >
-        {service.cta}
-      </button>
-    </div>
-  ))}
-</div>
+        {services.map((s, i) => {
+          const base     = (2 * Math.PI / services.length) * i - Math.PI/2;
+          const rotated  = base + angle * Math.PI/180 * (isMobile ? 0.5 : 1);
+          const cardW    = isMobile ? 90 : size;
+          const cardH    = isMobile ? 90 : size;
+          const x        = center + radius * Math.cos(rotated) - cardW/2;
+          const y        = center + radius * Math.sin(rotated) - cardH/2;
+          const isActive = active === i;
 
+          return (
+            <button
+              key={i}
+              className={`${styles.iconCard} ${isActive ? styles.iconCardActive : ""}`}
+              style={{ left: x, top: y, width: cardW, height: cardH }}
+              onMouseEnter={() => setActive(i)}
+              onTouchStart={() => setActive(i)}
+              onClick={() => setActive(i)}
+            >
+              <span className={styles.emoji}>{s.icon}</span>
+            </button>
+          );
+        })}
 
-
-        {/* Bottom-centered cannon trigger; overlay handles bullets without page overflow */}
-        <div className="flex justify-center mt-10">
-          <div
-            ref={anchorRef}
-            className="relative"
-            style={{ width: 96, height: 120 }}
-            onMouseEnter={() => cannonRef.current?.fire()}
-          />
-          <CannonFlair ref={cannonRef} />
-        </div>
+        {active !== null && (
+          <div className={styles.centerDetail}>
+            <div className={styles.detailBox}>
+              <div className={styles.iconLarge}>{services[active].icon}</div>
+              <h2 className={styles.serviceTitle}>{services[active].title}</h2>
+              <p className={styles.desc}>{services[active].description}</p>
+              <div className={styles.info}>
+                <span>💰 {services[active].price}</span>
+                <span>⏱️ {services[active].timeline}</span>
+              </div>
+              <button
+                className={styles.cta}
+                onMouseDown={e => e.stopPropagation()}
+                onClick={e => {
+                  e.stopPropagation();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {services[active].cta}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-    </section>
+    </div>
   );
-};
-
-export default Services;
+}

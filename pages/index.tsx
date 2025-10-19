@@ -25,12 +25,14 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 });
 // Client-only ribbons (uses WebGL/window)
 const Ribbons = dynamic(() => import("@/components/ribbons"), { ssr: false });
+const BeeScroll = dynamic(() => import("../src/components/BeeScroll"), { ssr: false });
 
 export default function Index() {
   return (
     <>
       <Head>
         <title>Best Software Development Company in India | Bravoo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="description" content="Bravoo builds high-quality software solutions in web, mobile, and AI. Discover why startups and businesses choose us as the best software development company in India." />
         <meta name="keywords" content="full-stack development, web development, mobile apps, AI solutions, cloud services, React, Next.js, Node.js" />
         <link rel="canonical" href="https://bravoo.in/" />
@@ -57,6 +59,7 @@ export default function Index() {
           
         <main>
           <Hero />
+          <BeeScroll />
           <ProblemSolution />
           <GameProcess />
           <Services />

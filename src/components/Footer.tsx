@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import FlowerPath from "./FlowerPath";
+import BravoO from "./BravoO";
 
 // Random status for personality but condensed
 const statusMessages = [
@@ -103,7 +104,9 @@ const Footer = () => {
         }}>
           {/* Brand */}
           <div style={{ minWidth: 240 }}>
-            <h3 style={{ fontWeight: 700, fontSize: "1.5rem", marginBottom: 6 }}>Bravoo ⚔️</h3>
+            <h3 className="text-2xl font-bold" >
+              Bravo<BravoO className="text-black" size={50}  /> ⚔️
+            </h3>
             <p style={{ color: "#2563eb", fontWeight: 500, marginBottom: 8, fontSize: "1rem" }}>Build → Deploy → Win</p>
             <p style={{ color: "#374151", fontSize: "0.95rem", maxWidth: 230 }}>From startup to enterprise, every quest deserves a legendary outcome.</p>
           </div>
@@ -163,7 +166,9 @@ const Footer = () => {
           gap: 16
         }}>
           <div>
-            <span>© 2025 Bravoo — Built by Player 1</span>
+            <span style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+              © 2025 Brav<BravoO size={14} />o — Built by Player 1
+            </span>
           </div>
           <div style={{ color: "#2563eb", display: "flex", alignItems: "center", gap: "8px" }}>
             <span>🎮 Level 21 Founder</span>
