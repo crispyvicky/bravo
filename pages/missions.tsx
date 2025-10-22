@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Missions() {
   const services = [
@@ -73,7 +74,6 @@ export default function Missions() {
         <meta name="twitter:title" content="Missions - Choose Your Development Quest" />
         <meta name="twitter:description" content="Choose from our range of development missions with transparent pricing and timelines." />
       </Head>
-
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-20">
@@ -92,65 +92,59 @@ export default function Missions() {
               {/* Services Grid */}
               <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 {services.map((service, index) => (
-                  <div
+                  <Card
                     key={index}
-                    className="card-surface group cursor-pointer hover:scale-105 transition-all duration-300 max-w-md mx-auto"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className="card-surface group cursor-pointer hover:scale-105 transition-all duration-300 max-w-md mx-auto flex flex-col"
+                    style={{ animationDelay: `${index * 0.1}s`, minHeight: '380px', width: '100%' }}
                   >
-                    <div className="text-center mb-6">
-                      <div className="text-5xl mb-4">{service.icon}</div>
-                      <h3 className="text-subsection text-foreground mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-body text-muted-foreground mb-4">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    <div className="space-y-3 mb-6">
-                      <div className="flex justify-between items-center">
-                        <span className="text-small text-muted-foreground">Price Range:</span>
-                        <span className="font-semibold text-primary">{service.price}</span>
+                    <CardContent className="flex flex-col h-full p-6">
+                      <div className="text-center mb-6 flex-shrink-0">
+                        <div className="text-5xl mb-4">{service.icon}</div>
+                        <h3 className="text-subsection text-foreground mb-2">{service.title}</h3>
+                        <p className="text-body text-muted-foreground mb-4">{service.description}</p>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-small text-muted-foreground">Timeline:</span>
-                        <span className="font-semibold text-foreground">{service.timeline}</span>
-                      </div>
-                    </div>
 
-                    <div className="mb-6">
-                      <h4 className="text-sm font-medium text-foreground mb-3">What's Included:</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {service.features.map((feature, i) => (
-                          <div key={i} className="text-xs text-muted-foreground">
-                            ✓ {feature}
-                          </div>
-                        ))}
+                      <div className="space-y-3 mb-6 flex-grow">
+                        <div className="flex justify-between items-center">
+                          <span className="text-small text-muted-foreground">Price Range:</span>
+                          <span className="font-semibold text-primary">{service.price}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-small text-muted-foreground">Timeline:</span>
+                          <span className="font-semibold text-foreground">{service.timeline}</span>
+                        </div>
                       </div>
-                    </div>
 
-                    <Link href="/start-quest">
-                      <Button className="btn-primary w-full group-hover:scale-105 transition-transform duration-200">
-                        Start This Quest
-                      </Button>
-                    </Link>
-                  </div>
+                      <div className="mb-6">
+                        <h4 className="text-sm font-medium text-foreground mb-3">What's Included:</h4>
+                        <div className="grid grid-cols-2 gap-2">
+                          {service.features.map((feature, i) => (
+                            <div key={i} className="text-xs text-muted-foreground">
+                              ✓ {feature}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <Link href="/start-quest" className="mt-auto">
+                        <Button className="btn-primary w-full group-hover:scale-105 transition-transform duration-200">
+                          Start This Quest
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
 
               {/* Custom Mission CTA */}
               <div className="text-center mt-16">
                 <div className="card-surface max-w-2xl mx-auto">
-                  <h3 className="text-subsection text-foreground mb-4">
-                    Got a Different Mission?
-                  </h3>
+                  <h3 className="text-subsection text-foreground mb-4">Got a Different Mission?</h3>
                   <p className="text-body text-muted-foreground mb-6">
                     Every quest is unique. Tell me about your specific challenge and I'll craft a custom strategy.
                   </p>
                   <Link href="/start-quest">
-                    <Button className="btn-hero">
-                      Plan Custom Quest
-                    </Button>
+                    <Button className="btn-hero">Plan Custom Quest</Button>
                   </Link>
                 </div>
               </div>

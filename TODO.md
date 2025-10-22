@@ -1,0 +1,3 @@
+- [x] Modify the card div in pages/missions.tsx to add flex flex-col h-full
+- [x] Wrap the content above the button in a div with flex-grow
+- [x] Ensure the button remains at the bottom
