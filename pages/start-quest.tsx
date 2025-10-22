@@ -10,7 +10,9 @@ export default function StartQuest() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     questType: "",
+    customQuestType: "",
     missionDetails: "",
     budgetRange: "",
     timeline: ""
@@ -62,7 +64,9 @@ export default function StartQuest() {
           kind: "startQuest",
           name: formData.name,
           email: formData.email,
+          mobile: formData.mobile || undefined,
           questType: formData.questType,
+          customQuestType: formData.customQuestType || undefined,
           missionDetails: formData.missionDetails,
           budgetRange: formData.budgetRange || undefined,
           timeline: formData.timeline || undefined
@@ -82,7 +86,9 @@ export default function StartQuest() {
       setFormData({
         name: "",
         email: "",
+        mobile: "",
         questType: "",
+        customQuestType: "",
         missionDetails: "",
         budgetRange: "",
         timeline: ""
@@ -97,7 +103,7 @@ export default function StartQuest() {
     }
   };
 
-  const isFormValid = formData.name && formData.email && formData.questType && formData.missionDetails;
+  const isFormValid = formData.name && formData.email && formData.questType && formData.missionDetails && (formData.questType !== "Other" || formData.customQuestType);
 
   return (
     <>
@@ -150,8 +156,8 @@ export default function StartQuest() {
               {/* Quest Form */}
               <div className="card-surface max-w-2xl mx-auto">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name and Email Row */}
-                  <div className="grid md:grid-cols-2 gap-4">
+                  {/* Name, Email, and Mobile Row */}
+                  <div className="grid md:grid-cols-3 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-foreground mb-2">
                         Name *
@@ -180,6 +186,19 @@ export default function StartQuest() {
                         required
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Mobile Number
+                      </label>
+                      <input
+                        type="tel"
+                        name="mobile"
+                        placeholder="+91 9876543210"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        className="form-input"
+                      />
+                    </div>
                   </div>
 
                   {/* Quest Type */}
@@ -199,6 +218,17 @@ export default function StartQuest() {
                         <option key={type} value={type}>{type}</option>
                       ))}
                     </select>
+                    {formData.questType === "Other" && (
+                      <input
+                        type="text"
+                        name="customQuestType"
+                        placeholder="Please specify your quest type"
+                        value={formData.customQuestType}
+                        onChange={handleInputChange}
+                        className="form-input mt-2"
+                        required
+                      />
+                    )}
                   </div>
 
                   {/* Budget and Timeline Row */}

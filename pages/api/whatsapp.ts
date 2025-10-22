@@ -4,6 +4,7 @@ type ContactPayload = {
   kind: "contact";
   name: string;
   email: string;
+  mobile?: string;
   projectType: string;
   details: string;
 };
@@ -12,7 +13,9 @@ type StartQuestPayload = {
   kind: "startQuest";
   name: string;
   email: string;
+  mobile?: string;
   questType: string;
+  customQuestType?: string;
   missionDetails: string;
   budgetRange?: string;
   timeline?: string;
@@ -56,17 +59,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   let textMessage = "";
   if (payload.kind === "contact") {
-    const { name, email, projectType, details } = payload;
+    const { name, email, mobile, projectType, details } = payload;
     if (!name || !email || !projectType || !details) {
       return res.status(400).json({ error: "Missing required fields for contact form." });
     }
-    textMessage = `New Contact Inquiry\n\nName: ${name}\nEmail: ${email}\nProject Type: ${projectType}\nDetails: ${details}`;
+    textMessage = `New Contact Inquiry\n\nName: ${name}\nEmail: ${email}\nMobile: ${mobile || "N/A"}\nProject Type: ${projectType}\nDetails: ${details}`;
   } else if (payload.kind === "startQuest") {
-    const { name, email, questType, missionDetails, budgetRange, timeline } = payload;
+    const { name, email, mobile, questType, customQuestType, missionDetails, budgetRange, timeline } = payload;
     if (!name || !email || !questType || !missionDetails) {
       return res.status(400).json({ error: "Missing required fields for start-quest form." });
     }
-    textMessage = `New Start-Quest Submission\n\nName: ${name}\nEmail: ${email}\nQuest Type: ${questType}\nBudget: ${budgetRange || "N/A"}\nTimeline: ${timeline || "N/A"}\n\nMission Details:\n${missionDetails}`;
+    const finalQuestType = questType === "Other" && customQuestType ? customQuestType : questType;
+    textMessage = `New Start-Quest Submission\n\nName: ${name}\nEmail: ${email}\nMobile: ${mobile || "N/A"}\nQuest Type: ${finalQuestType}\nBudget: ${budgetRange || "N/A"}\nTimeline: ${timeline || "N/A"}\n\nMission Details:\n${missionDetails}`;
   }
 
   try {

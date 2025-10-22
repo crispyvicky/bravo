@@ -8,6 +8,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    mobile: "",
     projectType: "",
     details: ""
   });
@@ -35,6 +36,7 @@ const Contact = () => {
           kind: "contact",
           name: formData.name,
           email: formData.email,
+          mobile: formData.mobile || undefined,
           projectType: formData.projectType,
           details: formData.details
         })
@@ -60,6 +62,7 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
+        mobile: "",
         projectType: "",
         details: ""
       });
@@ -89,8 +92,8 @@ const Contact = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
-            {/* Name and Email Row */}
-            <div className="grid md:grid-cols-2 gap-4">
+            {/* Name, Email, and Mobile Row */}
+            <div className="grid md:grid-cols-3 gap-4">
               <div>
                 <input
                   type="text"
@@ -111,6 +114,16 @@ const Contact = () => {
                   onChange={handleInputChange}
                   className="form-input"
                   required
+                />
+              </div>
+              <div>
+                <input
+                  type="tel"
+                  name="mobile"
+                  placeholder="+91 9876543210"
+                  value={formData.mobile}
+                  onChange={handleInputChange}
+                  className="form-input"
                 />
               </div>
             </div>
