@@ -152,6 +152,7 @@ export default function Missions() {
           </section>
         </main>
         <Footer />
+        
       </div>
     </>
   );
