@@ -61,14 +61,14 @@ export const guildMembers: GuildMember[] = [
     linkedin: "https://www.linkedin.com/in/ajaydoti/",
   },
   {
-    name: "David Kim",
-    role: "Design Wizard",
-    company: "Figma",
-    avatar: "🎨",
+    name: "SANKET KEDARE",
+    role: "Full Stack Developer",
+    company: "VISIONTECH",
+    avatar: "/guild/sanket.png",
     status: "In Battle",
-    specialties: ["UI/UX", "Design Systems", "User Research"],
+    specialties: ["Design Systems", "User Research"],
     level: "Senior",
-    linkedin: "https://linkedin.com/in/davidkim",
+    linkedin: "https://www.linkedin.com/in/sanket-kedare-dev/",
   },
 ];
 

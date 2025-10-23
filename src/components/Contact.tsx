@@ -120,7 +120,7 @@ const Contact = () => {
                 <input
                   type="tel"
                   name="mobile"
-                  placeholder="+91 9876543210"
+                  placeholder="+91 9143143143"
                   value={formData.mobile}
                   onChange={handleInputChange}
                   className="form-input"
