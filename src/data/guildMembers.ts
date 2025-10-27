@@ -34,7 +34,7 @@ export const guildMembers: GuildMember[] = [
     name: "Priya Patel",
     role: "AI/ML Specialist",
     company: "Meta",
-    avatar: "🧠",
+    avatar: "/guild/priya.png",
     status: "Available",
     specialties: ["PyTorch", "NLP", "Computer Vision"],
     level: "Principal",

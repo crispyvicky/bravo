@@ -834,10 +834,32 @@ class InfiniteGridMenu {
     Promise.all(
       this.items.map(
         item =>
-          new Promise<HTMLImageElement>(resolve => {
+          new Promise<HTMLImageElement>((resolve, reject) => {
             const img = new Image();
-            img.crossOrigin = 'anonymous';
+            // Only set crossOrigin for external URLs
+            if (item.image.startsWith('http')) {
+              img.crossOrigin = 'anonymous';
+            }
             img.onload = () => resolve(img);
+            img.onerror = () => {
+              console.warn(`Failed to load image: ${item.image}`);
+              // Create a fallback image with a solid color
+              const fallbackImg = new Image();
+              fallbackImg.onload = () => resolve(fallbackImg);
+              // Create a simple colored square as fallback
+              const canvas = document.createElement('canvas');
+              canvas.width = 512;
+              canvas.height = 512;
+              const ctx = canvas.getContext('2d')!;
+              ctx.fillStyle = '#e5e7eb'; // Light gray
+              ctx.fillRect(0, 0, 512, 512);
+              ctx.fillStyle = '#6b7280'; // Darker gray for text
+              ctx.font = '48px Arial';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText('?', 256, 256);
+              fallbackImg.src = canvas.toDataURL();
+            };
             img.src = item.image;
           })
       )

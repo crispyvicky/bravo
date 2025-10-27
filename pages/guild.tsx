@@ -17,9 +17,9 @@ interface MenuItem {
 export default function Guild() {
 
   const guildItems: MenuItem[] = guildMembers.map(member => ({
-    image: member.avatar && member.avatar.startsWith('/')
+    image: member.avatar && (member.avatar.startsWith('/') || member.avatar.startsWith('http'))
       ? member.avatar
-      : `https://picsum.photos/seed/${encodeURIComponent(member.name)}/900/900`,
+      : `/placeholder.svg`, // Use local placeholder for missing images
     link: `/profile/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
     title: member.name,
     description: `${member.role} at ${member.company}`,
