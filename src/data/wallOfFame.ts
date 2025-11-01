@@ -42,36 +42,61 @@ export const clients: WallClientTile[] = [
       impact: "Launched to 1,000+ beta users; secured Series A."
     },
     {
-      type: "icon",
-      name: "E-commerce",
-      icon: "🛒",
-      tooltip: "E-commerce Platform",
-      year: "2025",
-      visitUrl: "https://example-shop.com",
-      meta: "E‑commerce • 2025 • 12 weeks",
-      challenge: "Black Friday traffic scaling.",
-      solution: "CDN + autoscaling + DB shard.",
-      impact: "Handled 10x traffic; +$5M revenue."
-    },
-    {
-      type: "industry",
-      name: "HT",
-      gradient: "from-blue-100 to-blue-300",
-      tooltip: "HealthTech",
-      year: "2023",
-      visitUrl: "https://example-health.com",
-      meta: "HealthTech • 2023 • 8 weeks",
-      challenge: "Manual data entry.",
-      solution: "AI automation with error detection.",
-      impact: "80% time saved; 95% fewer errors."
-    },
-    {
       type: "logo",
-      name: "Mobile App",
-      image: "/clients/mobile.png",
+      name: "Venkateshwaracnc",
+      image: "/c/sai.png",
+      tooltip: "wood carving website and cms",
+      year: "2025",
+      visitUrl: "https://venkateshwara-cnc.vercel.app/",
+      meta: "CRM and CMS • 2025 • 12 weeks",
+      challenge: "FROM MANUAL TO AUTOMATED BILLING DIGITIZATION.",
+      solution: "CDN + autoscaling + DB shard.",
+      impact: "TRUSTED BY 100+ CLIENTS AND INCREASED SALES BY 30%."
+    },
+    {
+      type: "icon", 
+      name:"ohio game",
+      icon:"🎮",
+      tooltip:"Ohio Game",
+      year:"2024",
+      visitUrl:"https://game-sample-delta.vercel.app/",
+      meta:"Gaming • 2024 • 10 weeks",
+      challenge:"Low user engagement and retention rates.",
+      solution:"Implemented gamification and social sharing features.",
+      impact:"Boosted user retention by 40% and engagement by 60%."
+    },
+    {
+      type: "icon",
+      name: "mojito",
+      icon: "🍸",
+      tooltip: "Tech Solutions",
+      year: "2024",
+      visitUrl: "https://cocktails-seven-mu.vercel.app/",
+      challenge: "Outdated IT infrastructure causing frequent downtimes.",
+      solution: "Upgraded to cloud-based solutions with 24/7 monitoring.",
+      impact: "Reduced downtime by 85% and improved system reliability.",
+      meta: "IT Services • 2024 • 14 weeks",
+    },
+    {
+      type: "icon",
+      name: "marketplace",
+      icon: "🛒",
+      gradient: "from-blue-100 to-blue-300",
+      tooltip: "sample",
+      year: "2023",
+      visitUrl: "https://sample-1-marketing-vicky.vercel.app/",
+      meta: "sample • 2025 • 8 weeks",
+      // challenge: "Manual data entry.",
+      // solution: "AI automation with error detection.",
+      // impact: "80% time saved; 95% fewer errors."
+    },
+    {
+      type: "icon",
+      name: "PAWCARE",
+      icon: "🐾",
       tooltip: "Mobile App - Series A",
       year: "2025",
-      visitUrl: "https://example-mobile.app",
+      visitUrl: "https://pawcare-xi.vercel.app/",
       meta: "Mobile • 2025 • 20 weeks",
       challenge: "Crash on 30% orders.",
       solution: "RN rebuild with offline support.",
@@ -80,53 +105,77 @@ export const clients: WallClientTile[] = [
     {
       type: "icon",
       name: "SaaS",
-      icon: "⚡",
-      tooltip: "SaaS Product",
+      icon: "💻",
+      tooltip: "sample",
       year: "2024",
-      visitUrl: "https://example-saas.com"
+      visitUrl: "https://jayalakshmi-spark-ads.vercel.app/"
     },
     {
       type: "icon",
-      name: "AI",
-      icon: "🤖",
-      tooltip: "AI Project",
+      name: "EMS",
+      icon: "🧑‍💼",
+      tooltip: "EMPLOYEE MANAGEMENT SYSTEM",
       year: "2025",
-      visitUrl: "https://example-ai.dev"
+      visitUrl: "https://visiontech-employee-portal.vercel.app/login"
     },
     {
-      type: "industry",
-      name: "ED",
+      type: "icon",
+      icon: "🏠",
+      name: "REAL ESTATE",
       gradient: "from-green-100 to-green-300",
       tooltip: "EdTech",
-      year: "2023"
-    },
-    {
-      type: "industry",
-      name: "Healthcare",
-      gradient: "from-pink-100 to-pink-300",
-      tooltip: "Healthcare SaaS",
-      year: "2024"
+      year: "2023",
+      challenge: "Low online visibility and lead generation.",
+      solution: "SEO optimization and targeted ad campaigns.",
+      impact: "Increased web traffic by 70% and leads by 45%.",
+      visitUrl:"https://visionestate-two.vercel.app/"
     },
     {
       type: "icon",
-      name: "ML",
-      icon: "🤖",
-      tooltip: "ML Project",
-      year: "2025"
+      name: "WEATHER APP",
+      icon: "☀️",
+      gradient: "from-pink-100 to-pink-300",
+      tooltip: "Healthcare SaaS",
+      year: "2024",
+      visitUrl:"https://weather-vicky.vercel.app/"
     },
     {
-      type: "logo",
+      type: "icon",
+      name: "trendyvibez",
+      icon: "📈",
+      tooltip: "digital marketing",
+      year: "2025",
+      visitUrl:"https://trendyvibez.in/",
+      meta: "Digital Marketing • 2025 • 10 weeks",
+      challenge: "Inefficient marketing strategies.",
+      solution: "AI-driven analytics and targeted campaigns.",
+      impact: "Increased ROI by 50% and customer engagement by 70%."
+
+    },
+    {
+      type: "icon",
       name: "Startup",
-      image: "/clients/startup.png",
+      icon: "🚀",
       tooltip: "Startup Logo",
-      year: "2024"
+      visitUrl: "https://visionstack-bay.vercel.app/",
+      year: "2024",
+      challenge: "Establishing a strong brand identity in a competitive market.",
+      solution: "Designed a modern logo and cohesive branding materials.",
+      impact: "Enhanced brand recognition and customer trust."
     },
     {
-      type: "industry",
+      type: "icon",
       name: "RE",
       gradient: "from-yellow-100 to-yellow-300",
-      tooltip: "Real Estate",
-      year: "2023"
+      tooltip: "software solutions",
+      year: "2023",
+      meta: "Real Estate • 2023 • 16 weeks",
+      icon: "🏡",
+      challenge: "Attracting potential buyers in a saturated market.",
+      solution: "Developed a user-friendly website with virtual tours.",
+      impact: "Increased inquiries by 40% and sales by 25%.",
+      visitUrl:"https://waaw-theta.vercel.app/",
+
     },
     {
       type: "industry",
@@ -205,20 +254,8 @@ export const clients: WallClientTile[] = [
       tooltip: "Fashion",
       year: "2024"
     },
-    {
-      type: "industry",
-      name: "Green",
-      gradient: "from-green-100 to-green-300",
-      tooltip: "Green Tech",
-      year: "2023"
-    },
-    {
-      type: "industry",
-      name: "Logistics",
-      gradient: "from-yellow-100 to-yellow-300",
-      tooltip: "Logistics",
-      year: "2025"
-    },
+    
+    
   ];
   
 

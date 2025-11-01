@@ -82,7 +82,7 @@ export default function WallOfFame() {
                     <img
                       src={client.image}
                       alt={client.name}
-                      className="w-8 h-6 md:w-10 md:h-8 lg:w-12 lg:h-10 object-contain"
+                      className="w-12 h-9 md:w-16 md:h-12 lg:w-22 lg:h-18 xl:w-20 xl:h-15 object-contain"
                     />
                   )}
                   {client.type === "icon" && (

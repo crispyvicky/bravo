@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import dynamic from 'next/dynamic';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import HowItWorks from "@/components/HowItWorks";
 
 export default function Missions() {
   const services = [
@@ -135,6 +136,8 @@ export default function Missions() {
                   </Card>
                 ))}
               </div>
+
+              <HowItWorks />
 
               {/* Custom Mission CTA */}
               <div className="text-center mt-16">

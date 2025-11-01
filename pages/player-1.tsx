@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import ShinyText from "@/components/ShinyText";
 import CannonFlair, { type CannonFlairHandle } from "@/components/CannonFlair";
 
+
 export default function PlayerOne() {
   const stats = [
     { value: "15+", label: "Projects Shipped" },
@@ -44,7 +45,7 @@ export default function PlayerOne() {
         <meta name="twitter:description" content="21-year-old founder offering direct access to expert development with no middlemen." />
       </Head>
 
-      <div className="relative min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background" style={{ overflowX: 'hidden' }}>
         <Header />
         <main className="pt-20">
           {/* Hero Section */}
@@ -122,13 +123,28 @@ export default function PlayerOne() {
           </section>
 
           {/* Skills Section */}
-          <section className="py-24 bg-gray-100">
+          <section className="py-24 bg-gray-100" style={{ overflow: 'visible' }}>
   <div className="container mx-auto px-6 max-w-6xl">
     {/* Section Header */}
     <div className="text-center mb-16">
-      <h2 className="text-4xl font-extrabold text-gray-900 mb-4 font-heading text-section text-foreground">
-        Arsenal Unlocked
-      </h2>
+      <div className="relative inline-block mb-4">
+        <h2 className="text-4xl font-extrabold text-gray-900 font-heading text-section text-foreground inline-block" style={{ marginRight: 0, paddingRight: 0 }}>
+          Arsenal Unlocked
+        </h2>
+        <div style={{ position: 'absolute', left: '100%', top: '50%', transformOrigin: 'left center', transform: 'translateY(-50%) scale(0.5)', marginLeft: 0, paddingLeft: 0 }}>
+          <div style={{ width: 160, height: 140, position: 'relative', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+            <div
+              ref={anchorRef}
+              className="relative"
+              style={{ width: 96, height: 120 }}
+              onMouseEnter={() => cannonRef.current?.fire()}
+            />
+            <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', zIndex: 50 }}>
+              <CannonFlair ref={cannonRef} />
+            </div>
+          </div>
+        </div>
+      </div>
       <p className="text-xl text-gray-600 font-body">
         Core skills + specialist network when needed.
       </p>
@@ -148,14 +164,15 @@ export default function PlayerOne() {
     </div>
   </div>
 </section>
+{/* <BravooOriginStory/> */}
 
           {/* Story Section */}
           <section className="py-20 bg-background" style={{ position: 'relative', overflow: 'hidden' }}>
             <div className="container mx-auto px-6 max-w-4xl">
               <div className="text-center">
-                <h2 className="text-section text-foreground mb-8">
-                  The Bravoo Origin Story
-                </h2>
+                <span className="text-xs tracking-widest font-bold text-gray-500 uppercase mb-6 block">
+            ━━━ THE STORY BEHIND BRAVOO ━━━
+          </span>
                 <div className="text-lg text-muted-foreground space-y-6 max-w-3xl mx-auto leading-relaxed">
                   <p>
                     Started coding at 15. Built my first profitable app at 17. 
@@ -187,22 +204,7 @@ export default function PlayerOne() {
                     </Button>
                   </Link>
                 </div>
-                {/* CannonFlair at bottom center, no overflow */}
-                <div className="flex justify-center mt-10">
-                  <div
-                    style={{ width: 160, height: 140, position: 'relative', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
-                  >
-                    <div
-                      ref={anchorRef}
-                      className="relative"
-                      style={{ width: 96, height: 120 }}
-                      onMouseEnter={() => cannonRef.current?.fire()}
-                    />
-                    <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', pointerEvents: 'none', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', zIndex: 50 }}>
-                      <CannonFlair ref={cannonRef} />
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </section>
