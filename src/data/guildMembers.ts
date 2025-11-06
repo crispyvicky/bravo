@@ -70,6 +70,16 @@ export const guildMembers: GuildMember[] = [
     level: "Senior",
     linkedin: "https://www.linkedin.com/in/sanket-kedare-dev/",
   },
+  {
+    name: "Vinay kumar",
+    role: "Machine Learning Engineer",
+    company: "Machint Solutions",
+    avatar: "/guild/vinay.png",
+    status: "In Battle",
+    specialties: ["python", "django", "react"],
+    level: "Junior",
+    linkedin: "https://www.linkedin.com/in/kuppilivinaykumar/",
+  }
 ];
 
 

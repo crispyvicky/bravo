@@ -35,13 +35,13 @@ const HowItWorks = () => {
     <section className="common-padding">
       <div className="screen-max-width">
         {/* Animated Chip */}
-        <div id="chip" className="flex-center my-20 w-full">
-          <img src={chipImg} alt="Tech Chip" width={180} height={180} />
+        <div id="chip" className="flex-center my-4 w-full rounded-full ">
+          <img src={chipImg} alt="Tech Chip" width={100} height={100} />
         </div>
 
         {/* Title + Subtitle */}
         <div className="flex flex-col items-center text-center">
-          <h2 className="hiw-title">
+          <h2 className="hiw-title font-sixtyfour text-xl w-full">
             Powering the Future.<br />Crafted for Impact.
           </h2>
           {/* <p className="hiw-subtitle max-w-2xl">
@@ -50,23 +50,25 @@ const HowItWorks = () => {
         </div>
 
         {/* Video Showcase */}
-        <div className=" mt-10 ">
-          <div className="flex-center relative h-full">
-            <div className="overflow-hidden">
+        <div className=" mt-1 ">
+          <div className="hiw-stage">
+            <div className="hiw-frame z-10">
               <img
                 src={frameImg}
                 alt="Showcase Frame"
-                className="relative z-10 bg-transparent"
               />
             </div>
             <div className="hiw-video">
               <video
-                className="pointer-events-none"
+                className="w-full h-full object-cover pointer-events-none"
                 playsInline
-                preload="none"
+                preload="auto"
                 muted
                 loop
                 autoPlay
+                poster={frameImg}
+                disablePictureInPicture
+                controls={false}
                 ref={videoRef}
               >
                 <source src={frameVideo} type="video/mp4" />

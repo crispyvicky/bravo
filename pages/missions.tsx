@@ -140,7 +140,7 @@ export default function Missions() {
               <HowItWorks />
 
               {/* Custom Mission CTA */}
-              <div className="text-center mt-16">
+              <div className="text-center mt-1">
                 <div className="card-surface max-w-2xl mx-auto">
                   <h3 className="text-subsection text-foreground mb-4">Got a Different Mission?</h3>
                   <p className="text-body text-muted-foreground mb-6">
