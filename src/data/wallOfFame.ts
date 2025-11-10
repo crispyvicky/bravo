@@ -178,12 +178,20 @@ export const clients: WallClientTile[] = [
 
     },
     {
-      type: "industry",
-      name: "Construction",
+      type: "icon",
+      name: "bravoo skin care",
       gradient: "from-gray-100 to-gray-300",
-      tooltip: "Construction",
-      year: "2025"
+      tooltip: "skin care",
+      icon:"🧴"
+      ,
+      year: "2025",
+      visitUrl:"https://bravoo-salon.vercel.app/",
+      solution: "Developed a user-friendly website for a construction company." , 
+      challenge: "Low online presence and customer engagement.",
+      impact: "Increased web traffic by 60% and customer inquiries by 35%."
     },
+      ,
+    
     {
       type: "industry",
       name: "Agency",
