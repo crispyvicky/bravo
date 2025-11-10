@@ -190,14 +190,17 @@ export const clients: WallClientTile[] = [
       challenge: "Low online presence and customer engagement.",
       impact: "Increased web traffic by 60% and customer inquiries by 35%."
     },
-      ,
-    
     {
-      type: "industry",
-      name: "Agency",
+      type: "icon",
+      name: "bravoo-gym",
       gradient: "from-purple-100 to-purple-300",
-      tooltip: "Agency",
-      year: "2024"
+      tooltip: "gym management",
+      icon:"🏋️‍♂️",
+      year: "2024",
+      visitUrl:"https://bravoo-gym-x31l.vercel.app/",
+      solution: "Developed a comprehensive gym management system." ,
+      challenge: "Inefficient member management and scheduling.",
+      impact: "Streamlined operations, improving member satisfaction by 40%."
     },
     {
       type: "icon",
