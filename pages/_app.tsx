@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Ribbons
               colors={["#3b82f6", "#10b981", "#f59e0b", "#ef4444"]}
               speedMultiplier={0.5}
-              maxAge={600}
+              maxAge={220}
             />
           </div>
         )}

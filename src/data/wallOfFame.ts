@@ -47,7 +47,7 @@ export const clients: WallClientTile[] = [
       image: "/c/sai.png",
       tooltip: "wood carving website and cms",
       year: "2025",
-      visitUrl: "https://venkateshwara-cnc.vercel.app/",
+      visitUrl: "https://venkateshwaracnc.com/",
       meta: "CRM and CMS • 2025 • 12 weeks",
       challenge: "FROM MANUAL TO AUTOMATED BILLING DIGITIZATION.",
       solution: "CDN + autoscaling + DB shard.",

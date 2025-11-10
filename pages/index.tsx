@@ -53,7 +53,7 @@ export default function Index() {
             <Ribbons
               colors={["#3b82f6", "#10b981", "#f59e0b", "#ef4444"]}
               speedMultiplier={0.5}
-              maxAge={400}
+              maxAge={202}
             />
           </div>
           
