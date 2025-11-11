@@ -204,10 +204,15 @@ export const clients: WallClientTile[] = [
     },
     {
       type: "icon",
-      name: "Banking",
+      name: "interior design",
       icon: "🏦",
       tooltip: "Banking",
-      year: "2023"
+      visitUrl:"https://bravoo-interior.vercel.app/",
+      year: "2025",
+      challenge: "Outstanding customer service issues.",
+      
+      solution: "Implemented a customer service chatbot.",
+      impact: "Reduced customer complaints by 60%."
     },
     {
       type: "industry",
