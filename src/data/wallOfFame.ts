@@ -229,10 +229,14 @@ export const clients: WallClientTile[] = [
     },
     {
       type: "icon",
-      name: "B2B",
-      icon: "💼",
+      name: "kids education",
+      icon: "🎒",
       tooltip: "B2B Project",
-      year: "2024"
+      visitUrl:"https://bravoo-kidcare.vercel.app/",
+      year: "2024",
+      challenge: "Difficulty in managing student records and communication.",
+      solution: "Developed a centralized student management system.",
+      impact: "Improved administrative efficiency by 50%."
     },
     {
       type: "industry",
