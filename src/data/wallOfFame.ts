@@ -215,10 +215,16 @@ export const clients: WallClientTile[] = [
       impact: "Reduced customer complaints by 60%."
     },
     {
-      type: "industry",
-      name: "Travel",
+      type: "icon",
+      name: "restaurant",
       gradient: "from-blue-100 to-blue-300",
       tooltip: "Travel",
+      icon: "🍽️"  
+      ,
+            challenge: "Low customer satisfaction due to poor communication.",
+      solution: "Introduced a real-time order tracking system.",
+      impact: "Increased customer satisfaction scores by 35%.",
+      visitUrl:"https://bravoo-chickrn.vercel.app/",
       year: "2025"
     },
     {
