@@ -239,12 +239,19 @@ export const clients: WallClientTile[] = [
       impact: "Improved administrative efficiency by 50%."
     },
     {
-      type: "industry",
-      name: "Food",
+      type: "icon",
+      name: "travel agency",
       gradient: "from-red-100 to-red-300",
-      tooltip: "Food Delivery",
-      year: "2023"
+      icon: "✈️",
+      tooltip: "Travel Agency",
+
+      year: "2023",
+      visitUrl:"https://travel-mu-hazel.vercel.app/",
+      challenge: "Low online bookings and visibility.",
+      solution: "Redesigned website with SEO optimization.",
+      impact: "Increased online bookings by 45%."
     },
+  
     {
       type: "industry",
       name: "Entertainment",
