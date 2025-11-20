@@ -253,11 +253,17 @@ export const clients: WallClientTile[] = [
     },
   
     {
-      type: "industry",
-      name: "Entertainment",
+      type: "icon",
+      name: "food",
       gradient: "from-yellow-100 to-yellow-300",
-      tooltip: "Entertainment",
-      year: "2025"
+      tooltip: "Food Delivery",
+      icon: "🍔"
+      ,
+      year: "2025",
+      visitUrl:"https://sample-ammachetivanta.vercel.app/",
+      challenge: "Slow delivery times affecting customer satisfaction.",
+      solution: "Implemented an optimized delivery routing system.",
+      impact: "Reduced delivery times by 30%, boosting customer satisfaction."
     },
     {
       type: "industry",
