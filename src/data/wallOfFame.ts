@@ -266,10 +266,17 @@ export const clients: WallClientTile[] = [
       impact: "Reduced delivery times by 30%, boosting customer satisfaction."
     },
     {
-      type: "industry",
-      name: "Nonprofit",
+      type: "icon"
+      ,
+      icon: "🏢 "
+      , 
+      visitUrl:"https://sscd.vercel.app/",
+      name: "SSCD interiors",
       gradient: "from-green-100 to-green-300",
       tooltip: "Nonprofit",
+      challenge: "Inefficient operational processes.",
+      solution: "Developed a custom management software.",
+      impact: "Saved  efficiency and effectiveness.",
       year: "2024"
     },
     {
