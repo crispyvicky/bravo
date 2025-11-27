@@ -280,11 +280,17 @@ export const clients: WallClientTile[] = [
       year: "2024"
     },
     {
-      type: "industry",
-      name: "Government",
+      type: "icon",
+      name: "petcare",
       gradient: "from-gray-100 to-gray-300",
-      tooltip: "Government",
-      year: "2023"
+      tooltip: "petcare",
+      year: "2023",
+      visitUrl:"https://petcare-neon.vercel.app/",
+      icon:"🐶",
+      
+      challenge: "Inefficient operational processes.",
+      solution: "Developed a custom management software.",
+      impact: "Saved  efficiency and effectiveness."
     },
     {
       type: "industry",
