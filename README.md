@@ -38,6 +38,20 @@ Notes:
 
 **URL**: https://lovable.dev/projects/8f8b9942-81b2-4041-8062-4dadc08ba910
 
+## Blog Admin Console
+
+1. Configure `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_SESSION_TOKEN` in `.env`.
+2. Run the app and visit `/admin/blogs`.
+3. Log in with the configured credentials to create, edit, publish/unpublish, or delete blog posts.
+
+All blog data is stored in `data/blogs.json` and exposed through the following API routes:
+
+- `GET /api/blogs` – public feed used by the `/blog` page.
+- `POST /api/blogs` – create (admin only).
+- `GET /api/blogs/[slug]` – public detail page.
+- `PUT /api/blogs/[slug]` & `DELETE /api/blogs/[slug]` – update/delete (admin only).
+- `POST /api/admin/login|logout` and `GET /api/admin/session` – session endpoints.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
