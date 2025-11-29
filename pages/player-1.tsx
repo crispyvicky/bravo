@@ -123,7 +123,7 @@ export default function PlayerOne() {
           </section>
 
           {/* Skills Section */}
-          <section className="py-24 bg-gray-100" style={{ overflow: 'visible' }}>
+          <section className="py-24 bg-gray-100" style={{ position: 'relative' }}>
   <div className="container mx-auto px-6 max-w-6xl">
     {/* Section Header */}
     <div className="text-center mb-16">

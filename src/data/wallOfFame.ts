@@ -116,7 +116,7 @@ export const clients: WallClientTile[] = [
       icon: "🧑‍💼",
       tooltip: "EMPLOYEE MANAGEMENT SYSTEM",
       year: "2025",
-      visitUrl: "https://visiontech-employee-portal.vercel.app/login"
+      visitUrl: "https://VICKYEMS.vercel.app/login"
     },
     {
       type: "icon",

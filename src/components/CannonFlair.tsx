@@ -222,6 +222,7 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
         }}
       />
       <style jsx global>{`
+        .cannon-flair-root { overflow: visible !important; }
         .flair-wrapper { position: relative; overflow: visible; }
         .cannon { position: relative; z-index: 10; width: 64px; height: 64px; background-image: url('https://assets.codepen.io/16327/flair.png'); background-size: contain; background-repeat: no-repeat; background-position: center; pointer-events: auto; cursor: pointer; opacity: 1; }
         .flair-container { width: 100px; height: 100px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); overflow: visible; z-index: 20; }
