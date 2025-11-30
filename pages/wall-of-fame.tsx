@@ -57,7 +57,7 @@ export default function WallOfFame() {
           </div>
 
           {/* Client Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-6 max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 px-4">
+          <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-6 max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 px-4">
             {clients.map((client, idx) => (
               <button
                 key={idx}

@@ -6,35 +6,35 @@ const GameProcess = () => {
 
   const stages = [
     {
-      icon: <img src="/monalisa/_1.webp" alt="Discovery" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_1.webp" alt="Discovery" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Discovery",
       description: "Map out requirements & scope",
       xp: 100,
       progress: 18
     },
     {
-      icon: <img src="/monalisa/_2.webp" alt="Sprint Planning" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_2.webp" alt="Sprint Planning" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Sprint Planning",
       description: "Break down milestones",
       xp: 200,
       progress: 36
     },
     {
-      icon: <img src="/monalisa/_3.webp" alt="Development" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_3.webp" alt="Development" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Development",
       description: "Code, test, iterate weekly",
       xp: 500,
       progress: 68
     },
     {
-      icon: <img src="/monalisa/_4.webp" alt="Deployment" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_4.webp" alt="Deployment" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Deployment",
       description: "Launch & monitor",
       xp: 1000,
       progress: 90
     },
     {
-      icon: <img src="/monalisa/_6.webp" alt="Boss Battle Won" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl" />,
+      icon: <img src="/monalisa/_6.webp" alt="Boss Battle Won" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl" />,
       title: "Boss Battle Won",
       description: "Project delivered successfully",
       isAchievement: true,
