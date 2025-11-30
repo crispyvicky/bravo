@@ -3,13 +3,18 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const chipImg = "/apple/chip.jpeg";
-const frameImg = "/apple/frame.png";
-const frameVideo = "/apple/frame.mp4";
+const chipImg = "/apple/chip.webp";
+const frameImg = "/apple/frame.webp";
+const frameVideo = "/apple/frame.webm";
 import { animateWithGsap } from "../../utils/animations";
 
 const HowItWorks = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    console.error('Video load error:', e);
+    // Optionally, you can set a fallback image or handle the error
+  };
 
   useGSAP(() => {
     gsap.from("#chip", {
@@ -62,7 +67,7 @@ const HowItWorks = () => {
               <video
                 className="w-full h-full object-cover pointer-events-none"
                 playsInline
-                preload="auto"
+                preload="metadata"
                 muted
                 loop
                 autoPlay
@@ -70,8 +75,10 @@ const HowItWorks = () => {
                 disablePictureInPicture
                 controls={false}
                 ref={videoRef}
+                onError={handleVideoError}
               >
-                <source src={frameVideo} type="video/mp4" />
+                <source src={frameVideo} type="video/webm" />
+                Your browser does not support the video tag.
               </video>
             </div>
           </div>
@@ -84,10 +91,10 @@ const HowItWorks = () => {
         {/* Text Section */}
         <div className="hiw-text-container">
           {/* Left Block */}
-          
+
 
           {/* Right Block */}
-          
+
         </div>
       </div>
     </section>

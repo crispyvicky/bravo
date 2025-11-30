@@ -37,7 +37,7 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <StickerPeel
-              imageSrc="/logo/brlogo.png"
+              imageSrc="/logo/brlogo.webp"
               width={120}
               rotate={0}
               peelBackHoverPct={15}

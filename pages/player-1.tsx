@@ -90,7 +90,7 @@ export default function PlayerOne() {
                 <div className="lg:col-span-2 flex justify-center order-1 lg:order-2 mb-8 lg:mb-0">
                   <div className="card-surface max-w-80 w-full text-center">
                     <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-primary/20 to-success/20 flex items-center justify-center">
-                      <img src="founder/founder.png" alt="Founder" className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full object-cover" />
+                      <img src="founder/founder.webp" alt="Founder" className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full object-cover" />
                     </div>
 
                     <h3 className="text-xl sm:text-2xl font-bold mb-2 uppercase">

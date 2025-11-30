@@ -19,7 +19,7 @@ const ProblemSolution = () => {
                   T
                   {showImage && (
                     <img
-                      src="/landing-mi.png"
+                      src="/landing-mi.webp"
                       alt="Landing MI"
                       className="absolute top-0 left-0 w-8 h-8 z-10"
                     />

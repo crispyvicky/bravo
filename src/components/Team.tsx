@@ -10,7 +10,7 @@ const Team = () => {
           {/* Founder Card */}
           <div className="card-surface max-w-md mx-auto lg:mx-0 text-center">
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
-               <img src="/founder/founder.png" alt="Founder" className="w-24 h-24 rounded-full object-cover" />
+               <img src="/founder/founder.webp" alt="Founder" className="w-24 h-24 rounded-full object-cover" />
             </div>
             
             <h3 className="text-2xl font-bold  mb-2 uppercase ">

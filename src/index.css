@@ -428,7 +428,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: url('/scroll.png') no-repeat center;
+  background: url('/scroll.webp') no-repeat center;
   background-size: contain;
   border-radius: 30px;
 }

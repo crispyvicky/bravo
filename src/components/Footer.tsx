@@ -140,14 +140,17 @@ const Footer = () => {
               onMouseLeave={stopAudio}
               className=""
             >
-              <img
-                src="/GIF/RATT-unscreen.gif"
-                alt="RATT GIF"
+              <video
+                src="/GIF/RATT-unscreen.webm"
                 style={{
                   height: "200px",
                   width: "350px"
                 }}
                 className="m-auto"
+                autoPlay
+                loop
+                muted
+                playsInline
               />
             </div>
           </div>

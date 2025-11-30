@@ -32,7 +32,7 @@ export const clients: WallClientTile[] = [
     {
       type: "logo",
       name: "Sri Durga Interiors",
-      image: "/c/sridurga.png",
+      image: "/c/sridurga.webp",
       tooltip: "Sri Durga Interiors",
       year: "2025",
       visitUrl: "https://sridurgainteriors.vercel.app/",
@@ -44,7 +44,7 @@ export const clients: WallClientTile[] = [
     {
       type: "logo",
       name: "Venkateshwaracnc",
-      image: "/c/sai.png",
+      image: "/c/sai.webp",
       tooltip: "wood carving website and cms",
       year: "2025",
       visitUrl: "https://venkateshwaracnc.com/",

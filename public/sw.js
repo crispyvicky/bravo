@@ -2,8 +2,8 @@
 const CACHE_NAME = 'bravoo-v1';
 const urlsToCache = [
   '/',
-  '/logo/brlogo.png',
-  '/founder/founder.png',
+  '/logo/brlogo.webp',
+  '/founder/founder.webp',
   '/landing-mi.png',
   '/_next/static/css/',
   '/_next/static/chunks/framework',
@@ -24,6 +24,6 @@ self.addEventListener('fetch', (event) => {
         // Return cached version or fetch from network
         return response || fetch(event.request);
       }
-    )
+      )
   );
 });

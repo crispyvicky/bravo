@@ -48,7 +48,7 @@ export default function FlowerPath() {
       {/* Flower image that follows the path */}
       <img
         ref={flowerRef}
-        src="/FLOWER/C1.png"
+        src="/FLOWER/C1.webp"
         alt="flower"
         className="absolute w-12 h-12"
       />

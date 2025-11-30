@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     const companyName = "BRAVOO";
-    const logoPath = path.join(process.cwd(), "public", "logo", "brlogo.png");
+    const logoPath = path.join(process.cwd(), "public", "logo", "brlogo.webp");
 
     const mailOptions = {
         from: `"${companyName}" <${process.env.EMAIL_USER}>`,
@@ -61,7 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     `,
         attachments: [
             {
-                filename: "brlogo.png",
+                filename: "brlogo.webp",
                 path: logoPath,
                 cid: "logo", // same cid value as in the html img src
             },

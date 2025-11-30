@@ -9,9 +9,9 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Preload critical resources */}
-        <link rel="preload" href="/logo/brlogo.png" as="image" type="image/png" />
-        <link rel="preload" href="/founder/founder.png" as="image" type="image/png" />
-        <link rel="preload" href="/landing-mi.png" as="image" type="image/png" />
+        <link rel="preload" href="/logo/brlogo.webp" as="image" type="image/png" />
+        <link rel="preload" href="/founder/founder.webp" as="image" type="image/png" />
+        <link rel="preload" href="/landing-mi.webp" as="image" type="image/png" />
         
         {/* Preload critical fonts */}
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onLoad={(e) => { const link = e.currentTarget as HTMLLinkElement; link.onload = null; link.rel = 'stylesheet'; }} />
