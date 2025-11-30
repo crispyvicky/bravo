@@ -34,30 +34,30 @@ export default function WallOfFame() {
         <meta name="twitter:description" content="See our client success stories and completed projects across various industries." />
       </Head>
 
-      <div className="relative min-h-screen bg-background mt-8">
+      <div className="relative min-h-screen bg-background">
         {/* <Ribbons /> */}
         <Header />
-        <section id="wall-of-fame" className="pt-16 pb-12 px-4 md:px-6 lg:px-8 flex flex-col items-center">
+        <section id="wall-of-fame" className="pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 md:px-6 lg:px-8 flex flex-col items-center">
           {/* Header */}
-          <h2 className="text-section font-semibold text-foreground mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-section font-semibold text-foreground mb-3 sm:mb-4 text-center px-4">
             Clients Who Trusted the Quest
           </h2>
-          <p className="text-body text-muted-foreground text-center max-w-2xl mb-8 md:mb-12">
+          <p className="text-sm sm:text-base md:text-body text-muted-foreground text-center max-w-2xl mb-6 sm:mb-8 md:mb-12 px-4">
             Every project teaches us something new. Here are the teams we've had the honor to work with.
           </p>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 w-full max-w-md">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12 w-full max-w-md px-4">
             {stats.map(stat => (
               <div key={stat.label} className="flex flex-col items-center text-center">
-                <span className="font-semibold text-primary text-lg md:text-xl">{stat.value}</span>
+                <span className="font-semibold text-primary text-base sm:text-lg md:text-xl">{stat.value}</span>
                 <span className="text-muted-foreground text-xs md:text-sm">{stat.label}</span>
               </div>
             ))}
           </div>
 
           {/* Client Grid */}
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-6 xl:grid-cols-8 gap-3 md:gap-6 max-w-4xl mx-auto mb-8 md:mb-12">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 md:gap-6 max-w-4xl mx-auto mb-6 sm:mb-8 md:mb-12 px-4">
             {clients.map((client, idx) => (
               <button
                 key={idx}
@@ -73,16 +73,16 @@ export default function WallOfFame() {
               >
                 {/* Avatar */}
                 <span
-                  className="fame-avatar w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-24 xl:h-24 rounded-full border-2 border-border bg-background flex items-center justify-center shadow-sm overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-md"
+                  className="fame-avatar w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-24 xl:h-24 rounded-full border-2 border-border bg-background flex items-center justify-center shadow-sm overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-md"
                   style={{
-                    fontSize: client.type === "icon" ? "clamp(1.25rem, 2.5vw, 2rem)" : "clamp(0.75rem, 1.5vw, 1rem)",
+                    fontSize: client.type === "icon" ? "clamp(1rem, 2.5vw, 2rem)" : "clamp(0.65rem, 1.5vw, 1rem)",
                   }}
                 >
                   {client.type === "logo" && (
                     <img
                       src={client.image}
                       alt={client.name}
-                      className="w-12 h-9 md:w-16 md:h-12 lg:w-22 lg:h-18 xl:w-20 xl:h-15 object-contain"
+                      className="w-8 h-6 sm:w-12 sm:h-9 md:w-16 md:h-12 lg:w-22 lg:h-18 xl:w-20 xl:h-15 object-contain"
                     />
                   )}
                   {client.type === "icon" && (

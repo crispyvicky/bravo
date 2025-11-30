@@ -108,7 +108,7 @@ const Header = () => {
             onClick={closeMobileMenu}
           />
           {/* Menu */}
-          <div className="absolute top-20 left-0 right-0 bg-background border-b border-border p-6 animate-slide-in-up">
+          <div className="absolute top-20 left-0 right-0 bg-background border-b border-border p-6 animate-slide-in-up max-h-[calc(100vh-5rem)] overflow-y-auto">
             <nav className="flex flex-col space-y-4">
               <Link href="/missions" onClick={closeMobileMenu} className="nav-link">
                 Missions
@@ -121,6 +121,9 @@ const Header = () => {
               </Link>
               <Link href="/boss-fights" onClick={closeMobileMenu} className="nav-link">
                 Boss Fights
+              </Link>
+              <Link href="/wall-of-fame" onClick={closeMobileMenu} className="nav-link">
+                Wall of Fame
               </Link>
 
               {/* Start Quest Button in Mobile */}

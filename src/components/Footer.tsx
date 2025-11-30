@@ -101,18 +101,18 @@ const Footer = () => {
           alignItems: "start",
           justifyContent: "space-between",
           gap: 40
-        }}>
+        }} className="flex-col md:flex-row items-center md:items-start text-center md:text-left">
           {/* Brand */}
-          <div style={{ minWidth: 240 }}>
+          <div style={{ minWidth: 240 }} className="w-full md:w-auto">
             <h3 className="text-2xl font-bold" >
               Bravo<BravoO className="text-black" size={50}  /> ⚔️
             </h3>
             <p style={{ color: "#2563eb", fontWeight: 500, marginBottom: 8, fontSize: "1rem" }}>Build → Deploy → Win</p>
-            <p style={{ color: "#374151", fontSize: "0.95rem", maxWidth: 230 }}>From startup to enterprise, every quest deserves a legendary outcome.</p>
+            <p style={{ color: "#374151", fontSize: "0.95rem", maxWidth: 230, margin: "0 auto" }} className="md:mx-0">From startup to enterprise, every quest deserves a legendary outcome.</p>
           </div>
           {/* Navigation */}
-          <nav aria-label="Footer" style={{ flex: 1, minWidth: 180 }}>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 2 }}>
+          <nav aria-label="Footer" style={{ flex: 1, minWidth: 180 }} className="w-full md:w-auto">
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 2 }} className="flex flex-col md:block items-center md:items-start">
               <li><Link href="/missions" style={navLinkStyle}>Missions</Link></li>
               <li><Link href="/guild" style={navLinkStyle}>Guild</Link></li>
               <li><Link href="/wall-of-fame" style={navLinkStyle}>Wall of Fame</Link></li>
@@ -121,11 +121,11 @@ const Footer = () => {
             </ul>
           </nav>
           {/* Contact & Social */}
-          <div style={{ minWidth: 200 }}>
+          <div style={{ minWidth: 200 }} className="w-full md:w-auto flex flex-col items-center md:items-start">
             <div style={{ marginBottom: 16 }}>
               <a href="mailto:hello@bravoo.in" style={linkBold}>hello@bravoo.in</a>
             </div>
-            <div className="flex justify-center gap-5 ">
+            <div className="flex justify-center md:justify-start gap-5 ">
               <a aria-label="LinkedIn" href="#" style={iconStyle}>LinkedIn</a>
               <a aria-label="GitHub" href="#" style={iconStyle}>GitHub</a>
               <a aria-label="Discord" href="#" style={iconStyle}>Discord</a>
@@ -145,7 +145,7 @@ const Footer = () => {
                 alt="RATT GIF"
                 style={{
                   height: "200px",
-                  width: "350 px"
+                  width: "350px"
                 }}
                 className="m-auto"
               />
@@ -164,13 +164,13 @@ const Footer = () => {
           marginTop: 32,
           paddingTop: 18,
           gap: 16
-        }}>
+        }} className="flex-col md:flex-row items-center md:items-center justify-center md:justify-between text-center md:text-left">
           <div>
-            <span style={{ display: "flex", alignItems: "center", gap: "2px" }}>
+            <span style={{ display: "flex", alignItems: "center", gap: "2px", justifyContent: "center" }} className="md:justify-start">
               © 2025 Brav<BravoO size={14} />o — Built by Player 1
             </span>
           </div>
-          <div style={{ color: "#2563eb", display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ color: "#2563eb", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", justifyContent: "center" }} className="md:justify-start">
             <span>🎮 Level 21 Founder</span>
             <span style={{ margin: "0 12px" }}>•</span>
             <span>📍 India</span>

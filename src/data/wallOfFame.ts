@@ -301,7 +301,14 @@ export const clients: WallClientTile[] = [
       gradient: "from-blue-100 to-blue-300",
       tooltip: "Sports",
       year: "2025"
-    }
+    },
+    {
+      type: "industry",
+      name: "Sports",
+      gradient: "from-blue-100 to-blue-300",
+      tooltip: "Sports",
+      year: "2025"
+    },
     
     
   ];

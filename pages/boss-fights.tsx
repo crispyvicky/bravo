@@ -78,28 +78,28 @@ export default function BossFights() {
         <Header />
         <main className="pt-20">
           {/* Hero Section */}
-          <div className="flex justify-center mt-4">
-            <Link href="/wall-of-fame" className="text-blue-600 font-inter hover:underline text-lg">See All Wins (Wall of Fame)</Link>
+          <div className="flex justify-center mt-4 px-4">
+            <Link href="/wall-of-fame" className="text-blue-600 font-inter hover:underline text-sm sm:text-base md:text-lg">See All Wins (Wall of Fame)</Link>
           </div>
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-6 max-w-6xl">
-              <div className="text-center mb-16">
-                <h1 className="text-hero text-foreground mb-4 animate-fade-in">
+          <section className="py-12 md:py-20 bg-background">
+            <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+              <div className="text-center mb-8 md:mb-16">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-hero text-foreground mb-4 animate-fade-in">
                   Boss Fights Won
                 </h1>
-                <p className="text-xl text-muted-foreground animate-fade-in-delay">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground animate-fade-in-delay px-4 text-center">
                   Real battles. Real results. Real businesses saved.
                 </p>
               </div>
 
               {/* Metrics */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 md:mb-16">
                 {metrics.map((metric, index) => (
                   <div key={index} className="card-metric">
-                    <div className="text-2xl font-bold text-primary mb-1">
+                    <div className="text-xl sm:text-2xl font-bold text-primary mb-1">
                       {metric.value}
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-xs sm:text-sm text-muted-foreground">
                       {metric.label}
                     </div>
                   </div>
@@ -109,55 +109,55 @@ export default function BossFights() {
           </section>
 
           {/* Battle Stories */}
-          <section className="py-20 bg-muted">
-            <div className="container mx-auto px-6 max-w-6xl">
-              <div className="space-y-16">
+          <section className="py-12 md:py-20 bg-muted">
+            <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+              <div className="space-y-8 md:space-y-16">
                 {battles.map((battle, index) => (
                   <div
                     key={index}
-                    className={`grid lg:grid-cols-2 gap-12 items-center ${
+                    className={`grid lg:grid-cols-2 gap-6 md:gap-12 items-center ${
                       index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                     }`}
                   >
                     {/* Battle Image/Icon */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <div className="card-surface text-center py-16 bg-gradient-to-br from-primary/10 to-success/5">
-                        <div className="text-8xl mb-4">{battle.image}</div>
-                        <div className="text-lg font-semibold text-foreground mb-2">
+                      <div className="card-surface text-center py-8 sm:py-12 md:py-16 bg-gradient-to-br from-primary/10 to-success/5">
+                        <div className="text-5xl sm:text-6xl md:text-8xl mb-3 sm:mb-4">{battle.image}</div>
+                        <div className="text-base sm:text-lg font-semibold text-foreground mb-2">
                           {battle.client}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-xs sm:text-sm text-muted-foreground px-2">
                           {battle.timeline} • {battle.techStack.join(", ")}
                         </div>
                       </div>
                     </div>
 
                     {/* Battle Details */}
-                    <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                      <h3 className="text-subsection text-foreground mb-4">
+                    <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} text-center md:text-left`}>
+                      <h3 className="text-xl sm:text-2xl md:text-subsection text-foreground mb-3 sm:mb-4">
                         {battle.title}
                       </h3>
                       
-                      <div className="space-y-6">
+                      <div className="space-y-4 sm:space-y-6">
                         <div>
-                          <h4 className="font-semibold text-foreground mb-2">⚔️ The Challenge:</h4>
-                          <p className="text-body text-muted-foreground">
+                          <h4 className="text-sm sm:text-base font-semibold text-foreground mb-2">⚔️ The Challenge:</h4>
+                          <p className="text-sm sm:text-body text-muted-foreground">
                             {battle.challenge}
                           </p>
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-foreground mb-2">🧠 The Strategy:</h4>
-                          <p className="text-body text-muted-foreground">
+                          <h4 className="text-sm sm:text-base font-semibold text-foreground mb-2">🧠 The Strategy:</h4>
+                          <p className="text-sm sm:text-body text-muted-foreground">
                             {battle.strategy}
                           </p>
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-foreground mb-2">🏆 The Victory:</h4>
+                          <h4 className="text-sm sm:text-base font-semibold text-foreground mb-2">🏆 The Victory:</h4>
                           <ul className="space-y-2">
                             {battle.victory.map((result, i) => (
-                              <li key={i} className="flex items-center text-body text-muted-foreground">
+                              <li key={i} className="flex items-center justify-center md:justify-start text-sm sm:text-body text-muted-foreground">
                                 <span className="text-success mr-2">✓</span>
                                 {result}
                               </li>
@@ -173,10 +173,10 @@ export default function BossFights() {
           </section>
 
           {/* Client Testimonials */}
-          <section className="py-20 bg-background">
-            <div className="container mx-auto px-6 max-w-6xl">
-              <div className="text-center mb-12">
-                <h2 className="text-section text-foreground mb-4">
+          <section className="py-12 md:py-20 bg-background">
+            <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-2xl sm:text-3xl md:text-section text-foreground mb-4">
                   What Clients Say
                 </h2>
                 <p className="text-xl text-muted-foreground">
