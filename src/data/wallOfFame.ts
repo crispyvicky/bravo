@@ -79,17 +79,32 @@ export const clients: WallClientTile[] = [
     },
     {
       type: "icon",
-      name: "marketplace",
-      icon: "🛒",
-      gradient: "from-blue-100 to-blue-300",
-      tooltip: "sample",
-      year: "2023",
-      visitUrl: "https://sample-1-marketing-vicky.vercel.app/",
-      meta: "sample • 2025 • 8 weeks",
-      // challenge: "Manual data entry.",
-      // solution: "AI automation with error detection.",
-      // impact: "80% time saved; 95% fewer errors."
+      name: "Trendyvibez",
+      icon: "📈",
+      tooltip: "digital marketing",
+      year: "2025",
+      visitUrl:"https://trendyvibez.in/",
+      meta: "Digital Marketing • 2025 • 10 weeks",
+      challenge: "Inefficient marketing strategies.",
+      solution: "AI-driven analytics and targeted campaigns.",
+      impact: "Increased ROI by 50% and customer engagement by 70%."
+
     },
+    {
+      type: "icon",
+      name: "WAAW",
+      gradient: "from-yellow-100 to-yellow-300",
+      tooltip: "software solutions",
+      year: "2023",
+      meta: "Real Estate • 2023 • 16 weeks",
+      icon: "🏡",
+      challenge: "Attracting potential buyers in a saturated market.",
+      solution: "Developed a user-friendly website with virtual tours.",
+      impact: "Increased inquiries by 40% and sales by 25%.",
+      visitUrl:"https://waaw-theta.vercel.app/",
+
+    },
+   
     {
       type: "icon",
       name: "PAWCARE",
@@ -101,6 +116,19 @@ export const clients: WallClientTile[] = [
       challenge: "Crash on 30% orders.",
       solution: "RN rebuild with offline support.",
       impact: "4.8★ rating; 100K+ users."
+    },
+    {
+      type: "icon",
+      name: "marketplace",
+      icon: "🛒",
+      gradient: "from-blue-100 to-blue-300",
+      tooltip: "sample",
+      year: "2023",
+      visitUrl: "https://sample-1-marketing-vicky.vercel.app/",
+      meta: "sample • 2025 • 8 weeks",
+      // challenge: "Manual data entry.",
+      // solution: "AI automation with error detection.",
+      // impact: "80% time saved; 95% fewer errors."
     },
     {
       type: "icon",
@@ -139,19 +167,7 @@ export const clients: WallClientTile[] = [
       year: "2024",
       visitUrl:"https://weather-vicky.vercel.app/"
     },
-    {
-      type: "icon",
-      name: "trendyvibez",
-      icon: "📈",
-      tooltip: "digital marketing",
-      year: "2025",
-      visitUrl:"https://trendyvibez.in/",
-      meta: "Digital Marketing • 2025 • 10 weeks",
-      challenge: "Inefficient marketing strategies.",
-      solution: "AI-driven analytics and targeted campaigns.",
-      impact: "Increased ROI by 50% and customer engagement by 70%."
-
-    },
+   
     {
       type: "icon",
       name: "Startup",
@@ -163,20 +179,7 @@ export const clients: WallClientTile[] = [
       solution: "Designed a modern logo and cohesive branding materials.",
       impact: "Enhanced brand recognition and customer trust."
     },
-    {
-      type: "icon",
-      name: "RE",
-      gradient: "from-yellow-100 to-yellow-300",
-      tooltip: "software solutions",
-      year: "2023",
-      meta: "Real Estate • 2023 • 16 weeks",
-      icon: "🏡",
-      challenge: "Attracting potential buyers in a saturated market.",
-      solution: "Developed a user-friendly website with virtual tours.",
-      impact: "Increased inquiries by 40% and sales by 25%.",
-      visitUrl:"https://waaw-theta.vercel.app/",
-
-    },
+   
     {
       type: "icon",
       name: "bravoo skin care",
@@ -298,14 +301,7 @@ export const clients: WallClientTile[] = [
       gradient: "from-blue-100 to-blue-300",
       tooltip: "Sports",
       year: "2025"
-    },
-    {
-      type: "industry",
-      name: "Fashion",
-      gradient: "from-pink-100 to-pink-300",
-      tooltip: "Fashion",
-      year: "2024"
-    },
+    }
     
     
   ];

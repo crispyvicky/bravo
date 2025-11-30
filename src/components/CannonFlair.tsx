@@ -107,17 +107,17 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
           onUpdate: () => {
             // Clamp bullets to not cross footer line
             const maxLocalY = maxLocalYRef.current;
-            if (!isFinite(maxLocalY)) return;
+            if (!isFinite(maxLocalY) || maxLocalY <= 0) return;
             for (const b of bulletsRef.current) {
               const y = Number(gsap.getProperty(b, 'y')) || 0;
               if (y >= maxLocalY) {
                 if ((b as any).dataset && !(b as any).dataset.landed) {
                   gsap.set(b, { y: maxLocalY });
-                  // fade out and remove after landing
+                  // fade out quickly when hitting footer boundary
                   (b as any).dataset.landed = '1';
-                  gsap.to(b, { opacity: 0, duration: 0.35 });
+                  gsap.to(b, { opacity: 0, duration: 0.2 });
                 } else {
-                  gsap.set(b, { y: maxLocalY });
+                  gsap.set(b, { y: maxLocalY, opacity: 0 });
                 }
               }
             }
@@ -130,6 +130,18 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
     master.add(tl1, 0).add(tl2, 0);
     masterTlRef.current = master;
 
+    // Initialize host container for clipping
+    if (hostRef.current) {
+      hostRef.current.style.position = 'fixed';
+      hostRef.current.style.left = '0px';
+      hostRef.current.style.top = '0px';
+      hostRef.current.style.right = '0px';
+      hostRef.current.style.bottom = '0px';
+      hostRef.current.style.pointerEvents = 'none';
+      hostRef.current.style.zIndex = '9999';
+      hostRef.current.style.overflow = 'hidden';
+    }
+    
     // append to host
     if (hostRef.current && !hostRef.current.contains(root)) {
       hostRef.current.appendChild(root);
@@ -151,13 +163,25 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
       const footer = document.querySelector('footer') as HTMLElement | null;
       const footerViewportY = footer ? footer.getBoundingClientRect().top : window.innerHeight;
       const root = rootRef.current;
-      if (root) {
+      const host = hostRef.current;
+      
+      if (root && host) {
         const rootRect = root.getBoundingClientRect();
         // Clamp to the minimum of footer top (if visible) or viewport bottom
         const clampTo = Math.min(footerViewportY, window.innerHeight);
         const computed = clampTo - rootRect.top;
-        // If clamp is too close or negative, disable clamping so bullets are visible
-        maxLocalYRef.current = computed < 100 ? Infinity : computed;
+        // Set max Y for particles - always clamp to prevent going under footer
+        maxLocalYRef.current = computed > 50 ? computed - 20 : clampTo - rootRect.top - 20;
+        
+        // Update host container to clip at footer
+        host.style.position = 'fixed';
+        host.style.left = '0px';
+        host.style.top = '0px';
+        host.style.right = '0px';
+        host.style.bottom = `${window.innerHeight - clampTo}px`;
+        host.style.pointerEvents = 'none';
+        host.style.zIndex = '9999';
+        host.style.overflow = 'hidden';
       }
       const tl = masterTlRef.current;
       if (tl.isActive()) return; // don't retrigger while playing

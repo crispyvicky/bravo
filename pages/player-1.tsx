@@ -60,7 +60,7 @@ export default function PlayerOne() {
                   
                   <div className="text-xl text-muted-foreground space-y-4 mb-8 animate-fade-in-delay">
                     <p className="font-semibold">21-year-old founder. No BS, no middlemen.</p>
-                    <p>Direct access to me + allies from Google, Microsoft, Meta when needed.</p>
+                    <p>Direct access to me + allies from top tech companies when needed.</p>
                     <p>Built 15+ projects. Saved clients $2M+ vs agencies.</p>
                     <p className="font-medium">Your project gets my full focus.</p>
                   </div>
