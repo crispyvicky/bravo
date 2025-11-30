@@ -28,8 +28,9 @@ const Contact = () => {
 
     try {
       console.log("Form submission started:", formData);
-      
-      const response = await fetch("/api/whatsapp", {
+
+      // 1. Send to WhatsApp
+      const whatsappResponse = await fetch("/api/whatsapp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -42,16 +43,32 @@ const Contact = () => {
         })
       });
 
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
+      console.log("WhatsApp Response status:", whatsappResponse.status);
 
-      if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        console.error("API Error:", data);
+      if (!whatsappResponse.ok) {
+        const data = await whatsappResponse.json().catch(() => ({}));
+        console.error("WhatsApp API Error:", data);
         throw new Error(`${data?.error || "Failed to send message"}${data?.status ? ` (status ${data.status})` : ""}`);
       }
 
-      const responseData = await response.json();
+      // 2. Send Auto-reply Email (Fire and forget, or await if critical)
+      // We don't want to block the success message if email fails, but logging is good.
+      fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email
+        })
+      }).then(async (res) => {
+        if (!res.ok) {
+          console.error("Failed to send auto-reply email:", await res.json());
+        } else {
+          console.log("Auto-reply email sent successfully.");
+        }
+      }).catch(err => console.error("Error sending auto-reply email:", err));
+
+      const responseData = await whatsappResponse.json();
       console.log("Success response:", responseData);
 
       toast({
@@ -86,7 +103,7 @@ const Contact = () => {
           <h2 className="text-section text-foreground mb-4">
             Ready to Conquer Your Next Boss?
           </h2>
-          
+
           <p className="text-xl text-muted-foreground mb-12">
             Tell me about your mission and we'll craft the winning strategy.
           </p>
