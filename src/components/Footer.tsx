@@ -46,7 +46,7 @@ const Footer = () => {
 
   // Play / stop audio
   const playAudio = () => {
-    audioRef.current?.play().catch(() => {});
+    audioRef.current?.play().catch(() => { });
   };
 
   const stopAudio = () => {
@@ -105,7 +105,7 @@ const Footer = () => {
           {/* Brand */}
           <div style={{ minWidth: 240 }} className="w-full md:w-auto">
             <h3 className="text-2xl font-bold" >
-              Bravo<BravoO className="text-black" size={50}  /> ⚔️
+              Bravo<BravoO className="text-black" size={50} /> ⚔️
             </h3>
             <p style={{ color: "#2563eb", fontWeight: 500, marginBottom: 8, fontSize: "1rem" }}>Build → Deploy → Win</p>
             <p style={{ color: "#374151", fontSize: "0.95rem", maxWidth: 230, margin: "0 auto" }} className="md:mx-0">From startup to enterprise, every quest deserves a legendary outcome.</p>
@@ -123,7 +123,7 @@ const Footer = () => {
           {/* Contact & Social */}
           <div style={{ minWidth: 200 }} className="w-full md:w-auto flex flex-col items-center md:items-start">
             <div style={{ marginBottom: 16 }}>
-              <a href="mailto:hello@bravoo.in" style={linkBold}>hello@bravoo.in</a>
+              <a href="mailto:bravoo.guild@gmail.com" style={linkBold}>bravoo.guild@gmail.com</a>
             </div>
             <div className="flex justify-center md:justify-start gap-5 ">
               <a aria-label="LinkedIn" href="#" style={iconStyle}>LinkedIn</a>
@@ -176,7 +176,7 @@ const Footer = () => {
             <span>📍 India</span>
             <span style={{ margin: "0 12px" }}>•</span>
             <span>{randomStatus}</span>
-            
+
           </div>
           <div>
             <Link href="/privacy" style={linkStyle}>Privacy</Link>

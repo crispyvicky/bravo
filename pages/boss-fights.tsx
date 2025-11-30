@@ -29,7 +29,7 @@ export default function BossFights() {
       techStack: ["React", "Node.js", "Redis", "AWS CloudFront"]
     },
     {
-      title: "Slayed the Manual Task Beast", 
+      title: "Slayed the Manual Task Beast",
       client: "Healthcare Network",
       challenge: "Staff spending 40 hours/week on data entry, causing burnout and errors.",
       strategy: "AI-powered automation with error detection and smart routing.",
@@ -45,14 +45,14 @@ export default function BossFights() {
       strategy: "Complete rebuild with React Native, real-time tracking, and offline support.",
       victory: ["4.8-star rating", "100K+ active users", "Series A funding secured"],
       image: "🍕",
-      timeline: "20 weeks", 
+      timeline: "20 weeks",
       techStack: ["React Native", "Node.js", "Socket.io", "MongoDB"]
     }
   ];
 
   const metrics = [
     { value: "15+", label: "Boss Fights Won" },
-    { value: "$2M+", label: "Client Savings" },
+    { value: "1M+", label: "Client Savings" },
     { value: "100%", label: "Mission Success Rate" },
     { value: "24hr", label: "Average Response Time" }
   ];
@@ -61,16 +61,16 @@ export default function BossFights() {
     <>
       <Head>
         <title>Boss Fights Won - Real Client Success Stories | Bravoo</title>
-        <meta name="description" content="See real battles won: Legacy system modernization, scale challenges, automation solutions, and mobile app rebuilds. $2M+ in client savings achieved." />
+        <meta name="description" content="See real battles won: Legacy system modernization, scale challenges, automation solutions, and mobile app rebuilds. $1M+ in client savings achieved." />
         <meta name="keywords" content="client success stories, case studies, legacy modernization, scaling solutions, mobile app development, automation" />
         <link rel="canonical" href="https://bravoo.in/boss-fights" />
         <meta property="og:title" content="Boss Fights Won - Real Client Success Stories" />
-        <meta property="og:description" content="See real battles won with $2M+ in client savings and 100% success rate." />
+        <meta property="og:description" content="See real battles won with $1M+ in client savings and 100% success rate." />
         <meta property="og:url" content="https://bravoo.in/boss-fights" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Boss Fights Won - Real Client Success Stories" />
-        <meta name="twitter:description" content="See real battles won with $2M+ in client savings and 100% success rate." />
+        <meta name="twitter:description" content="See real battles won with $1M+ in client savings and 100% success rate." />
       </Head>
 
       <div className="relative min-h-screen bg-background">
@@ -115,9 +115,8 @@ export default function BossFights() {
                 {battles.map((battle, index) => (
                   <div
                     key={index}
-                    className={`grid lg:grid-cols-2 gap-6 md:gap-12 items-center ${
-                      index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                    }`}
+                    className={`grid lg:grid-cols-2 gap-6 md:gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                      }`}
                   >
                     {/* Battle Image/Icon */}
                     <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -137,7 +136,7 @@ export default function BossFights() {
                       <h3 className="text-xl sm:text-2xl md:text-subsection text-foreground mb-3 sm:mb-4">
                         {battle.title}
                       </h3>
-                      
+
                       <div className="space-y-4 sm:space-y-6">
                         <div>
                           <h4 className="text-sm sm:text-base font-semibold text-foreground mb-2">⚔️ The Challenge:</h4>
@@ -188,8 +187,8 @@ export default function BossFights() {
                 <div className="card-surface">
                   <div className="text-4xl mb-4">💬</div>
                   <p className="text-body text-muted-foreground mb-4 italics">
-                    "Vignesh saved our company. Our legacy system was killing us, and agencies 
-                    wanted $500K+ for a complete rewrite. He modernized it piece by piece with 
+                    "Vignesh saved our company. Our legacy system was killing us, and agencies
+                    wanted $500K+ for a complete rewrite. He modernized it piece by piece with
                     zero downtime. Absolute game-changer."
                   </p>
                   <div className="font-semibold text-foreground">
@@ -200,8 +199,8 @@ export default function BossFights() {
                 <div className="card-surface">
                   <div className="text-4xl mb-4">⭐</div>
                   <p className="text-body text-muted-foreground mb-4 italic">
-                    "Finally, a developer who actually talks to you. No account managers, 
-                    no endless meetings. Just results. Our app went from 1-star to 4.8 stars 
+                    "Finally, a developer who actually talks to you. No account managers,
+                    no endless meetings. Just results. Our app went from 1-star to 4.8 stars
                     in 4 months after his team took over the project and built it from scratch."
                   </p>
                   <div className="font-semibold text-foreground">
@@ -222,7 +221,7 @@ export default function BossFights() {
                 <p className="text-xl text-muted-foreground mb-8">
                   Every project has a final boss. Let's defeat yours together.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/start-quest">
                     <Button className="btn-hero">

@@ -6,35 +6,35 @@ const GameProcess = () => {
 
   const stages = [
     {
-      icon: <img src="/monalisa/_1.png" alt="Discovery" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_1.png" alt="Discovery" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Discovery",
       description: "Map out requirements & scope",
       xp: 100,
       progress: 18
     },
     {
-      icon: <img src="/monalisa/_2.png" alt="Sprint Planning" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
-      title: "Sprint Planning", 
+      icon: <img src="/monalisa/_2.png" alt="Sprint Planning" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      title: "Sprint Planning",
       description: "Break down milestones",
       xp: 200,
       progress: 36
     },
     {
-      icon: <img src="/monalisa/_3.png" alt="Development" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_3.png" alt="Development" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Development",
       description: "Code, test, iterate weekly",
       xp: 500,
       progress: 68
     },
     {
-      icon: <img src="/monalisa/_4.png" alt="Deployment" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
+      icon: <img src="/monalisa/_4.png" alt="Deployment" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24" />,
       title: "Deployment",
       description: "Launch & monitor",
       xp: 1000,
       progress: 90
     },
     {
-      icon: <img src="/monalisa/_6.png" alt="Boss Battle Won" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl" />,
+      icon: <img src="/monalisa/_6.png" alt="Boss Battle Won" className="w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-xl" />,
       title: "Boss Battle Won",
       description: "Project delivered successfully",
       isAchievement: true,
@@ -84,36 +84,33 @@ const GameProcess = () => {
           {stages.map((stage, index) => (
             <div
               key={index}
-              className={`card-surface text-center transition-all duration-500 ${
-                visibleStages[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              } ${stage.isAchievement ? "border-warning bg-warning/5" : ""}`}
-              style={{ minHeight: '300px', padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+              className={`card-surface text-center transition-all duration-500 p-4 md:p-6 min-h-[220px] md:min-h-[300px] m-4 md:m-0 flex flex-col justify-between ${visibleStages[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                } ${stage.isAchievement ? "border-warning bg-warning/5" : ""}`}
             >
               <div className="text-4xl mb-4 flex justify-center">{stage.icon}</div>
-              
+
               <h3 className="font-semibold text-lg mb-2 text-foreground">
                 {stage.title}
               </h3>
-              
+
               <p className="text-sm text-muted-foreground mb-4">
                 {stage.description}
               </p>
 
               {/* Progress Bar */}
-              <div className="progress-bar mb-4">
-                <div 
-                  className={`progress-fill transition-all duration-800 ease-out ${
-                    visibleStages[index] ? "w-full" : "w-0"
-                  }`}
-                  style={{ 
+              {/* <div className="progress-bar mb-4">
+                <div
+                  className={`progress-fill transition-all duration-800 ease-out ${visibleStages[index] ? "w-full" : "w-0"
+                    }`}
+                  style={{
                     width: visibleStages[index] ? `${stage.progress}%` : "0%",
                     transitionDelay: `${index * 0.2}s`
                   }}
                 />
-              </div>
+              </div> */}
 
               {/* XP or Achievement Badge */}
-              {stage.isAchievement ? (
+              {/* {stage.isAchievement ? (
                 <div className="achievement-badge">
                   Achievement Unlocked!
                 </div>
@@ -121,7 +118,7 @@ const GameProcess = () => {
                 <div className="xp-badge">
                   +{stage.xp} XP
                 </div>
-              )}
+              )} */}
             </div>
           ))}
         </div>
