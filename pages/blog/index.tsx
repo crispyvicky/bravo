@@ -71,7 +71,7 @@ export default function Blogs({ blogPosts }: BlogsProps) {
             <section className="blogs-hero" style={{ textAlign: 'center', marginBottom: '64px', position: 'relative' }}>
               <h1
                 className="blogs-title font-inter font-bold"
-                style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '24px', background: 'linear-gradient(135deg, #2563eb, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', cursor: 'default' }}
+                style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: 1.8, letterSpacing: '-0.02em', marginBottom: '24px', background: 'linear-gradient(135deg, #2563eb, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', cursor: 'default' }}
                 onDoubleClick={() => router.push('/admin/blogs')}
                 title=""
               >

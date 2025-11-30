@@ -64,7 +64,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
                 color: '#2563eb', 
                 display: 'inline-block', 
                 marginBottom: '24px', 
-                marginTop: '8px',
+                marginTop: '12px',
                 textDecoration: 'none', 
                 fontSize: '0.95rem', 
                 fontWeight: 500, 
