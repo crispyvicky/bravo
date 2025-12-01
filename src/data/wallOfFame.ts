@@ -308,10 +308,12 @@ export const clients: WallClientTile[] = [
     impact: "Saved  efficiency and effectiveness."
   },
   {
-    type: "industry",
-    name: "Sports",
+    type: "icon",
+    name: " DUCK game",
     gradient: "from-blue-100 to-blue-300",
     tooltip: "Sports",
+    icon: "🎮",
+    visitUrl: "https://bravooduck.vercel.app/",
     year: "2025"
   },
  
