@@ -90,6 +90,19 @@ export const clients: WallClientTile[] = [
     meta: "IT Services • 2024 • 14 weeks",
   },
   {
+    type:"icon",
+    name:"3d-portfolio",
+   
+    visitUrl:"https://3dbravoo.vercel.app/",
+    solution:"",
+    impact:"high end portfolio",
+    icon:"🖋️",
+    tooltip:"3d portfolio",
+    year:"2025",
+    meta:"",
+    challenge:"",
+  },
+  {
     type: "icon",
     name: "Trendyvibez",
     icon: "📈",
@@ -113,7 +126,7 @@ export const clients: WallClientTile[] = [
     challenge: "Attracting potential buyers in a saturated market.",
     solution: "Developed a user-friendly website with virtual tours.",
     impact: "Increased inquiries by 40% and sales by 25%.",
-    visitUrl: "https://waaw-theta.vercel.app/",
+    visitUrl: "https://waaw.world",
 
   },
 
