@@ -14,31 +14,31 @@ export default function Missions() {
       icon: "🖥",
       title: "Web Apps",
       description: "Your base camp for growth",
-      price: "$10K-50K",
-      timeline: "8-24 weeks",
+      price: "₹10K-50K",
+      timeline: "5 weeks",
       features: ["React/Next.js", "Database Design", "API Development", "Deployment"]
     },
     {
       icon: "📱",
       title: "Mobile Apps",
       description: "Reach players everywhere",
-      price: "$15K-75K",
-      timeline: "12-36 weeks",
+      price: "₹15K-75K",
+      timeline: "12 weeks",
       features: ["React Native", "iOS & Android", "Push Notifications", "App Store Deploy"]
     },
     {
       icon: "🤖",
       title: "AI/ML",
       description: "Smarter decisions, faster",
-      price: "$8K-40K",
-      timeline: "6-20 weeks",
+      price: "₹8K-4L",
+      timeline: "6 weeks",
       features: ["Machine Learning", "AI Integration", "Data Analysis", "Automation"]
     },
     {
       icon: "☁️",
       title: "Cloud",
       description: "Scale without limits",
-      price: "$5K-30K",
+      price: "₹5K-30K",
       timeline: "4-16 weeks",
       features: ["AWS/Azure Setup", "Auto Scaling", "Load Balancing", "Monitoring"]
     },
@@ -46,7 +46,7 @@ export default function Missions() {
       icon: "⚙️",
       title: "Automation",
       description: "Free up time",
-      price: "$3K-20K",
+      price: "₹3K-20K",
       timeline: "2-12 weeks",
       features: ["Workflow Automation", "API Integration", "Task Scheduling", "Monitoring"]
     },
@@ -54,7 +54,7 @@ export default function Missions() {
       icon: "🎨",
       title: "UI/UX",
       description: "Design your world",
-      price: "$4K-25K",
+      price: "₹4K-25K",
       timeline: "3-15 weeks",
       features: ["User Research", "Design System", "Prototyping", "User Testing"]
     }

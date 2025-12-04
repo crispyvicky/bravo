@@ -103,6 +103,18 @@ export const clients: WallClientTile[] = [
     challenge:"",
   },
   {
+    type:"icon",
+    name:"brvooecom",
+    icon:"🛍️",
+    tooltip:"bravooecom",
+    year:"2025",
+    visitUrl:"https://vcommerce-gamma.vercel.app/",
+    meta:"ecommerce • 2025 • 10 weeks",
+    challenge:"made the local store  digital",
+    solution:"created a ecom website with nextjs and tailwindcss",
+    impact:"increased the sales by 50%",
+  },
+  {
     type: "icon",
     name: "Trendyvibez",
     icon: "📈",
