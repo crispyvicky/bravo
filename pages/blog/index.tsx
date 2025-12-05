@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { BlogPost } from '@/types/blog';
 import { getAllBlogs } from '@/utils/blogService';
+import { format } from 'date-fns';
 // import Ribbons from '@/components/ribbons';
 
 interface BlogsProps {
@@ -63,7 +64,7 @@ export default function Blogs({ blogPosts }: BlogsProps) {
       </Head>
 
       <div className="relative min-h-screen bg-background">
-       {/* <Ribbons /> */}
+        {/* <Ribbons /> */}
         <Header />
         <main className="blogs-page" style={{ background: '#fff', color: '#1f2937', padding: '64px 0' }}>
           <div className="blogs-container" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
@@ -97,7 +98,9 @@ export default function Blogs({ blogPosts }: BlogsProps) {
                       </div>
                       <div className="blog-content">
                         <div className="blog-meta" style={{ marginBottom: '16px' }}>
-                          <span className="blog-date font-inter" style={{ fontSize: '0.875rem', color: '#6b7280' }}>{new Date(post.date).toLocaleDateString()}</span>
+                          <span className="blog-date font-inter" style={{ fontSize: '0.875rem', color: '#6b7280' }}>
+                            {format(new Date(post.date), 'MMMM d, yyyy')}
+                          </span>
                           <span className="blog-read-time font-inter" style={{ fontSize: '0.875rem', color: '#6b7280', marginLeft: '16px' }}>{post.readTime}</span>
                         </div>
                         <h2 className="blog-post-title font-inter font-semibold" style={{ fontSize: '1.5rem', lineHeight: 1.4, marginBottom: '16px', color: '#1f2937' }}>
