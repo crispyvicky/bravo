@@ -169,6 +169,19 @@ export const clients: WallClientTile[] = [
   },
   {
     type: "icon",
+    name: "marketing website",
+    icon: "📊",
+    tooltip: "marketing website",
+    year: "2023",
+    visitUrl: "https://bravo-marketing-hub.vercel.app/",
+    meta: "Marketing • 2025 • 12 weeks",
+    challenge: "Low online visibility and lead generation.",
+    solution: "SEO optimization and targeted ad campaigns.",
+
+  },
+
+  {
+    type: "icon",
     name: "SaaS",
     icon: "💻",
     tooltip: "sample",
