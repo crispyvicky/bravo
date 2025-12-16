@@ -323,7 +323,7 @@ export const clients: WallClientTile[] = [
     ,
     icon: "🏢 "
     ,
-    visitUrl: "https://sscd.vercel.app/",
+    visitUrl: "https://sscdinteriors.in/",
     name: "SSCD interiors",
     gradient: "from-green-100 to-green-300",
     tooltip: "Nonprofit",
