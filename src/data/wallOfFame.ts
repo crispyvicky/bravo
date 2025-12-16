@@ -141,6 +141,18 @@ export const clients: WallClientTile[] = [
     visitUrl: "https://waaw.world",
 
   },
+  {
+    type: "icon",
+    name: "DOG-O-CARE",
+    icon: "🐾",
+    tooltip: "DOG-O-CARE ",
+    year: "2025",
+    visitUrl: "https://dog-o-care.vercel.app/",
+    meta: "Web App • 2025 • 1 week",
+    challenge: "Crash on 30% orders.",
+    solution: "booking for slots and whatsapp api integration",
+    impact: "high engagement website with a modern design and smooth animations."
+  },
 
   {
     type: "icon",
