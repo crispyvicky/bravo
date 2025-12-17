@@ -29,30 +29,7 @@ export const stats: WallStat[] = [
   { label: "Repeat Client Rate", value: "89%" },
 ];
 export const clients: WallClientTile[] = [
-  {
-    type: "logo",
-    name: "Sri Durga Interiors",
-    image: "/c/sridurga.webp",
-    tooltip: "Sri Durga Interiors",
-    year: "2025",
-    visitUrl: "https://sridurgainteriors.vercel.app/",
-    meta: "Interior Design • Q2 2025 •",
-    challenge: "Needed A stunning website for their business.",
-    solution: "React + Node.js with whatsapp integration",
-    impact: "Launched to 1,000+ beta users; secured Series A."
-  },
-  {
-    type: "logo",
-    name: "Venkateshwaracnc",
-    image: "/c/sai.webp",
-    tooltip: "wood carving website and cms",
-    year: "2025",
-    visitUrl: "https://venkateshwaracnc.com/",
-    meta: "CRM and CMS • 2025 • 12 weeks",
-    challenge: "FROM MANUAL TO AUTOMATED BILLING DIGITIZATION.",
-    solution: "CDN + autoscaling + DB shard.",
-    impact: "TRUSTED BY 100+ CLIENTS AND INCREASED SALES BY 30%."
-  },
+
   {
     type: "icon",
     name: "bravoo",
@@ -101,6 +78,30 @@ export const clients: WallClientTile[] = [
     year:"2025",
     meta:"",
     challenge:"",
+  },
+    {
+    type: "logo",
+    name: "Sri Durga Interiors",
+    image: "/c/sridurga.webp",
+    tooltip: "Sri Durga Interiors",
+    year: "2025",
+    visitUrl: "https://sridurgainteriors.vercel.app/",
+    meta: "Interior Design • Q2 2025 •",
+    challenge: "Needed A stunning website for their business.",
+    solution: "React + Node.js with whatsapp integration",
+    impact: "Launched to 1,000+ beta users; secured Series A."
+  },
+  {
+    type: "logo",
+    name: "Venkateshwaracnc",
+    image: "/c/sai.webp",
+    tooltip: "wood carving website and cms",
+    year: "2025",
+    visitUrl: "https://venkateshwaracnc.com/",
+    meta: "CRM and CMS • 2025 • 12 weeks",
+    challenge: "FROM MANUAL TO AUTOMATED BILLING DIGITIZATION.",
+    solution: "CDN + autoscaling + DB shard.",
+    impact: "TRUSTED BY 100+ CLIENTS AND INCREASED SALES BY 30%."
   },
   {
     type:"icon",
