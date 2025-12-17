@@ -61,7 +61,7 @@ const Hero = () => {
             <Button
               onClick={() => scrollToSection("process")}
               variant="outline"
-              className="border-2 border-blue-100 text-blue-700 hover:bg-blue-50 font-bold py-4 px-8 rounded-full transition-all duration-300"
+              className="border-2 border-blue-100 text-blue-800 hover:text-white font-bold py-4 px-8 rounded-full transition-all duration-300"
             >
               View Process
             </Button>
