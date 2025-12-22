@@ -79,6 +79,18 @@ export const clients: WallClientTile[] = [
     meta:"",
     challenge:"",
   },
+  {
+    type:"icon",
+    name:"sample portfolio",
+    icon:"🖋️",
+    tooltip:"sample portfolio",
+    year:"2025",
+    visitUrl:"https://portfolio-1-phi-rose.vercel.app/",
+    meta:"portfolio • 2025 • 10 weeks",
+    challenge:"",
+    solution:"",
+    impact:"website with good ui and animations",
+  },
     {
     type: "logo",
     name: "Sri Durga Interiors",
