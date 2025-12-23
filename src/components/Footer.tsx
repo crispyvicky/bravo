@@ -176,7 +176,14 @@ const Footer = () => {
           <div style={{ color: "#2563eb", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", justifyContent: "center" }} className="md:justify-start">
             <span>🎮 Level 21 Founder</span>
             <span style={{ margin: "0 12px" }}>•</span>
-            <span>📍 India</span>
+            <a
+              href="https://www.google.com/maps/place/BRAVOO/@17.5261667,78.4114469,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8f71c8550915:0xa66908970dde3452!8m2!3d17.5261667!4d78.4140218!16s%2Fg%2F11xw8pqtg1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: "4px", color: "#2563eb", textDecoration: "none" }}
+            >
+              <span>📍 Hyderabad, India</span>
+            </a>
             <span style={{ margin: "0 12px" }}>•</span>
             <span>{randomStatus}</span>
 
