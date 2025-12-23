@@ -140,6 +140,18 @@ export const clients: WallClientTile[] = [
     impact:"increased the sales by 50%",
   },
   {
+    type:"icon",
+    name:"keyboard-portfolio",
+    icon:"⌨️",
+    tooltip:"keyboard portfolio",
+    year:"2025",
+    visitUrl:"https://portfolio-keyboard.vercel.app/",
+    meta:"portfolio • 2025 • 10 weeks",
+    challenge:"",
+    solution:"spline + nextjs + tailwindcss",
+    impact:"",
+  },
+  {
     type: "icon",
     name: "Trendyvibez",
     icon: "📈",
