@@ -103,6 +103,18 @@ export const clients: WallClientTile[] = [
     solution:"",
     impact:"website with good ui and animations",
   },
+   {
+    type: "icon",
+    name: "interior design",
+    icon: "🏦",
+    tooltip: "Banking",
+    visitUrl: "https://bravoo-interior.vercel.app/",
+    year: "2025",
+    challenge: "Outstanding customer service issues.",
+
+    solution: "Implemented a customer service chatbot.",
+    impact: "Reduced customer complaints by 60%."
+  },
     {
     type: "logo",
     name: "Sri Durga Interiors",
@@ -304,18 +316,7 @@ export const clients: WallClientTile[] = [
     challenge: "Inefficient member management and scheduling.",
     impact: "Streamlined operations, improving member satisfaction by 40%."
   },
-  {
-    type: "icon",
-    name: "interior design",
-    icon: "🏦",
-    tooltip: "Banking",
-    visitUrl: "https://bravoo-interior.vercel.app/",
-    year: "2025",
-    challenge: "Outstanding customer service issues.",
-
-    solution: "Implemented a customer service chatbot.",
-    impact: "Reduced customer complaints by 60%."
-  },
+ 
   {
     type: "icon",
     name: "restaurant",
