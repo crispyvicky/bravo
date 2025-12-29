@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChatWindow } from "./chat/ChatWindow";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, X, Sparkles } from "lucide-react";
+import { MessageSquare, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -39,10 +39,10 @@ export default function ChatWidget() {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     className={cn(
-                        "relative flex h-14 w-14 items-center justify-center rounded-full shadow-2xl transition-all duration-300",
+                        "relative flex h-14 w-14 items-center justify-center rounded-full shadow-2xl transition-all duration-300 border border-white/10",
                         isOpen
-                            ? "bg-red-500 rotate-90"
-                            : "bg-gradient-to-tr from-indigo-600 to-violet-600 hover:shadow-indigo-500/50"
+                            ? "bg-zinc-800 rotate-90"
+                            : "bg-black hover:bg-zinc-900"
                     )}
                 >
                     <AnimatePresence mode="wait">
@@ -63,10 +63,10 @@ export default function ChatWidget() {
                                 exit={{ opacity: 0, rotate: -90 }}
                                 className="relative"
                             >
-                                <MessageCircle className="h-7 w-7 text-white" />
+                                <MessageSquare className="h-7 w-7 text-white" />
                                 <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                                 </span>
                             </motion.div>
                         )}
