@@ -14,6 +14,7 @@ const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => ({
 
 // Render ribbons on all pages except the home page - only on desktop with mouse
 const Ribbons = dynamic(() => import("@/components/ribbons"), { ssr: false });
+const ChatWidget = dynamic(() => import("@/components/ChatWidget"), { ssr: false });
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
             />
           </div>
         )}
+        <ChatWidget />
         <Component {...pageProps} />
         <Analytics />
       </TooltipProvider>
