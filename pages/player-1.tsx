@@ -173,7 +173,7 @@ export default function PlayerOne() {
                 <span className="text-xs tracking-widest font-bold text-gray-500 uppercase mb-4 md:mb-6 block">
                   ━━━ THE STORY BEHIND BRAVOO ━━━
                 </span>
-                <div className="text-base sm:text-lg text-muted-foreground space-y-4 md:space-y-6 max-w-3xl mx-auto leading-relaxed">
+                <div className="text-base sm:text-lg text-muted-foreground space-y-4 md:space-y-6 max-w-3xl mx-auto leading-relaxed" style={{ backgroundImage: 'url(/path.svg)', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
                   <p>
                     Started coding at 15. Built my first profitable app at 17.
                     Worked with startups that burned through $100K+ on bloated agencies.
