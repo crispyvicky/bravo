@@ -13,8 +13,7 @@ export interface CannonFlairHandle {
 }
 
 const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const hostRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const cannonRef = useRef<HTMLDivElement | null>(null);
   const bulletsContainerRef = useRef<HTMLDivElement | null>(null);
   const bulletsRef = useRef<HTMLDivElement[]>([]);
@@ -28,6 +27,7 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
     const bullets = bulletsRef.current;
     // create missing bullets up to BULLET_COUNT
     for (let i = bullets.length; i < BULLET_COUNT; i++) {
+      // User's CSS has 2-35. We match this logic.
       const className = 'flair--' + gsap.utils.random(2, 35, 1);
       const b = document.createElement('div');
       b.setAttribute('class', `flair flair-bullet ${className}`);
@@ -41,32 +41,44 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
     }
   };
 
-  // build DOM and timelines once
+  // build DOM and timelines
   useEffect(() => {
-    const root = document.createElement('div');
-    root.className = 'flair-wrapper';
-    root.style.position = 'absolute';
+    // 1. Setup local wrapper (Cannon)
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
 
+    // Create Cannon Element inside current component
     const cannon = document.createElement('div');
     cannon.className = 'cannon';
-    root.appendChild(cannon);
-    // fire on cannon hover (host uses pointer-events: none)
-    cannon.addEventListener('mouseenter', () => {
-      const tl = masterTlRef.current;
-      if (!tl) return;
-      if (tl.isActive()) return; // don't retrigger while playing
-      tl.play(0);
-    });
-
-    const container = document.createElement('div');
-    container.className = 'flair-container';
-    root.appendChild(container);
-
-    rootRef.current = root;
+    wrapper.appendChild(cannon);
     cannonRef.current = cannon;
+
+    // 2. Setup global particles container (Body)
+    const container = document.createElement('div');
+    container.className = 'flair-container-global';
+
+    // Fix: Render in body with absolute positioning so it scrolls with page but breaks out of overflow containers
+    Object.assign(container.style, {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100px', // Match original dimensions
+      height: '100px',
+      overflow: 'visible',
+      pointerEvents: 'none',
+      zIndex: '99999',
+      willChange: 'transform'
+    });
+    document.body.appendChild(container);
     bulletsContainerRef.current = container;
 
-    // initialize bullets now so timeline has concrete targets
+    // Fire on cannon hover
+    cannon.addEventListener('mouseenter', () => {
+      // Trigger update of position before playing
+      updatePositionAndFire();
+    });
+
+    // Initialize bullets
     const initBullets: HTMLDivElement[] = [];
     for (let i = 0; i < BULLET_COUNT; i++) {
       const className = 'flair--' + gsap.utils.random(2, 35, 1);
@@ -77,7 +89,7 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
     }
     bulletsRef.current = initBullets;
 
-    // build timelines
+    // Build Timelines
     const angle = 20;
     const tl1 = gsap
       .timeline()
@@ -105,15 +117,13 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
           },
           stagger: { amount: tl1Time },
           onUpdate: () => {
-            // Clamp bullets to not cross footer line
             const maxLocalY = maxLocalYRef.current;
-            if (!isFinite(maxLocalY) || maxLocalY <= 0) return;
+            if (!isFinite(maxLocalY)) return;
             for (const b of bulletsRef.current) {
               const y = Number(gsap.getProperty(b, 'y')) || 0;
               if (y >= maxLocalY) {
                 if ((b as any).dataset && !(b as any).dataset.landed) {
                   gsap.set(b, { y: maxLocalY });
-                  // fade out quickly when hitting footer boundary
                   (b as any).dataset.landed = '1';
                   gsap.to(b, { opacity: 0, duration: 0.2 });
                 } else {
@@ -130,126 +140,96 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
     master.add(tl1, 0).add(tl2, 0);
     masterTlRef.current = master;
 
-    // Initialize host container for clipping
-    if (hostRef.current) {
-      hostRef.current.style.position = 'fixed';
-      hostRef.current.style.left = '0px';
-      hostRef.current.style.top = '0px';
-      hostRef.current.style.right = '0px';
-      hostRef.current.style.bottom = '0px';
-      hostRef.current.style.pointerEvents = 'none';
-      hostRef.current.style.zIndex = '9999';
-      hostRef.current.style.overflow = 'hidden';
-    }
-    
-    // append to host
-    if (hostRef.current && !hostRef.current.contains(root)) {
-      hostRef.current.appendChild(root);
-    }
-
     return () => {
       master.kill();
-      bulletsRef.current.forEach((b: HTMLDivElement) => b.remove());
-      container.remove();
       cannon.remove();
-      root.remove();
+      container.remove(); // Cleanup body element
     };
   }, []);
 
+  const updatePositionAndFire = () => {
+    const cannon = cannonRef.current;
+    const container = bulletsContainerRef.current;
+    const tl = masterTlRef.current;
+
+    if (!cannon || !container || !tl) return;
+    if (tl.isActive()) return;
+
+    // Use getBoundingClientRect to find cannon position in viewport
+    const rect = cannon.getBoundingClientRect();
+
+    // Original CSS Offset Replication:
+    // Container (100x100) was centered on wrapper (width 64) -> Left -18px from wrapper left.
+    // Container Bottom aligned with Wrapper Bottom -> Top is -36px from Wrapper Top.
+    const scale = 0.5;
+    const unscaledLeftOffset = -18;
+    const unscaledTopOffset = -36;
+
+    // We use absolute positioning relative to document body (so add scrollY/scrollX)
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
+    // Calculate document position for the container's Top-Left corner
+    const absLeft = rect.left + scrollX + (unscaledLeftOffset * scale);
+    const absTop = rect.top + scrollY + (unscaledTopOffset * scale);
+
+    // Apply strict positioning
+    gsap.set(container, {
+      transformOrigin: 'top left',
+      x: absLeft,
+      y: absTop,
+      scale: scale
+    });
+
+    // Calculate footer boundary
+    // Footer check works in viewport coordinates usually, but we need to map to our local space.
+    // Let's use viewport coordinates again for the check.
+    const footer = document.querySelector('footer');
+    const footerViewportY = footer ? footer.getBoundingClientRect().top : window.innerHeight;
+    const viewportBottom = window.innerHeight;
+
+    // Limit is minimum of footer top or screen bottom (viewport space)
+    const limitViewportY = Math.min(footerViewportY, viewportBottom);
+
+    // Container starts at 'rect.top + (unscaledTopOffset * scale)' in viewport space
+    const containerViewportY = rect.top + (unscaledTopOffset * scale);
+
+    const distanceScreen = limitViewportY - containerViewportY;
+    const distanceLocal = distanceScreen / scale;
+
+    maxLocalYRef.current = distanceLocal;
+
+    tl.play(0);
+  };
+
   useImperativeHandle(ref, () => ({
     fire() {
-      if (!masterTlRef.current) return;
-      // compute footer page Y and local clamp for current root
-      const footer = document.querySelector('footer') as HTMLElement | null;
-      const footerViewportY = footer ? footer.getBoundingClientRect().top : window.innerHeight;
-      const root = rootRef.current;
-      const host = hostRef.current;
-      
-      if (root && host) {
-        const rootRect = root.getBoundingClientRect();
-        // Clamp to the minimum of footer top (if visible) or viewport bottom
-        const clampTo = Math.min(footerViewportY, window.innerHeight);
-        const computed = clampTo - rootRect.top;
-        // Set max Y for particles - always clamp to prevent going under footer
-        maxLocalYRef.current = computed > 50 ? computed - 20 : clampTo - rootRect.top - 20;
-        
-        // Update host container to clip at footer
-        host.style.position = 'fixed';
-        host.style.left = '0px';
-        host.style.top = '0px';
-        host.style.right = '0px';
-        host.style.bottom = `${window.innerHeight - clampTo}px`;
-        host.style.pointerEvents = 'none';
-        host.style.zIndex = '9999';
-        host.style.overflow = 'hidden';
-      }
-      const tl = masterTlRef.current;
-      if (tl.isActive()) return; // don't retrigger while playing
-      tl.play(0);
+      // Called externally (e.g. from parent hover)
+      updatePositionAndFire();
     },
-    setPosition(x: number, y: number) {
-      const host = hostRef.current;
-      if (!host) return;
-      // Fixed overlay filling viewport without causing horizontal scrollbars
-      host.style.position = 'fixed';
-      host.style.left = '0px';
-      host.style.top = '0px';
-      host.style.right = '0px';
-      host.style.bottom = '0px';
-      host.style.pointerEvents = 'none';
-      host.style.zIndex = '9999';
-      host.style.overflow = 'hidden';
-
-      const root = rootRef.current;
-      if (root) {
-        root.style.left = `${x}px`;
-        root.style.top = `${y}px`;
-        root.style.transform = 'translate(-50%, -50%)';
-      }
-    },
-    setBoundsAndCenter(rect: DOMRect) {
-      const host = hostRef.current;
-      if (!host) return;
-      // Viewport-only overlay (no scrollbars)
-      host.style.position = 'fixed';
-      host.style.left = '0px';
-      host.style.top = '0px';
-      host.style.right = '0px';
-      host.style.bottom = '0px';
-      host.style.pointerEvents = 'none';
-      host.style.zIndex = '9999';
-      host.style.overflow = 'hidden';
-
-      const root = rootRef.current;
-      if (root) {
-        // bottom-center of hero in viewport coordinates
-        root.style.left = `${rect.left + rect.width / 2}px`;
-        root.style.top = `${rect.top + rect.height - 24}px`;
-        root.style.transform = 'translate(-50%, -50%)';
-      }
-    }
+    setPosition(x: number, y: number) { },
+    setBoundsAndCenter(rect: DOMRect) { }
   }));
 
-  // Render host container where built DOM is appended
   return (
     <>
       <div
-        className="cannon-flair-root"
-        ref={hostRef}
-        onMouseEnter={() => {
-          // Fire only when hovering the cannon/root area
-          if (!rootRef.current) return;
-          const tl = masterTlRef.current;
-          if (!tl) return;
-          if (tl.isActive()) return;
-          tl.play(0);
-        }}
+        className="cannon-flair-wrapper"
+        ref={wrapperRef}
+        style={{ position: 'relative', width: '64px', height: '64px' }}
       />
       <style jsx global>{`
-        .cannon-flair-root { overflow: visible !important; }
-        .flair-wrapper { position: relative; overflow: visible; }
-        .cannon { position: relative; z-index: 10; width: 64px; height: 64px; background-image: url('https://assets.codepen.io/16327/flair.png'); background-size: contain; background-repeat: no-repeat; background-position: center; pointer-events: auto; cursor: pointer; opacity: 1; }
-        .flair-container { width: 100px; height: 100px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); overflow: visible; z-index: 20; }
+        .cannon { 
+          position: absolute; 
+          top: 0; left: 0; 
+          width: 100%; height: 100%; 
+          background-image: url('https://assets.codepen.io/16327/flair.png'); 
+          background-size: contain; 
+          background-repeat: no-repeat; 
+          background-position: center; 
+          cursor: pointer; 
+          z-index: 10;
+        }
         .flair { width: 50px; height: 50px; background-image: url('https://assets.codepen.io/16327/flair.png'); background-size: contain; background-repeat: no-repeat; }
         .flair-bullet { position: absolute; top: 0; left: 0; width: 50px; height: 50px; will-change: transform; opacity: 0; background-position: center; pointer-events: none; z-index: 30; }
         .flair--2 { background-image: url('https://assets.codepen.io/16327/flair-2.png'); }
@@ -293,4 +273,3 @@ const CannonFlair = forwardRef<CannonFlairHandle>((_, ref) => {
 
 CannonFlair.displayName = 'CannonFlair';
 export default CannonFlair;
-
