@@ -108,12 +108,24 @@ export const clients: WallClientTile[] = [
     name: "interior design",
     icon: "🏦",
     tooltip: "Banking",
-    visitUrl: "https://bravoo-interior.vercel.app/",
+    visitUrl: "https://infinityinteriors.co/",
     year: "2025",
     challenge: "Outstanding customer service issues.",
 
     solution: "Implemented a customer service chatbot.",
     impact: "Reduced customer complaints by 60%."
+  },
+  {
+    type: "icon",
+    name: "bswinteriors",
+    icon: "🏦",
+    tooltip: "Banking",
+    visitUrl: "https://bswinteriors.vercel.app/",
+    year: "2025",
+    challenge: "needed a website for their business.",
+
+    solution: "made a website for their business.",
+    impact: "high end website with good ui and animations"
   },
     {
     type: "logo",
